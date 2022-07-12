@@ -1,0 +1,107 @@
+
+/* ScrollBar */
+::-webkit-scrollbar {background:#e6e6e6; width:4px; border-radius:30px}
+::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment {display:none; /* background:#47495e url(../img/bg_su.png) no-repeat center center;*/}
+::-webkit-scrollbar-button:end:increment {/*background-image:url(../img/bg_sd.png);*/}
+::-webkit-scrollbar-track {background:#e6e6e6; border-radius:30px}
+::-webkit-scrollbar-thumb {height: 50px; width: 50px; background:rgba(141,141,141,.45); border-radius:30px}
+
+/* GDSWrap */
+.gdsWrap {position: relative; width: 100%; height:100%}
+
+/* Top Area */
+.headerWrap {position: absolute; top:0; left:0; width: 100%; display: flex; flex-wrap: wrap; justify-content: space-between; padding:10px 20px;}
+.headerWrap > ul {display: flex;}
+.headerWrap > ul.left {float: left; margin-bottom:10px}
+.headerWrap > ul.right {float: right;}
+.headerWrap > ul > li{margin-right:5px}
+.headerWrap > ul > li dl.sub_dtdd {height: 26px;  box-shadow: 0px 8px 10px rgba(0,0,0,.15); }
+.headerWrap > ul > li dl.sub_dtdd dt {height: 26px; line-height: 26px; background:#3396ff; color:#fff; border-top-left-radius: 3px; border-bottom-left-radius: 3px; padding:0 15px }
+.headerWrap > ul > li dl.sub_dtdd dd {height: 26px; display: flex; background: #fff; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}
+.headerWrap > ul > li .sub_dse {height: 26px;}
+.headerWrap > ul > li .sub_dsel .sub_dsel_in {height: 26px; font-size: 12px; line-height: 26px;  border:none; border-top-right-radius: 3px; border-bottom-right-radius: 3px;  }
+.headerWrap > ul > li .sub_dsel.open ul {border: none; border-radius: 3px;  box-shadow: 0px 8px 10px rgba(0,0,0,.15);}
+.headerWrap > ul > li .sub_dsel > ul > li {height:26px; line-height: 29px; border: none; border-bottom:1px solid #e0e0e0 }
+
+.headerWrap .checkboxWrap {height:26px; line-height: 28px; border-radius: 3px; background:#3396ff; padding:0 10px; box-shadow: 0px 8px 10px rgba(0,0,0,.15); }
+.headerWrap .sub_cbox01 + label:after {top:7px; border-radius: 50px; width:15px; height:15px; background: #fff;}
+.headerWrap .sub_cbox01:checked + label:before {top:5px;}
+
+/* View Area*/
+.viewWrap {width: 100%; height:100%; background: #ccc; }
+.viewWrap img {width: 100%; height: 100%;}
+
+/* Left Area  */
+.sidebar {position: absolute; top:0px; left: 0; width:250px; height: 100%;; display: inline-block; z-index:9; transition: .3s; }
+.sidebar .lnb-header {display:flex; align-items: center; justify-content:space-between; padding:0 10px; height:42px; background:#f2f2f2; border-bottom: none }
+.sidebar .lnb-header p {margin-top:-4px; font-weight: bold; font-size: 13px; color:#000 }
+.sidebar .lnb-header .btnWrap {}
+.sidebar .lnb-header .btnWrap ul {display: flex;}
+.sidebar .lnb-header .btnWrap ul li {height:20px}
+.sidebar .sidebar-collapse {position: absolute;right:-16px; top:230px; width:15px; height:65px; cursor: pointer; }
+.sidebar .lnb {float:left; width:230px; height:100%; background: #fff; border-right: 1px solid #ddd; font-weight:600;  box-shadow:3px 0 7px 0 rgba(0,0,0,.1)}
+
+/* Left Area - List */
+.layersListWrap { padding:0}
+.layersListWrap li {height:34px; line-height: 34px; margin-bottom: 5px; font-weight:normal; color:#999; cursor:pointer}
+.layersListWrap li.select {color:#000; font-weight:bold}
+.layersListWrap li img{width: 34px; height:34px; color:#666; margin-right:10px;}
+.layersListWrap .lnbListCon {padding:15px}
+
+/* Left Area - Collapse */
+.sidebar .btnColl{position: absolute; top:47%; left:230px; width:19px; height:51px; background: #fff url("../img/btn_gdslnbfold.png") left top ; cursor: pointer;
+border:1px solid #dbdbdb; border-left: none; border-top-right-radius: 5px; border-bottom-right-radius: 5px;}
+.sidebar .btnColl {background-position: 0 -2px;}
+.sidebar.fold {left:-230px; width:0px;}
+.sidebar.fold .lnb { box-shadow: none;}
+.sidebar.fold .btnColl{left:230px; background-position: 0 -68px;}
+
+/* Input */
+input[type='text'] {height:26px; border:none; font-size: 12px; color:#454545;}
+input[type='text']:hover,input[type='text']:focus {outline:none }
+.sub_txtBt .btn_rec {height:26px; border:none}
+.sub_txtBt .btn_rec.searchBasic {background: url(../img/icon_input_search2.png) center center no-repeat;}
+
+/* CheckBox */
+input[type="checkbox"] + .label-txt {margin-right: 10px;}
+.box-checkboxwrap {/*display: inline-block;*/height:26px; display: flex; line-height: 28px; border-radius: 3px; background:#fff; padding:6px 10px; box-shadow: 0px 8px 10px rgba(0,0,0,.15);}
+.box-checkboxwrap .box-checkbox {margin-left: 20px;}
+.box-checkboxwrap .box-checkbox:first-child{  margin-left: 0;}
+.box-checkbox {  display: inline-block; overflow: hidden; width:18px; height: 18px;  background: url('../img/bg-checkbox.png') no-repeat 0 -2px; vertical-align: middle;}
+.box-checkbox > .inp-checkbox { width: 30px; height: 26px; float: left; margin: -6px 0 0 -6px;opacity: 0;}
+.box-checkbox:active,
+.box-checkboxwrap.checked .box-checkbox {background: url('../img/bg-checkbox-checked.png') no-repeat 0 0;}
+.box-checkboxwrap.disabled .box-checkbox{background: url('../img/bg-checkbox-disabled.png') no-repeat 0 0;} 
+.box-checkboxwrap.disabled.checked .box-checkbox{background: url('../img/bg-checkbox-disabled-checked.png') no-repeat 0 0;}
+.box-checkbox + .label-txt { color: #000; line-height: 15px; margin-left:3px}
+.box-checkboxwrap.checked {background:#3396ff; color:#fff}
+.box-checkboxwrap.disabled,.box-checkboxwrap.checked.disabled {background: #fff;}
+.box-checkboxwrap.checked .label-txt {color:#fff}
+.box-checkboxwrap.disabled .label-txt, .box-checkboxwrap.disabled.checked .label-txt {color: #aaa;}
+.headerWrap > ul > li dl.sub_dtdd dd .box-checkboxwrap{border-left:1px solid #ddd;  border-top-left-radius:0; border-bottom-left-radius:0 ;}
+
+/* Button */
+[class^='gdsbtn_'], [class*='gdsbtn_'] {display: block; cursor: pointer; border-radius: 3px; text-decoration: none; } 
+.gdsbtn_white {background: #fff; height:26px; padding:0 15px; line-height: 24px; box-shadow: 0px 8px 10px rgba(0,0,0,.15); color:#454545 }
+.gdsbtn_white:hover {color:#3396ff}
+.gdsbtn_sblue {width: 35px; height:22px; padding:2px 5px; line-height: 17px; text-align: center; background: #fff; border:1px solid #d9d9d9;  font-weight:normal; color:#333; margin-left: 3px; }
+.gdsbtn_sblue:hover {border:1px solid #999;/*box-shadow:0 2px 4px 0 rgb(0 0 0 / 10%)*/}
+.gdsbtn_sblue.edit {width:48px}
+.gdsbtn_sblue.edit i {font-size: 10px; margin-top:3px; margin-right:4px;}
+
+/* Modal - GDS Edit Layers */
+#gdsEditModal .md_con {padding: 10px;}
+.gdsEditWrap {height:375px; padding:0; display: flex;}
+.gdsEditWrap .leftWrap {width:75%; height:100%; display:flex; flex:1; justify-content:space-between}
+.gdsEditWrap .leftWrap .listWrap {height:100%; width:100%; overflow-y:auto; padding:5px; border:1px solid #dddddd; width:32% }
+.gdsEditWrap .leftWrap .listWrap li {height:30px; display: block;}
+.gdsEditWrap .listWrap img {width: 30px; height:30px}
+.gdsEditWrap .listWrap.flexWrap {overflow-y:auto}
+.gdsEditWrap .listWrap.flexWrap li {width:35px; display: inline-block}
+.gdsEditWrap .rightWrap {width:20%; display: flex; flex-direction: column; align-items:center; margin-left:7px}
+.gdsEditWrap .rightWrap .confirmWrap {width:100%; height:110px; display: flex; justify-content:center; align-items:center; border:1px solid #ddd }
+.gdsEditWrap .rightWrap .btnWrap {display: block; margin-top:10px}
+
+/* 공통 */
+.behind {top: -9999em;width: 1px;height: 1px;overflow: hidden;position: absolute;}
+.hidden {display: none;}

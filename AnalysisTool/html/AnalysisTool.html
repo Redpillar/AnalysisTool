@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>GDS Viewer</title>
+<link rel="stylesheet" href="../css/jquery-ui.min.css" />
+<link rel="stylesheet" href="../css/common2.css" />
+<link rel="stylesheet" href="../css/gdsviewer.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="../js/ko.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.js"></script>
+<script type="text/javascript" src="../js/answer_common.js"></script>
+<script>
+    $(function() {
+        //Left Fold
+        $(".btnColl").click(function() { 
+            $(this).parent('.sidebar').toggleClass('fold');
+        });
+
+        /* checkbox */
+        // $(document).on('click', '.inp-checkbox', function(e){
+        //     var e_target = e.target;
+        //     e_target.checked ? $(e_target).parents('.box-checkboxwrap').addClass('checked') : $(e_target).parents('.box-checkboxwrap').removeClass('checked');
+        // });
+        
+        /* checkbox */
+        $(".box-checkboxwrap").click(function() {
+            $(this).toggleClass('checked');
+        });
+
+        //Click시 폰트 컬러 변경
+        $(".gdsLeftWrap .listWrap li").click(function() { 
+            $(this).toggleClass('select');
+        });
+
+              
+    });
+    function openModal() {
+        $("#gdsEditModal").show();
+    }
+    function closeModal() {
+        $("#gdsEditModal").hide();
+    }
+
+    
+    
+    $(function() { 
+        //Field List select color
+        $(".fieldListWrap .lnbListCon li").click(function() {
+            $(this).toggleClass('select');
+        });
+
+        analLeftResiz();
+        $(".resizable01").resizable();
+        $(".resizable02").resizable();
+        $(window).resize(function() {  
+            analLeftResiz();
+        });
+    });
+
+    // AnalysisTool Left Resizable
+    function analLeftResiz() {
+        var th1 = $(".resizable01").height() + 2;
+        var th2 = $(".resizable02").height() + 2;
+        //ar b = $(".ui-widget-content").next().offset().top;
+        var h = th1 + 151;
+        $(".fieldListWrap").css({"height" : "calc(100% - " + h + "px)"})
+        $(".layersListWrap").css({"height" : "calc(100% - " + th2 + "px)"})
+       
+    };
+
+</script>
+</head>
+<body>
+    <div class="analTool">
+        <!-- tap -->
+        <div class="as_tap type13">
+            <ul class="as_tapBt_wrap">
+                <li class="tabChart on">
+                    <a onclick="fn_Click_tap(this)" href="javascript:;">Chart</a>
+                </li>
+                <li class="tabGds">
+                    <a onclick="fn_Click_tap(this)" href="javascript:;">GDS</a>
+                </li>
+                <li class="tabFile">
+                    <a onclick="fn_Click_tap(this)" href="javascript:;">File</a>
+                </li>
+            </ul>
+            <ul class="as_tapCon2_wrap">
+                <!-- Chart 컨텐츠 영역 -->
+                <li class="on">
+                    <div>
+                        <div class="chartWrap">
+                    
+                            <!-- Left Area -->
+                            <div class="chartLeftWrap sidebar">
+                                <div class="lnb" id="lnbMenu">
+                                    <div class="lnbListWrap jobListWrap box ui-widget-content resizable01"  style="height:450px" >
+                                        <div class="lnb-header">
+                                            <p>Job List</p>
+                                        </div>
+                                        <ul class="lnbListCon" style="height:calc(100% - 41px); overflow-y: auto; padding:0">
+                                            
+                                            <div class="lnb-tree-mid gdsViewerArea" style="display: none;">
+                                                <ul id="idList"><li class="selected" style="cursor: pointer;" value="verticaldr">verticaldr</li></ul>
+                                            </div>
+                                            <div class="tree_wrap" style="height: calc(100% + 5px);">
+                                                <!-- 트리 -->
+                                                <ul>
+                                                    <li>
+                                                        <span class="caret caret-down">user</span>
+                                                        <ul class="nested active" id="treeList">									<li name="Backup_hsbae" index="0" depth="1"><span class="caret">Backup_hsbae</span></li>									<li name="DOC" index="1" depth="1"><span class="caret">DOC</span></li>									<li name="EBEAM" index="2" depth="1"><span class="caret">EBEAM</span></li>									<li name="ETC" index="3" depth="1"><span class="caret">ETC</span></li>									<li name="GDS_DATA" index="4" depth="1"><span class="caret">GDS_DATA</span></li>									<li name="GDS_DATA_4A" index="5" depth="1"><span class="caret">GDS_DATA_4A</span></li>									<li name="GDS_DATA_old" index="6" depth="1"><span class="caret">GDS_DATA_old</span></li>									<li name="GDS_DATA_TEMP" index="7" depth="1"><span class="caret">GDS_DATA_TEMP</span></li>									<li name="LAYOUT" index="8" depth="1"><span class="caret">LAYOUT</span></li>									<li name="MD2" index="9" depth="1"><span class="caret">MD2</span></li>									<li name="SCHEM" index="10" depth="1"><span class="caret">SCHEM</span></li>									<li name="SIM" index="11" depth="1"><span class="caret">SIM</span></li>									<li name="test" index="12" depth="1"><span class="caret">test</span></li>									<li name="TMP" index="13" depth="1"><span class="caret">TMP</span></li>									<li name="VERIFY" index="14" depth="1"><span class="caret">VERIFY</span></li>									<li name="YET" index="15" depth="1"><span class="caret">YET</span></li></ul>
+                                                    </li>
+                                                </ul>
+                                                <!-- // 트리 -->
+                                            </div>
+
+                                        </ul>
+                                    </div>
+                                    <div class="lnbListWrap box fieldListWrap " style="height:calc(100% - 602px)">
+                                        <div class="lnb-header">
+                                            <p>Field List</p>
+                                        </div>
+                                        <ul class="lnbListCon" style="height:calc(100% - 41px); overflow-y:auto;">
+                                            <li class="select">Charge</li>
+                                            <li>Electron_concentration</li>
+                                            <li>Hole_concentration</li>
+                                            <li>Potential</li>
+                                            <li>Electric_Field</li>
+                                            <li>Electron_Curent_Density</li>
+                                            <li>Hole_Current_Density</li>
+                                            <li>Displacement_Current_Density</li>
+                                            <li>Total_Current_Density</li>
+                                            <li>Singlet_density</li>
+                                            <li>Triplet_density</li>
+                                            <li>Singlet_density_Dopant</li>
+                                        </ul>
+                                    </div>
+                                    <div class="lnbListWrap box targetListWrap" style="height:150px">
+                                        <div class="lnb-header">
+                                            <p>Target Parameter</p>
+                                        </div>
+                                        <ul class="lnbListCon" style="height:calc(100% - 41px); overflow-y:auto;">
+                                           <li style="width:115px; display: inline-block;">
+                                                
+                                                <div class="sub_dsel mt10" style="width:100%;" onclick="dsel_over(this)">
+                                                    <div class="sub_dsel_in">Voltage</div>
+                                                    <ul>
+                                                        <li onclick="dsel_liClick(this)">Voltage1</li>
+                                                        <li onclick="dsel_liClick(this)">Voltage2</li></ul></div>
+                                            </li>
+                                            <li style="width:79px; display: inline-block">
+                                                <div class="sub_dsel mt10" style="width:100%;" onclick="dsel_over(this)">
+                                                    <div class="sub_dsel_in">6V</div>
+                                                    <ul>
+                                                        <li onclick="dsel_liClick(this)">6V</li>
+                                                        <li onclick="dsel_liClick(this)">7V</li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="btnColl"><span class="behind">접기/닫기 버튼</span></div>
+                            </div>
+                            <!-- //Left Area -->
+                            <!-- View Area -->
+                            <div class="chartListCon">
+                               <ul>
+                                    <li>Chart Area1
+                                        <a class="analChartClose" onclick="fn_clickRemoveLi(this)" href="javascript:;"></a>
+                                   </li>
+                                   <li>Chart Area2
+                                        <a class="analChartClose" onclick="fn_clickRemoveLi(this)" href="javascript:;"></a>
+                                   </li>
+                                   <li>Chart Area3
+                                        <a class="analChartClose" onclick="fn_clickRemoveLi(this)" href="javascript:;"></a>
+                                   </li>
+                                   <li>Chart Area4
+                                        <a class="analChartClose" onclick="fn_clickRemoveLi(this)" href="javascript:;"></a>
+                                   </li>
+                                   <li>Chart Area5
+                                        <a class="analChartClose" onclick="fn_clickRemoveLi(this)" href="javascript:;"></a>
+                                   </li>
+                                   <li>Chart Area6
+                                        <a class="analChartClose" onclick="fn_clickRemoveLi(this)" href="javascript:;"></a>
+                                   </li>
+                                   <li>Chart Area7
+                                        <a class="analChartClose" onclick="fn_clickRemoveLi(this)" href="javascript:;"></a>
+                                   </li>
+                                   <li>Chart Area8
+                                        <a class="analChartClose" onclick="fn_clickRemoveLi(this)" href="javascript:;"></a>
+                                   </li>
+                                   <li>Chart Area9
+                                        <a class="analChartClose" onclick="fn_clickRemoveLi(this)" href="javascript:;"></a>
+                                   </li>
+                                   <li>Chart Area10
+                                        <a class="analChartClose" onclick="fn_clickRemoveLi(this)" href="javascript:;"></a>
+                                   </li>
+                                   <li>Chart Area11
+                                        <a class="analChartClose" onclick="fn_clickRemoveLi(this)" href="javascript:;"></a>
+                                   </li>
+                                   <li>Chart Area12
+                                        <a class="analChartClose" onclick="fn_clickRemoveLi(this)" href="javascript:;"></a>
+                                   </li>
+                                   <li>Chart Area13
+                                        <a class="analChartClose" onclick="fn_clickRemoveLi(this)" href="javascript:;"></a>
+                                   </li>
+                                   <li>Chart Area14
+                                        <a class="analChartClose" onclick="fn_clickRemoveLi(this)" href="javascript:;"></a>
+                                   </li>
+                                </ul>
+                            </div>
+                            <!-- //View Area -->
+                        </div>
+                    </div>
+                </li>
+                <!-- //Chart 컨텐츠 영역 -->
+                <!-- GDS 컨텐츠 영역 -->
+                <li>
+                    <div>
+                        <div class="gdsWrap">
+                            <!-- Top Area -->
+                            <div class="headerWrap">
+                                <ul class="left">
+                                    <li><a title="select rect" class="gdsbtn_white" href="javascript:;" alt="Select Rect"></i>Select Rect</a></li>
+                                    <li><a title="select line" class="gdsbtn_white" href="javascript:;" alt="Select Line"></i>Select Line</a></li>
+                                    <li><a title="measure area" class="gdsbtn_white" href="javascript:;" alt="Measure Area"></i>Measure Area</a></li>
+                                    <li style="width: 220px;">
+                                        <dl class="sub_dtdd">
+                                            <dt style="width: 57px;">Ruler</dt>
+                                            <dd style="width: calc(100% - 57px);">
+                                                <div class="sub_dsel" onclick="dsel_over(this)" style="width:calc(100% - 38px)">
+                                                    <div class="sub_dsel_in" id="Orthogonal">Orthogonal</div>
+                                                    <ul id="input_selectbox" style="overflow: hidden;">
+                                                        <li onclick="dsel_liClick(this)">Orthogonal</li>
+                                                        <li onclick="dsel_liClick(this)">Option2</li>
+                                                        <li onclick="dsel_liClick(this)">Option3</li>
+                                                        <li onclick="dsel_liClick(this)">Option4</li>
+                                                        <li onclick="dsel_liClick(this)">Option5</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="box-checkboxwrap">
+                                                    <span class="box-checkbox"><input class="inp-checkbox" type="checkbox"></span>
+                                                </div>
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                    <li style="width: 155px;"><dl class="sub_dtdd">
+                                        <dt style="width: 50px;">X/Y</dt>
+                                        <dd style="width: calc(100% - 50px);">
+                                            <div class="sub_txtBt" style="width:195px">
+                                                <input style="width: calc(100% - 28px);" type="text">
+                                                <a class="btn_rec searchBasic" href="javascript:;"></a>
+                                            </div>
+                                        </dd>
+                                    </li>
+                                </ul>
+                                <ul class="right">
+                                    <li>
+                                        <div class="box-checkboxwrap" style="width:105px">
+                                            <span class="box-checkbox "><input class="inp-checkbox" type="checkbox"></span>
+                                            <label class="label-txt">Show Label</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="box-checkboxwrap"  style="width:100px">
+                                            <span class="box-checkbox "><input class="inp-checkbox" type="checkbox"></span>
+                                            <label class="label-txt">Full Array</label>
+                                        </div>
+                                    </li>
+                                    <li style="width: 135px;"><dl class="sub_dtdd">
+                                        <dt style="width: 85x;">Filter Size</dt>
+                                        <dd style="width: calc(100% - 83px);">
+                                            <div class="sub_dsel" onclick="dsel_over(this)">
+                                                <div class="sub_dsel_in" id="Orthogonal">1</div>
+                                                <ul id="input_selectbox" style="overflow: hidden;">
+                                                    <li onclick="dsel_liClick(this)">1</li>
+                                                    <li onclick="dsel_liClick(this)">2</li>
+                                                    <li onclick="dsel_liClick(this)">3</li>
+                                                    <li onclick="dsel_liClick(this)">4</li>
+                                                    <li onclick="dsel_liClick(this)">5</li>
+                                                </ul>
+                                            </div>
+                                        </dd>
+                                    </dl></li>
+                                    <li style="width: 160px;"><dl class="sub_dtdd">
+                                        <dt style="width: 55px;">Tech</dt>
+                                        <dd style="width: calc(100% - 55px);">
+                                            <div class="sub_dsel" onclick="dsel_over(this)">
+                                                <div class="sub_dsel_in" id="Orthogonal">QD1G</div>
+                                                <ul id="input_selectbox" style="overflow: hidden;">
+                                                    <li onclick="dsel_liClick(this)">QD1G</li>
+                                                    <li onclick="dsel_liClick(this)">Option2</li>
+                                                    <li onclick="dsel_liClick(this)">Option3</li>
+                                                    <li onclick="dsel_liClick(this)">Option4</li>
+                                                    <li onclick="dsel_liClick(this)">Option5</li>
+                                                </ul>
+                                            </div>
+                                        </dd>
+                                    </dl></li>
+                                </ul>
+                            </div>
+                            <!-- //Top Area -->
+                    
+                            <!-- Left Area -->
+                            <div class="gdsLeftWrap sidebar">
+                                <div class="lnb" id="lnbMenu">
+                                    <div class="lnbListWrap jobListWrap box ui-widget-content resizable02"  style="height:450px" >
+                                        <div class="lnb-header">
+                                            <p>Job List</p>
+                                        </div>
+                                        <ul class="lnbListCon" style="height:calc(100% - 41px); overflow-y: auto; padding:0">
+                                            
+                                            <div class="lnb-tree-mid gdsViewerArea" style="display: none;">
+                                                <ul id="idList"><li class="selected" style="cursor: pointer;" value="verticaldr">verticaldr</li></ul>
+                                            </div>
+                                            <div class="tree_wrap" style="height: calc(100% + 5px);">
+                                                <!-- 트리 -->
+                                                <ul>
+                                                    <li>
+                                                        <span class="caret caret-down">user</span>
+                                                        <ul class="nested active" id="treeList">									<li name="Backup_hsbae" index="0" depth="1"><span class="caret">Backup_hsbae</span></li>									<li name="DOC" index="1" depth="1"><span class="caret">DOC</span></li>									<li name="EBEAM" index="2" depth="1"><span class="caret">EBEAM</span></li>									<li name="ETC" index="3" depth="1"><span class="caret">ETC</span></li>									<li name="GDS_DATA" index="4" depth="1"><span class="caret">GDS_DATA</span></li>									<li name="GDS_DATA_4A" index="5" depth="1"><span class="caret">GDS_DATA_4A</span></li>									<li name="GDS_DATA_old" index="6" depth="1"><span class="caret">GDS_DATA_old</span></li>									<li name="GDS_DATA_TEMP" index="7" depth="1"><span class="caret">GDS_DATA_TEMP</span></li>									<li name="LAYOUT" index="8" depth="1"><span class="caret">LAYOUT</span></li>									<li name="MD2" index="9" depth="1"><span class="caret">MD2</span></li>									<li name="SCHEM" index="10" depth="1"><span class="caret">SCHEM</span></li>									<li name="SIM" index="11" depth="1"><span class="caret">SIM</span></li>									<li name="test" index="12" depth="1"><span class="caret">test</span></li>									<li name="TMP" index="13" depth="1"><span class="caret">TMP</span></li>									<li name="VERIFY" index="14" depth="1"><span class="caret">VERIFY</span></li>									<li name="YET" index="15" depth="1"><span class="caret">YET</span></li></ul>
+                                                    </li>
+                                                </ul>
+                                                <!-- // 트리 -->
+                                            </div>
+
+                                        </ul>
+                                    </div>
+                                    <div class="lnbListWrap box layersListWrap" style="height:calc(100% - 452px)">
+                                        <div class="lnb-header">
+                                            <p>Layers</p>
+                                            <div class="btnWrap">
+                                                <ul>
+                                                    <li><a title="all" class="gdsbtn_sblue" href="javascript:;" alt="All"></i>All</a></li>
+                                                    <li><a title="non" class="gdsbtn_sblue" href="javascript:;" alt="Non"></i>Non</a></li>
+                                                    <li><a title="edit" class="gdsbtn_sblue edit" href="javascript:;" onclick="openModal()" alt="edit"><i class="fa fa-pencil"></i>Edit</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <ul class="lnbListCon" style="height:calc(100% - 41px); overflow-y:auto;">
+                                            <li class="select"><img src="../img/gds_sample01.png">GRND_0</li><!-- 선택 시 class="select"추가  -->
+                                            <li class=""><img src="../img/gds_sample02.png">BML_1</li>
+                                            <li class=""><img src="../img/gds_sample03.png">ACT_2</li>
+                                            <li class=""><img src="../img/gds_sample04.png">GATE_3</li>
+                                            <li class=""><img src="../img/gds_sample05.png">NBLK_5</li>
+                                            <li class=""><img src="../img/gds_sample01.png">CNTI_6</li>
+                                            <li class=""><img src="../img/gds_sample02.png">CNT2_7</li>
+                                            <li class=""><img src="../img/gds_sample03.png">SD_8</li>
+                                            <li class=""><img src="../img/gds_sample04.png">CNT3_10</li>
+                                            <li class=""><img src="../img/gds_sample05.png">SD2_11</li>
+                                            <li class=""><img src="../img/gds_sample02.png">BML_1</li>
+                                            <li class=""><img src="../img/gds_sample03.png">ACT_2</li>
+                                            <li class=""><img src="../img/gds_sample04.png">GATE_3</li>
+                                            <li class=""><img src="../img/gds_sample05.png">NBLK_5</li>
+                                            <li class=""><img src="../img/gds_sample01.png">CNTI_6</li>
+                                            <li class=""><img src="../img/gds_sample02.png">CNT2_7</li>
+                                            <li class=""><img src="../img/gds_sample03.png">SD_8</li>
+                                            <li class=""><img src="../img/gds_sample04.png">CNT3_10</li>
+                                            <li class=""><img src="../img/gds_sample05.png">SD2_11</li>
+                                            <li class=""><img src="../img/gds_sample02.png">BML_1</li>
+                                            <li class=""><img src="../img/gds_sample03.png">ACT_2</li>
+                                            <li class=""><img src="../img/gds_sample04.png">GATE_3</li>
+                                            <li class=""><img src="../img/gds_sample05.png">NBLK_5</li>
+                                            <li class=""><img src="../img/gds_sample01.png">CNTI_6</li>
+                                            <li class=""><img src="../img/gds_sample02.png">CNT2_7</li>
+                                            <li class=""><img src="../img/gds_sample03.png">SD_8</li>
+                                            <li class=""><img src="../img/gds_sample04.png">CNT3_10</li>
+                                            <li class=""><img src="../img/gds_sample05.png">SD2_11</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="btnColl"><span class="behind">접기/닫기 버튼</span></div>
+                            </div>
+                            <!-- //Left Area -->
+                            
+                            <!-- View Area -->
+                            <div class="viewWrap" style="width: 100%; height: 100%; background: #000;">
+                                <img src="../img/GDSViewer_samview.png">
+                            </div>
+                            <!-- //View Area -->
+                        </div>
+
+
+
+                    </div>
+                </li>
+                <!-- //GDS 컨텐츠 영역 -->
+                <!-- File 컨텐츠 영역 -->
+                <li>
+                    <div>
+                        <p style="border: 1px solid rgb(237, 237, 237); border-image: none; height: 100%; text-align: center; color: black; font-size: 20px; font-weight: bold;">File Viewer</p>
+                    </div>
+                </li>
+                <!-- //File 컨텐츠 영역 -->
+            </ul>
+        </div>
+        <!-- //tap -->
+    </div>
+
+    <!-- modal popup -->
+	<div class="modalpop_wrap" id="gdsEditModal" style="display: none;">
+		<div class="modalpop" style="width:600px; height:435px">
+			<!-- header -->
+			<div class="md_top">
+				<h3>Edit Layers</h3>
+				<a href="javascript:;" class="btn_mdClise" onclick="closeModal()"></a>
+			</div>
+			<!-- //header -->
+
+			<!-- content -->
+            <!-- 스크롤 설정 -->
+			<div class="md_con" style="overflow:hidden; max-height:395px;">
+                <div class="gdsEditWrap">
+                    <div class="leftWrap">
+                        <ul class="listWrap">
+                            <li class="select"><img src="../img/gds_sample01.png">GRND_0</li><!-- 선택 시 class="select"추가  -->
+                            <li class=""><img src="../img/gds_sample02.png">BML_1</li>
+                            <li class=""><img src="../img/gds_sample03.png">ACT_2</li>
+                            <li class=""><img src="../img/gds_sample04.png">GATE_3</li>
+                            <li class=""><img src="../img/gds_sample05.png">NBLK_5</li>
+                            <li class=""><img src="../img/gds_sample01.png">CNTI_6</li>
+                            <li class=""><img src="../img/gds_sample02.png">CNT2_7</li>
+                            <li class=""><img src="../img/gds_sample03.png">SD_8</li>
+                            <li class=""><img src="../img/gds_sample04.png">CNT3_10</li>
+                            <li class=""><img src="../img/gds_sample05.png">SD2_11</li>
+                            <li class=""><img src="../img/gds_sample02.png">BML_1</li>
+                            <li class=""><img src="../img/gds_sample03.png">ACT_2</li>
+                            <li class=""><img src="../img/gds_sample04.png">GATE_3</li>
+                            <li class=""><img src="../img/gds_sample05.png">NBLK_5</li>
+                            <li class=""><img src="../img/gds_sample01.png">CNTI_6</li>
+                            <li class=""><img src="../img/gds_sample02.png">CNT2_7</li>
+                            <li class=""><img src="../img/gds_sample03.png">SD_8</li>
+                            <li class=""><img src="../img/gds_sample04.png">CNT3_10</li>
+                            <li class=""><img src="../img/gds_sample05.png">SD2_11</li>
+                            <li class=""><img src="../img/gds_sample02.png">BML_1</li>
+                            <li class=""><img src="../img/gds_sample03.png">ACT_2</li>
+                            <li class=""><img src="../img/gds_sample04.png">GATE_3</li>
+                            <li class=""><img src="../img/gds_sample05.png">NBLK_5</li>
+                            <li class=""><img src="../img/gds_sample01.png">CNTI_6</li>
+                            <li class=""><img src="../img/gds_sample02.png">CNT2_7</li>
+                            <li class=""><img src="../img/gds_sample03.png">SD_8</li>
+                            <li class=""><img src="../img/gds_sample04.png">CNT3_10</li>
+                            <li class=""><img src="../img/gds_sample05.png">SD2_11</li>
+                        </ul>
+                        <ul class="listWrap flexWrap" >
+                            <li class="select"><img src="../img/gds_sample01.png"></li><!-- 선택 시 class="select"추가  -->
+                            <li class=""><img src="../img/gds_sample02.png"></li>
+                            <li class=""><img src="../img/gds_sample03.png"></li>
+                            <li class=""><img src="../img/gds_sample04.png"></li>
+                            <li class=""><img src="../img/gds_sample05.png"></li>
+                            <li class=""><img src="../img/gds_sample01.png"></li>
+                            <li class=""><img src="../img/gds_sample02.png"></li>
+                            <li class=""><img src="../img/gds_sample03.png"></li>
+                            <li class=""><img src="../img/gds_sample04.png"></li>
+                            <li class=""><img src="../img/gds_sample05.png"></li>
+                            <li class=""><img src="../img/gds_sample02.png"></li>
+                            <li class=""><img src="../img/gds_sample03.png"></li>
+                            <li class=""><img src="../img/gds_sample04.png"></li>
+                            <li class=""><img src="../img/gds_sample05.png"></li>
+                            <li class=""><img src="../img/gds_sample01.png"></li>
+                            <li class=""><img src="../img/gds_sample02.png"></li>
+                            <li class=""><img src="../img/gds_sample03.png"></li>
+                            <li class=""><img src="../img/gds_sample04.png"></li>
+                            <li class=""><img src="../img/gds_sample05.png"></li>
+                            <li class=""><img src="../img/gds_sample02.png"></li>
+                            <li class=""><img src="../img/gds_sample03.png"></li>
+                            <li class=""><img src="../img/gds_sample05.png"></li>
+                            <li class=""><img src="../img/gds_sample01.png"></li>
+                            <li class=""><img src="../img/gds_sample02.png"></li>
+                            <li class=""><img src="../img/gds_sample03.png"></li>
+                            <li class=""><img src="../img/gds_sample04.png"></li>
+                            <li class=""><img src="../img/gds_sample05.png"></li>
+                            <li class=""><img src="../img/gds_sample02.png"></li>
+                            <li class=""><img src="../img/gds_sample03.png"></li>
+                            <li class=""><img src="../img/gds_sample04.png"></li>
+                            <li class=""><img src="../img/gds_sample05.png"></li>
+                            <li class=""><img src="../img/gds_sample02.png"></li>
+                            <li class=""><img src="../img/gds_sample03.png"></li>
+                            <li class=""><img src="../img/gds_sample05.png"></li>
+                            <li class=""><img src="../img/gds_sample01.png"></li>
+                            <li class=""><img src="../img/gds_sample02.png"></li>
+                            <li class=""><img src="../img/gds_sample03.png"></li>
+                            <li class=""><img src="../img/gds_sample04.png"></li>
+                            <li class=""><img src="../img/gds_sample05.png"></li>
+                        </ul>
+                        <ul class="listWrap flexWrap" >
+                            <li class="select"><img src="../img/gds_sample01.png"></li><!-- 선택 시 class="select"추가  -->
+                            <li class=""><img src="../img/gds_sample02.png"></li>
+                            <li class=""><img src="../img/gds_sample03.png"></li>
+                            <li class=""><img src="../img/gds_sample04.png"></li>
+                            <li class=""><img src="../img/gds_sample05.png"></li>
+                            <li class=""><img src="../img/gds_sample01.png"></li>
+                            <li class=""><img src="../img/gds_sample02.png"></li>
+                            <li class=""><img src="../img/gds_sample03.png"></li>
+                            <li class=""><img src="../img/gds_sample04.png"></li>
+                            <li class=""><img src="../img/gds_sample05.png"></li>
+                            <li class=""><img src="../img/gds_sample02.png"></li>
+                            <li class=""><img src="../img/gds_sample03.png"></li>
+                            <li class=""><img src="../img/gds_sample04.png"></li>
+                            <li class=""><img src="../img/gds_sample05.png"></li>
+                            <li class=""><img src="../img/gds_sample01.png"></li>
+                            <li class=""><img src="../img/gds_sample02.png"></li>
+                            <li class=""><img src="../img/gds_sample03.png"></li>
+                            <li class=""><img src="../img/gds_sample04.png"></li>
+                            <li class=""><img src="../img/gds_sample05.png"></li>
+                            <li class=""><img src="../img/gds_sample02.png"></li>
+                            <li class=""><img src="../img/gds_sample03.png"></li>
+                            <li class=""><img src="../img/gds_sample05.png"></li>
+                            <li class=""><img src="../img/gds_sample01.png"></li>
+                            <li class=""><img src="../img/gds_sample02.png"></li>
+                            <li class=""><img src="../img/gds_sample03.png"></li>
+                            <li class=""><img src="../img/gds_sample04.png"></li>
+                            <li class=""><img src="../img/gds_sample05.png"></li>
+                            <li class=""><img src="../img/gds_sample02.png"></li>
+                            <li class=""><img src="../img/gds_sample03.png"></li>
+                            <li class=""><img src="../img/gds_sample04.png"></li>
+                            <li class=""><img src="../img/gds_sample05.png"></li>
+                            <li class=""><img src="../img/gds_sample02.png"></li>
+                            <li class=""><img src="../img/gds_sample03.png"></li>
+                            <li class=""><img src="../img/gds_sample05.png"></li>
+                            <li class=""><img src="../img/gds_sample01.png"></li>
+                            <li class=""><img src="../img/gds_sample02.png"></li>
+                            <li class=""><img src="../img/gds_sample03.png"></li>
+                            <li class=""><img src="../img/gds_sample04.png"></li>
+                            <li class=""><img src="../img/gds_sample05.png"></li>
+                        </ul>
+                    </div>
+                    <div class="rightWrap">
+                        <div class="confirmWrap">
+                            <img src="../img/gds_sample05.png" style="width:80px; height:80px">
+                        </div>
+                        <div class="btnWrap">
+                            <a class="btn_blue2" href="javascript:;">
+                                <span class="btn_gTxt">Modify</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+			</div>
+			<!-- //content -->
+		</div>
+	</div>
+	<!-- //modal popup -->
+</body>
+</html>
