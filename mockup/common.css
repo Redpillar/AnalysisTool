@@ -26,7 +26,7 @@ html, body{height:100%;}
 
 /* content */
 #content{position:fixed; top:48px; left:65px; right:0; bottom:0; display:flex; flex-direction:column; justify-content:flex-start; background:#f5f5f5}
-#content > .content_top{flex:1; background:white;}
+#content > .content_top{flex:1; background:#f5f5f5;}
 #content > .content_both{height:150px; background:gray;}
 
 
