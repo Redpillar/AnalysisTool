@@ -31,7 +31,7 @@ window.onload = function(){
         const _width = _this.parentNode.clientWidth;
         const _first_pageX = event.pageX;
         const check_parent = _this.classList.contains("parent");
-        const min = 100;
+        const min = 28;
         const max = 1000;
         const _fn_window_move = ()=>{
             if(event.stopPropagation){
@@ -68,9 +68,11 @@ window.onload = function(){
         const check = _content.classList.contains("content_both");
         const _height = _this.parentNode.clientHeight;
         const _first_pageY = event.pageY;
-        const min = 100;
+        const min = 28;
         const max = 1000;
-
+        const _closed_check = _this.parentNode.classList.contains("closed");
+        if(_closed_check) return;
+        _this.parentNode.classList.remove("transition_h");
         const _fn_window_move = ()=>{
             if(event.stopPropagation){
                 event.stopPropagation();
@@ -125,15 +127,39 @@ window.onload = function(){
                     _this.parentNode.children[i].classList.remove("active");
                 }
             }
-            const _lnbWing = document.querySelector(".content_wing_left");
-            const _w = Number(window.getComputedStyle(_lnbWing).width.match(/\d+/g)[0]);
-            console.log("_w : ",_w);
-            if(_w === 0){
-                _lnbWing.style.width = window.getComputedStyle(_lnbWing.querySelector(".side_wing")).width;
+        })
+    })
+
+    /* hamburger menu */
+    const _ham = document.querySelector(".lnb_left_top_button");
+    _ham.addEventListener("click",()=>{
+        cancleBubbleEv();
+        const _lnbWing = document.querySelector(".content_wing_left");
+        const _w = Number(window.getComputedStyle(_lnbWing).width.match(/\d+/g)[0]);
+        if(_w === 0){
+            _lnbWing.style.width = window.getComputedStyle(_lnbWing.querySelector(".side_wing")).width;
+        }else{
+            _lnbWing.style.width = "0px";
+        }
+    })
+
+
+    /* content left wing */
+    const _con_left_wings = document.querySelectorAll(".side_wing .side_wing_tit");
+    _con_left_wings.forEach((w,i)=>{
+        w.addEventListener("click",()=>{
+            cancleBubbleEv();
+            const _li = event.currentTarget.parentNode.parentNode;
+            _li.classList.toggle("closed");
+            _li.classList.add("transition_h");
+            if(_li.classList.contains("closed")){
+                _li.setAttribute("h",_li.clientHeight);
+                _li.style.height = "28px";
             }else{
-                _lnbWing.style.width = "0px";
+                _li.style.height = _li.getAttribute("h") + "px";
             }
         })
     })
+
 
 }
