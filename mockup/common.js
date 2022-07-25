@@ -51,6 +51,12 @@ HTMLElement.prototype.getIndex = function(){
     }
     return idx;
 }
+
+HTMLElement.prototype.trigger = function(eventName){
+    const ev = document.createEvent("HTMLEvents");
+    ev.initEvent(eventName,true,true);
+    this.dispatchEvent(ev);
+}
 /* event bubble */
 const cancleBubbleEv = ()=>{
     if(event.stopPropagation){
@@ -85,7 +91,6 @@ const folder_lnbWing = ()=>{
     const _content = document.querySelector("#content .content_box");
     if(_w === 0){
         const width = Number(window.getComputedStyle(_lnbWing.querySelector(".side_wing")).width.match(/\d+/g)[0]);
-        console.log("width : ",width)
         _lnbWing.style.width = width + "px";
         _content.style.width = "calc(100% - "+width+"px)";
     }else{
@@ -180,13 +185,9 @@ const onClick_tab_move = ()=>{
     const scroll_left = _scrollBox.scrollLeft;
     const _unit = _label.children[0].clientWidth + 20;
     const calc = (type === "l")?scroll_left - _unit:scroll_left + _unit;
-    console.log("max : ",max);
-    console.log("type  : ",type );
-    console.log("scroll_left  : ",scroll_left );
-    console.log("_unit  : ",_unit );
-    console.log("%  : ",calc % _unit);
     if(type === 'l' && calc % _unit !== 0){
-        _scrollBox.scrollLeft = calc - (calc % _unit);
+        const _c = ((calc % _unit) <= 0)?0:calc + (_unit - (calc % _unit));
+        _scrollBox.scrollLeft = _c;
     }else if(type === 'r' && calc % _unit !== 0){
         _scrollBox.scrollLeft = calc - (calc % _unit);
     }else{
@@ -198,7 +199,6 @@ const check_tab_label_size = ()=>{
     const _tab = document.querySelector(".tab-box .tab-labels > ul");
     const width_wrap = _wrap.clientWidth;
     const width_tab = _tab.clientWidth;
-    console.log(width_wrap,"  :  ",width_tab)
     if(width_wrap < width_tab){
         _wrap.getParent(".tab-box-head").classList.add("arr_on");
     }else{
@@ -274,9 +274,11 @@ const splitter_vertical_down = ()=>{
     const _height = _this.parentNode.clientHeight;
     const _y = (_type == 'm')?event.pageY:event.touches[0].pageY;
     const _first_pageY = _y;
-    const min = 28;
-    const max = 1000;
     const _closed_check = _this.parentNode.classList.contains("closed");
+    const _both_box = _content.querySelector(".both_box_inner");
+    const _both_textarea = _content.querySelector(".both_box_textarea textarea");
+    const min = (_both_textarea)?120:28;
+    const max = 1000;
     if(_closed_check) return;
     _this.parentNode.classList.remove("transition_h");
     const _fn_window_move = ()=>{
@@ -290,9 +292,11 @@ const splitter_vertical_down = ()=>{
         if(window_up_sw){
             _fn_window_up();  
         }else{
-            const _h = (check)?_height + _first_pageY - _my:_height + _my - _first_pageY;
+            const _h = (check || _both_box)?_height + _first_pageY - _my:_height + _my - _first_pageY;
             const _a = (_h < min)?min:(_h > max)?max:_h;
             _content.style.height = _a + "px";
+            if(_both_box) _both_box.style.height = _a + "px";
+            if(_both_textarea) _both_textarea.style.height = (_a - 60) + "px";
         }
     }
     const _fn_window_up = ()=>{
@@ -315,6 +319,12 @@ const splitter_vertical_down = ()=>{
     }
     
 }
+const setBothTextAreaHeight = ()=>{
+    const _both_box = document.querySelector(".both_box_inner");
+    const _textarea = document.querySelector(".both_box_textarea textarea");
+    _both_box.style.height = (_both_box.parentNode.clientHeight) + "px";
+    _textarea.style.height = (_both_box.parentNode.clientHeight) - 60 + "px"
+}
 
 /* tree */
 const onClick_tree_arr = ()=>{
@@ -323,8 +333,61 @@ const onClick_tree_arr = ()=>{
     _this.classList.toggle("open");
 }
 
-/* window load */
+/* checkbox tree */
+const changed_tree_checkbox = ()=>{
+    const _this = event.currentTarget;
+    const _checked = _this.checked;
+    const fn_children = ()=>{
+        const _children = (_this.getParent("li").querySelector("ul"))?_this.getParent("li").querySelector("ul").querySelectorAll("input"):[];
+        _children.forEach((input,i)=>{
+            input.checked = _checked;323
+        })
+    }
+    const fn_parent = (input)=>{
+        const searchChildrensCheckbox = (input)=>{
+            const temp = {inputs:[],checked:null,counter_false:0,counter_true:0,counter_line:0};
+            const _c = input.getParent("ul").children;
+            for(let i=0; i<_c.length; i++){
+                const _i = _c[i].querySelector("input");
+                const check_checked = (_i.getAttribute("line") === "")?"line":_i.checked;
+                temp.inputs.push(_i.querySelector("input"));
+                if(check_checked === "line"){
+                    temp.counter_line++;
+                }else if(!check_checked){
+                    temp.counter_false++;
+                }else{
+                    temp.counter_true++;
+                }
+            }
+            if((temp.counter_false > 0 && temp.counter_true > 0) || temp.counter_line > 0){
+                temp.checked = "line";
+            }else if(temp.counter_false > 0){
+                temp.checked = false;
+            }else if(temp.counter_true > 0){
+                temp.checked = true;
+            }
+            return temp;
+        }
+        const _inputs = searchChildrensCheckbox(input);
+        const _parent = input.getParent("ul").getParent("li").querySelector(".treeLine > .an_checkbox input");
+        const check = input.getParent("ul").parentNode.classList.contains("anTree_wrap");
+        if(check) return;
+        if(_inputs.checked === "line"){
+            _parent.setAttribute("line","");
+        }else{
+            _parent.removeAttribute("line");
+            _parent.checked = _inputs.checked;
+        }
+        fn_parent(_parent);
+    };
+    _this.removeAttribute("line");
+    fn_children();
+    fn_parent(_this);
+}
 
+
+
+/* window load */
 window.onload = function(){
     document.querySelector("#gnb > ul").addEventListener("click",function(){
         document.querySelector("#wrap").classList.toggle("open_rnb_wing");
@@ -336,3 +399,17 @@ window.onload = function(){
 window.addEventListener("resize",()=>{
     check_tab_label_size();
 })
+
+const setTabArrSetting = ()=> {
+    const _box = document.querySelector(".tab-box-head");
+    const _tab = _box.querySelector(".tab-labels");
+    if(_tab.scrollWidth > _tab.clientWidth) _box.classList.add("arr_on")
+}
+
+/* window load setting */
+const onloadSetting = ()=>{
+    // 메인탭 arry
+    setTabArrSetting();
+    // 하단 textarea 높이 조절
+    setBothTextAreaHeight();   
+}

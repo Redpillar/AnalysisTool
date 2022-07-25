@@ -8,26 +8,32 @@
     <script type="text/javascript" src="./common.js"></script>
     <!-- <script src="https://kit.fontawesome.com/154898a201.js" crossorigin="anonymous"></script> -->
     <script src="https://kit.fontawesome.com/c5cb99fddd.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        window.onload = ()=>{
+            onloadSetting();
+        }   
+    </script>
 </head>
 <body>
     <div id="wrap">
         <!-- gnb -->
         <div id="gnb">
             <ul class="gnb_left">
-                <li class="i1"></li>
-                <li class="i2"></li>
-                <li class="i3"></li>
-                <li class="i4"></li>
-                <li class="i5"></li>
-                <li class="i6"></li>
-                <li class="i7"></li>
-                <li class="i8"></li>
-                <li class="i9"></li>
+                <li><i class="fa-solid fa-folder-open"></i></li>
+                <li><i class="fa-solid fa-file-code"></i></li>
+                <li><i class="fa-solid fa-folder-gear"></i></li>
+                <li><i class="fa-solid fa-wrench"></i></li>
+                <li><i class="fa-solid fa-gears"></i></li>
+                <li><i class="fa-solid fa-filter"></i></li>
+                <li><i class="fa-solid fa-list-tree"></i></li>
+                <li><i class="fa-solid fa-frame"></i></li>
+                <li><i class="fa-solid fa-trash-can"></i></li>
             </ul>
+            <h1 class="gnb_tit">Analysis Tool</h1>
             <ul class="gnb_right">
-                <li class="i1"></li>
-                <li class="i2"></li>
-                <li class="i3"></li>
+                <li class="i1"><i class="fa-solid fa-magnifying-glass-minus"></i></li>
+                <li class="i2"><i class="fa-solid fa-magnifying-glass-plus"></i></li>
+                <li class="i3"><i class="fa-solid fa-layer-group"></i></li>
             </ul>
         </div>
         <!-- content -->
@@ -51,30 +57,30 @@
                                                 <li>
                                                     <div class="treeLine">
                                                         <span class="arr" onclick="onClick_tree_arr()"></span>
-                                                        <!-- <label class="an_checkbox"><input type="checkbox" /><i></i><span>asdfasd</span></label> -->
-                                                        <span class="tit">Depth1</span>
+                                                        <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth1</span></label>
+                                                        <!-- <span class="tit">Depth1</span> -->
                                                     </div>
                                                     <ul>
                                                         <li>
                                                             <div class="treeLine">
                                                                 <span class="arr" onclick="onClick_tree_arr()"></span>
-                                                                <!-- <label class="an_checkbox"><input type="checkbox" /><i></i><span>asdfasd</span></label> -->
-                                                                <span class="tit">Depth1-1</span>
+                                                                <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth1-1</span></label>
+                                                                <!-- <span class="tit">Depth1-1</span> -->
                                                             </div>
                                                             <ul>
                                                                 <li>
                                                                     <div class="treeLine">
-                                                                        <label class="an_checkbox"><input type="checkbox" /><i></i><span>Depth1-1-1</span></label>
+                                                                        <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth1-1-1</span></label>
                                                                     </div>
                                                                 </li>
                                                                 <li>
                                                                     <div class="treeLine">
-                                                                        <label class="an_checkbox"><input type="checkbox" /><i></i><span>Depth1-1-2</span></label>
+                                                                        <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth1-1-2</span></label>
                                                                     </div>
                                                                 </li>
                                                                 <li>
                                                                     <div class="treeLine">
-                                                                        <label class="an_checkbox"><input type="checkbox" /><i></i><span>Depth1-1-3</span></label>
+                                                                        <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth1-1-3</span></label>
                                                                     </div>
                                                                 </li>
                                                             </ul>
@@ -82,18 +88,18 @@
                                                         <li>
                                                             <div class="treeLine">
                                                                 <span class="arr" onclick="onClick_tree_arr()"></span>
-                                                                <!-- <label class="an_checkbox"><input type="checkbox" /><i></i><span>Depth1-2</span></label> -->
-                                                                <span class="tit">Depth1-2</span>
+                                                                <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth1-2</span></label>
+                                                                <!-- <span class="tit">Depth1-2</span> -->
                                                             </div>
                                                             <ul>
                                                                 <li>
                                                                     <div class="treeLine">
-                                                                        <label class="an_checkbox"><input type="checkbox" /><i></i><span>Depth1-2-1</span></label>
+                                                                        <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth1-2-1</span></label>
                                                                     </div>
                                                                 </li>
                                                                 <li>
                                                                     <div class="treeLine">
-                                                                        <label class="an_checkbox"><input type="checkbox" /><i></i><span>Depth1-2-2</span></label>
+                                                                        <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth1-2-2</span></label>
                                                                     </div>
                                                                 </li>
                                                             </ul>
@@ -101,18 +107,18 @@
                                                         <li>
                                                             <div class="treeLine">
                                                                 <span class="arr" onclick="onClick_tree_arr()"></span>
-                                                                <!-- <label class="an_checkbox"><input type="checkbox" /><i></i><span>Depth1-3</span></label> -->
-                                                                <span class="tit">Depth1-3</span>
+                                                                <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth1-3</span></label>
+                                                                <!-- <span class="tit">Depth1-3</span> -->
                                                             </div>
                                                             <ul>
                                                                 <li>
                                                                     <div class="treeLine">
-                                                                        <label class="an_checkbox"><input type="checkbox" /><i></i><span>Depth1-3-1</span></label>
+                                                                        <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth1-3-1</span></label>
                                                                     </div>
                                                                 </li>
                                                                 <li>
                                                                     <div class="treeLine">
-                                                                        <label class="an_checkbox"><input type="checkbox" /><i></i><span>Depth1-3-2</span></label>
+                                                                        <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth1-3-2</span></label>
                                                                     </div>
                                                                 </li>
                                                             </ul>
@@ -122,33 +128,33 @@
                                                 <li>
                                                     <div class="treeLine">
                                                         <span class="arr" onclick="onClick_tree_arr()"></span>
-                                                        <!-- <label class="an_checkbox"><input type="checkbox" /><i></i><span>asdfasd</span></label> -->
+                                                        <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>asdfasd</span></label>
                                                         <span class="tit">Depth2</span>
                                                     </div>
                                                     <ul>
                                                         <li>
                                                             <div class="treeLine">
-                                                                <label class="an_checkbox"><input type="checkbox" /><i></i><span>Depth2-1</span></label>
+                                                                <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth2-1</span></label>
                                                             </div>
                                                         </li>
                                                         <li>
                                                             <div class="treeLine">
-                                                                <label class="an_checkbox"><input type="checkbox" /><i></i><span>Depth2-2</span></label>
+                                                                <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth2-2</span></label>
                                                             </div>
                                                         </li>
                                                         <li>
                                                             <div class="treeLine">
-                                                                <label class="an_checkbox"><input type="checkbox" /><i></i><span>Depth2-3</span></label>
+                                                                <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth2-3</span></label>
                                                             </div>
                                                         </li>
                                                         <li>
                                                             <div class="treeLine">
-                                                                <label class="an_checkbox"><input type="checkbox" /><i></i><span>Depth2-4</span></label>
+                                                                <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth2-4</span></label>
                                                             </div>
                                                         </li>
                                                         <li>
                                                             <div class="treeLine">
-                                                                <label class="an_checkbox"><input type="checkbox" /><i></i><span>Depth2-5</span></label>
+                                                                <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth2-5</span></label>
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -156,58 +162,58 @@
                                                 <li>
                                                     <div class="treeLine">
                                                         <span class="arr" onclick="onClick_tree_arr()"></span>
-                                                        <!-- <label class="an_checkbox"><input type="checkbox" /><i></i><span>asdfasd</span></label> -->
+                                                        <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>asdfasd</span></label>
                                                         <span class="tit">Depth3</span>
                                                     </div>
                                                     <ul>
                                                         <li>
                                                             <div class="treeLine">
-                                                                <label class="an_checkbox"><input type="checkbox" /><i></i><span>Depth3-1</span></label>
+                                                                <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth3-1</span></label>
                                                             </div>
                                                         </li>
                                                         <li>
                                                             <div class="treeLine">
-                                                                <label class="an_checkbox"><input type="checkbox" /><i></i><span>Depth3-2</span></label>
+                                                                <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth3-2</span></label>
                                                             </div>
                                                         </li>
                                                         <li>
                                                             <div class="treeLine">
-                                                                <label class="an_checkbox"><input type="checkbox" /><i></i><span>Depth3-3</span></label>
+                                                                <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth3-3</span></label>
                                                             </div>
                                                         </li>
                                                         <li>
                                                             <div class="treeLine">
-                                                                <label class="an_checkbox"><input type="checkbox" /><i></i><span>Depth3-4</span></label>
+                                                                <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth3-4</span></label>
                                                             </div>
                                                         </li>
                                                         <li>
                                                             <div class="treeLine">
-                                                                <label class="an_checkbox"><input type="checkbox" /><i></i><span>Depth3-5</span></label>
+                                                                <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth3-5</span></label>
                                                             </div>
                                                         </li>
                                                         <li>
                                                             <div class="treeLine">
-                                                                <label class="an_checkbox"><input type="checkbox" /><i></i><span>Depth3-6</span></label>
+                                                                <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth3-6</span></label>
                                                             </div>
                                                         </li>
                                                         <li>
                                                             <div class="treeLine">
-                                                                <label class="an_checkbox"><input type="checkbox" /><i></i><span>Depth3-7</span></label>
+                                                                <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth3-7</span></label>
                                                             </div>
                                                         </li>
                                                         <li>
                                                             <div class="treeLine">
-                                                                <label class="an_checkbox"><input type="checkbox" /><i></i><span>Depth3-8</span></label>
+                                                                <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth3-8</span></label>
                                                             </div>
                                                         </li>
                                                         <li>
                                                             <div class="treeLine">
-                                                                <label class="an_checkbox"><input type="checkbox" /><i></i><span>Depth3-9</span></label>
+                                                                <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth3-9</span></label>
                                                             </div>
                                                         </li>
                                                         <li>
                                                             <div class="treeLine">
-                                                                <label class="an_checkbox"><input type="checkbox" /><i></i><span>Depth3-10</span></label>
+                                                                <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth3-10</span></label>
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -248,112 +254,115 @@
             </div>
             <!-- content -->
             <div class="content_box">
-                <!-- tab -->
-                <div class="tab-box">
-                    <!-- head -->
-                    <div class="tab-box-head">
-                        <button class="tab-label-arr l" onclick="onClick_tab_move()"></button>
-                        <div class="tab-labels">
-                            <ul>
-                                <li onclick="onClick_tabLabel()"  class="active">Detth1<button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
-                                <li onclick="onClick_tabLabel()" >Detth2<button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
-                                <li onclick="onClick_tabLabel()" >Detth3<button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
-                                <li onclick="onClick_tabLabel()" >Detth4<button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
-                            </ul>
+                <!-- content top -->
+                <div class="content_top_box">
+                    <!-- tab -->
+                    <div class="tab-box">
+                        <!-- head -->
+                        <div class="tab-box-head">
+                            <button class="tab-label-arr l" onclick="onClick_tab_move()"><i class="fa-solid fa-circle-caret-left"></i></button>
+                            <div class="tab-labels">
+                                <ul>
+                                    <li onclick="onClick_tabLabel()"  class="active">Detth1<button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                    <li onclick="onClick_tabLabel()" >Detth2<button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                    <li onclick="onClick_tabLabel()" >Detth3<button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                    <li onclick="onClick_tabLabel()" >Detth4<button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                </ul>
+                            </div>
+                            <button class="tab-label-arr r" onclick="onClick_tab_move()"><i class="fa-solid fa-circle-caret-right"></i></button>
+                            <button class="tab-add-btn" onclick="onClick_tabAdd()"></button>
                         </div>
-                        <button class="tab-label-arr r" onclick="onClick_tab_move()"></button>
-                        <button class="tab-add-btn" onclick="onClick_tabAdd()"></button>
+                        <!-- content -->
+                        <ul class="tab-box-content">
+                            <li class="tab-content-inner active">
+                                <div class="tab-layout-wrap h">
+                                    <!-- row -->
+                                    <div class="tab-layout-row">
+                                        <div class="tab-layout-cell">1-1</div>   
+                                        <div class="tab-layout-cell">1-2</div>   
+                                    </div>
+                                    <!-- row -->
+                                    <div class="tab-layout-row">
+                                        <div class="tab-layout-cell">1-3</div>   
+                                        <div class="tab-layout-cell">1-4</div>
+                                    </div>
+                                    <!-- row -->
+                                    <div class="tab-layout-row">
+                                        <div class="tab-layout-cell">1-1</div>   
+                                        <div class="tab-layout-cell">1-2</div>   
+                                    </div>
+                                    <!-- row -->
+                                    <div class="tab-layout-row">
+                                        <div class="tab-layout-cell">1-3</div>   
+                                        <div class="tab-layout-cell">1-4</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="tab-content-inner">
+                                <div class="tab-layout-wrap h">
+                                    <!-- row -->
+                                    <div class="tab-layout-row">
+                                        <div class="tab-layout-cell">2-1</div>   
+                                        <div class="tab-layout-cell">2-2</div>   
+                                    </div>
+                                    <!-- row -->
+                                    <div class="tab-layout-row">
+                                        <div class="tab-layout-cell">2-3</div>   
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="tab-content-inner">
+                                <div class="tab-layout-wrap v">
+                                    <!-- row -->
+                                    <div class="tab-layout-row">
+                                        <div class="tab-layout-cell">3-1</div>   
+                                        <div class="tab-layout-cell">3-2</div>   
+                                    </div>
+                                    <!-- row -->
+                                    <div class="tab-layout-row">
+                                        <div class="tab-layout-cell">3-3</div>   
+                                        <div class="tab-layout-cell">3-4</div>
+                                    </div>
+                                    <!-- row -->
+                                    <div class="tab-layout-row">
+                                        <div class="tab-layout-cell">3-1</div>   
+                                        <div class="tab-layout-cell">3-2</div>   
+                                    </div>
+                                    <!-- row -->
+                                    <div class="tab-layout-row">
+                                        <div class="tab-layout-cell">3-3</div>   
+                                        <div class="tab-layout-cell">3-4</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="tab-content-inner">
+                                <div class="tab-layout-wrap v">
+                                    <!-- row -->
+                                    <div class="tab-layout-row">
+                                        <div class="tab-layout-cell">4-1</div>   
+                                        <div class="tab-layout-cell">4-2</div>   
+                                    </div>
+                                    <!-- row -->
+                                    <div class="tab-layout-row">
+                                        <div class="tab-layout-cell">4-3</div>   
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="tab-content-inner">
+                                <div class="tab-layout-wrap v">
+                                    <!-- row -->
+                                    <div class="tab-layout-row">
+                                        <div class="tab-layout-cell">4-1</div>   
+                                        <div class="tab-layout-cell">4-2</div>   
+                                    </div>
+                                    <!-- row -->
+                                    <div class="tab-layout-row">
+                                        <div class="tab-layout-cell">4-3</div>   
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    <!-- content -->
-                    <ul class="tab-box-content">
-                        <li class="tab-content-inner active">
-                            <div class="tab-layout-wrap h">
-                                <!-- row -->
-                                <div class="tab-layout-row">
-                                    <div class="tab-layout-cell">1-1</div>   
-                                    <div class="tab-layout-cell">1-2</div>   
-                                </div>
-                                <!-- row -->
-                                <div class="tab-layout-row">
-                                    <div class="tab-layout-cell">1-3</div>   
-                                    <div class="tab-layout-cell">1-4</div>
-                                </div>
-                                <!-- row -->
-                                <div class="tab-layout-row">
-                                    <div class="tab-layout-cell">1-1</div>   
-                                    <div class="tab-layout-cell">1-2</div>   
-                                </div>
-                                <!-- row -->
-                                <div class="tab-layout-row">
-                                    <div class="tab-layout-cell">1-3</div>   
-                                    <div class="tab-layout-cell">1-4</div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="tab-content-inner">
-                            <div class="tab-layout-wrap h">
-                                <!-- row -->
-                                <div class="tab-layout-row">
-                                    <div class="tab-layout-cell">2-1</div>   
-                                    <div class="tab-layout-cell">2-2</div>   
-                                </div>
-                                <!-- row -->
-                                <div class="tab-layout-row">
-                                    <div class="tab-layout-cell">2-3</div>   
-                                </div>
-                            </div>
-                        </li>
-                        <li class="tab-content-inner">
-                            <div class="tab-layout-wrap v">
-                                <!-- row -->
-                                <div class="tab-layout-row">
-                                    <div class="tab-layout-cell">3-1</div>   
-                                    <div class="tab-layout-cell">3-2</div>   
-                                </div>
-                                <!-- row -->
-                                <div class="tab-layout-row">
-                                    <div class="tab-layout-cell">3-3</div>   
-                                    <div class="tab-layout-cell">3-4</div>
-                                </div>
-                                <!-- row -->
-                                <div class="tab-layout-row">
-                                    <div class="tab-layout-cell">3-1</div>   
-                                    <div class="tab-layout-cell">3-2</div>   
-                                </div>
-                                <!-- row -->
-                                <div class="tab-layout-row">
-                                    <div class="tab-layout-cell">3-3</div>   
-                                    <div class="tab-layout-cell">3-4</div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="tab-content-inner">
-                            <div class="tab-layout-wrap v">
-                                <!-- row -->
-                                <div class="tab-layout-row">
-                                    <div class="tab-layout-cell">4-1</div>   
-                                    <div class="tab-layout-cell">4-2</div>   
-                                </div>
-                                <!-- row -->
-                                <div class="tab-layout-row">
-                                    <div class="tab-layout-cell">4-3</div>   
-                                </div>
-                            </div>
-                        </li>
-                        <li class="tab-content-inner">
-                            <div class="tab-layout-wrap v">
-                                <!-- row -->
-                                <div class="tab-layout-row">
-                                    <div class="tab-layout-cell">4-1</div>   
-                                    <div class="tab-layout-cell">4-2</div>   
-                                </div>
-                                <!-- row -->
-                                <div class="tab-layout-row">
-                                    <div class="tab-layout-cell">4-3</div>   
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
                 </div>
                 <!-- checkbox -->
                 <!-- <label class="an_checkbox"><input type="checkbox" /><i></i><span>CheckBox</span></label>
@@ -361,6 +370,16 @@
                 <label class="an_checkbox"><input type="checkbox" disabled /><i></i><span>CheckBox</span></label>
                 <label class="an_checkbox"><input type="checkbox" checked disabled /><i></i><span>CheckBox</span></label>
                 <label class="an_checkbox"><input type="checkbox" line disabled /><i></i><span>CheckBox</span></label> -->
+                <!-- content both-->
+                <div class="content_both_box" style="height:150px;">
+                    <div class="splitter_handler vertical top" onmousedown="splitter_vertical_down()" ontouchstart="splitter_vertical_down()"></div>
+                    <div class="both_box_inner">
+                        <div class="both_box_tit"></div>
+                        <div class="both_box_textarea">
+                            <textarea cols="30" rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- lnb -->
@@ -373,8 +392,7 @@
                         <div class="tit">Chart</div>
                     </li>
                     <li onclick="toggle_lnb()">
-                        <i class="fa-solid fa-chart-line"></i>
-                        <!-- <i class="fa-solid fa-folder-magnifying-glass"></i> -->
+                        <i class="fa-solid fa-folder-magnifying-glass"></i>
                         <div class="tit">GDS</div>
                     </li>
                     <li onclick="toggle_lnb()">
