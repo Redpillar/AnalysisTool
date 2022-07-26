@@ -88,7 +88,7 @@ const folder_lnbWing = ()=>{
     cancleBubbleEv();
     const _lnbWing = document.querySelector(".content_wing_left");
     const _w = Number(window.getComputedStyle(_lnbWing).width.match(/\d+/g)[0]);
-    const _content = document.querySelector("#content .content_box");
+    const _content = document.querySelector("#content #content_wrap");
     if(_w === 0){
         const width = Number(window.getComputedStyle(_lnbWing.querySelector(".side_wing")).width.match(/\d+/g)[0]);
         _lnbWing.style.width = width + "px";
@@ -103,22 +103,51 @@ const folder_lnbWing = ()=>{
     },600);
 }
 
+/* wing */
+const folder_rnbWing = ()=>{
+    cancleBubbleEv();
+    const _wrap = document.querySelector("#wrap");
+    _wrap.classList.toggle("open_rnb_wing");
+
+}
+
 /* lnb */
 const toggle_lnb = ()=>{
     cancleBubbleEv();
     const _this = event.currentTarget;
+    const idx = _this.getIndex();
+    const _contents = document.querySelectorAll("#content_wrap .content_box");
     for(let i=0; i<_this.parentNode.children.length; i++){
-        if(_this.parentNode.children[i] === _this){
+        if(i === idx){
             _this.parentNode.children[i].classList.add("active");
+            _contents[i].setAttribute("active","");
         }else{
             _this.parentNode.children[i].classList.remove("active");
+            _contents[i].removeAttribute("active");
         }
+    }
+}
+
+/* content both textarea */
+let itmer_both = null;
+const toggle_both_textarea = ()=>{
+    cancleBubbleEv();
+    const _this = event.currentTarget;
+    const _wrap = document.querySelector("#content_wrap");
+    const _both = _this.getParent(".content_both_box");
+    const _h = (_both.clientHeight === 0)?_both.scrollHeight:0;
+    _wrap.classList.add("ani_bothTextarea");
+    _both.style.height = _h + "px";
+    if(_h === 0){
+        _this.classList.add("closed");
+    }else{
+        _this.classList.remove("closed");
     }
 }
 
 /* tab */
 const onClick_tabLabel = ()=>{
-    cancleBubbleEv()
+    cancleBubbleEv();
     const _this = event.currentTarget;
     const _children = _this.parentNode.querySelectorAll("li");
     const _contents = _this.getParent(".tab-box").querySelectorAll(".tab-box-content > .tab-content-inner")
@@ -238,7 +267,7 @@ const splitter_horizontal_down = ()=>{
             if(check_parent){
                 const _wrap = _content.getParent("#content");
                 _wrap.querySelector(".content_wing_left").style.width = _a + "px";
-                _wrap.querySelector(".content_box").style.width = "calc(100% - "+ _a + "px)";
+                _wrap.querySelector("#content_wrap").style.width = "calc(100% - "+ _a + "px)";
             };
         }
     }
@@ -279,6 +308,7 @@ const splitter_vertical_down = ()=>{
     const _both_textarea = _content.querySelector(".both_box_textarea textarea");
     const min = (_both_textarea)?120:28;
     const max = 1000;
+    if(_content.parentNode.parentNode.classList.contains("ani_bothTextarea")) (_content.parentNode.parentNode.classList.remove("ani_bothTextarea"))
     if(_closed_check) return;
     _this.parentNode.classList.remove("transition_h");
     const _fn_window_move = ()=>{
@@ -324,6 +354,21 @@ const setBothTextAreaHeight = ()=>{
     const _textarea = document.querySelector(".both_box_textarea textarea");
     _both_box.style.height = (_both_box.parentNode.clientHeight) + "px";
     _textarea.style.height = (_both_box.parentNode.clientHeight) - 60 + "px"
+}
+/* lnb active */
+const setLnbContent = ()=>{
+    let idx = (document.querySelector("#lnb .lnb_left_menu > li.active"))?document.querySelector("#lnb .lnb_left_menu > li.active").getIndex():0;
+    const _lnbs = document.querySelectorAll("#lnb .lnb_left_menu > li");
+    const _contents = document.querySelectorAll("#content_wrap > .content_box");
+    _lnbs.forEach((l,i)=>{
+        if(i === idx){
+            l.classList.add("active");
+            _contents[i].setAttribute("active","");
+        }else{
+            l.classList.remove("active");
+            _contents[i].removeAttribute("active","");
+        }
+    })
 }
 
 /* tree */
@@ -410,6 +455,10 @@ const setTabArrSetting = ()=> {
 const onloadSetting = ()=>{
     // 메인탭 arry
     setTabArrSetting();
+    // lnb active
+    setLnbContent();
+    // tab
+    check_tab_label_size();
     // 하단 textarea 높이 조절
-    setBothTextAreaHeight();   
+    setBothTextAreaHeight();
 }

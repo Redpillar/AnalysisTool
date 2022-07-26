@@ -19,9 +19,9 @@
         <!-- gnb -->
         <div id="gnb">
             <ul class="gnb_left">
-                <li><i class="fa-solid fa-folder-open"></i></li>
-                <li><i class="fa-solid fa-file-code"></i></li>
-                <li><i class="fa-solid fa-folder-gear"></i></li>
+                <li><i class="fa-solid fa-folder-open"></i><i class="fa-solid fa-caret-down arr"></i></li>
+                <li><i class="fa-solid fa-file-code"></i><i class="fa-solid fa-caret-down arr"></i></li>
+                <li><i class="fa-solid fa-folder-gear"></i><i class="fa-solid fa-caret-down arr"></i></li>
                 <li><i class="fa-solid fa-wrench"></i></li>
                 <li><i class="fa-solid fa-gears"></i></li>
                 <li><i class="fa-solid fa-filter"></i></li>
@@ -31,12 +31,12 @@
             </ul>
             <h1 class="gnb_tit">Analysis Tool</h1>
             <ul class="gnb_right">
-                <li class="i1"><i class="fa-solid fa-magnifying-glass-minus"></i></li>
-                <li class="i2"><i class="fa-solid fa-magnifying-glass-plus"></i></li>
-                <li class="i3"><i class="fa-solid fa-layer-group"></i></li>
+                <li><i class="fa-solid fa-magnifying-glass-minus"></i></li>
+                <li><i class="fa-solid fa-magnifying-glass-plus"></i></li>
+                <li onclick="folder_rnbWing()"><i class="fa-solid fa-layer-group"></i></li>
             </ul>
         </div>
-        <!-- content -->
+        <!-- #content -->
         <div id="content" class="t">
             <!-- left wing -->
             <div class="content_wing_left t">
@@ -128,8 +128,8 @@
                                                 <li>
                                                     <div class="treeLine">
                                                         <span class="arr" onclick="onClick_tree_arr()"></span>
-                                                        <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>asdfasd</span></label>
-                                                        <span class="tit">Depth2</span>
+                                                        <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth2</span></label>
+                                                        <!-- <span class="tit">Depth2</span> -->
                                                     </div>
                                                     <ul>
                                                         <li>
@@ -162,8 +162,8 @@
                                                 <li>
                                                     <div class="treeLine">
                                                         <span class="arr" onclick="onClick_tree_arr()"></span>
-                                                        <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>asdfasd</span></label>
-                                                        <span class="tit">Depth3</span>
+                                                        <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth3</span></label>
+                                                        <!-- <span class="tit">Depth3</span> -->
                                                     </div>
                                                     <ul>
                                                         <li>
@@ -253,141 +253,169 @@
                 </div>
             </div>
             <!-- content -->
-            <div class="content_box">
-                <!-- content top -->
-                <div class="content_top_box">
-                    <!-- tab -->
-                    <div class="tab-box">
-                        <!-- head -->
-                        <div class="tab-box-head">
-                            <button class="tab-label-arr l" onclick="onClick_tab_move()"><i class="fa-solid fa-circle-caret-left"></i></button>
-                            <div class="tab-labels">
-                                <ul>
-                                    <li onclick="onClick_tabLabel()"  class="active">Detth1<button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
-                                    <li onclick="onClick_tabLabel()" >Detth2<button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
-                                    <li onclick="onClick_tabLabel()" >Detth3<button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
-                                    <li onclick="onClick_tabLabel()" >Detth4<button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
-                                </ul>
+            <div id="content_wrap">
+                <!-- chart -->
+                <div class="content_box">
+                    <!-- content top -->
+                    <div class="content_top_box">
+                        <!-- tab -->
+                        <div class="tab-box">
+                            <!-- head -->
+                            <div class="tab-box-head">
+                                <button class="tab-label-arr l" onclick="onClick_tab_move()"><i class="fa-solid fa-circle-caret-left"></i></button>
+                                <div class="tab-labels">
+                                    <ul>
+                                        <li onclick="onClick_tabLabel()"  class="active">Detth1<button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                        <li onclick="onClick_tabLabel()" >Detth2<button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                        <li onclick="onClick_tabLabel()" >Detth3<button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                        <li onclick="onClick_tabLabel()" >Detth4<button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                        <li onclick="onClick_tabLabel()" >Detth5<button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                        <li onclick="onClick_tabLabel()" >Detth6<button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                    </ul>
+                                </div>
+                                <button class="tab-label-arr r" onclick="onClick_tab_move()"><i class="fa-solid fa-circle-caret-right"></i></button>
+                                <button class="tab-add-btn" onclick="onClick_tabAdd()"></button>
                             </div>
-                            <button class="tab-label-arr r" onclick="onClick_tab_move()"><i class="fa-solid fa-circle-caret-right"></i></button>
-                            <button class="tab-add-btn" onclick="onClick_tabAdd()"></button>
-                        </div>
-                        <!-- content -->
-                        <ul class="tab-box-content">
-                            <li class="tab-content-inner active">
-                                <div class="tab-layout-wrap h">
-                                    <!-- row -->
-                                    <div class="tab-layout-row">
-                                        <div class="tab-layout-cell">1-1</div>   
-                                        <div class="tab-layout-cell">1-2</div>   
+                            <!-- content -->
+                            <ul class="tab-box-content">
+                                <li class="tab-content-inner active">
+                                    <div class="tab-layout-wrap h">
+                                        <!-- row -->
+                                        <div class="tab-layout-row">
+                                            <div class="tab-layout-cell">1-1</div>   
+                                            <div class="tab-layout-cell">1-2</div>   
+                                        </div>
+                                        <!-- row -->
+                                        <div class="tab-layout-row">
+                                            <div class="tab-layout-cell">1-3</div>   
+                                            <div class="tab-layout-cell">1-4</div>
+                                        </div>
                                     </div>
-                                    <!-- row -->
-                                    <div class="tab-layout-row">
-                                        <div class="tab-layout-cell">1-3</div>   
-                                        <div class="tab-layout-cell">1-4</div>
+                                </li>
+                                <li class="tab-content-inner">
+                                    <div class="tab-layout-wrap h">
+                                        <!-- row -->
+                                        <div class="tab-layout-row">
+                                            <div class="tab-layout-cell">2-1</div>   
+                                            <div class="tab-layout-cell">2-2</div>   
+                                        </div>
+                                        <!-- row -->
+                                        <div class="tab-layout-row">
+                                            <div class="tab-layout-cell">2-3</div>   
+                                        </div>
                                     </div>
-                                    <!-- row -->
-                                    <div class="tab-layout-row">
-                                        <div class="tab-layout-cell">1-1</div>   
-                                        <div class="tab-layout-cell">1-2</div>   
+                                </li>
+                                <li class="tab-content-inner">
+                                    <div class="tab-layout-wrap h">
+                                        <!-- row -->
+                                        <div class="tab-layout-row">
+                                            <div class="tab-layout-cell">1-1</div>   
+                                            <div class="tab-layout-cell">1-2</div>   
+                                        </div>
+                                        <!-- row -->
+                                        <div class="tab-layout-row">
+                                            <div class="tab-layout-cell">1-3</div>   
+                                            <div class="tab-layout-cell">1-4</div>
+                                        </div>
+                                        <!-- row -->
+                                        <div class="tab-layout-row">
+                                            <div class="tab-layout-cell">1-1</div>   
+                                            <div class="tab-layout-cell">1-2</div>   
+                                        </div>
+                                        <!-- row -->
+                                        <div class="tab-layout-row">
+                                            <div class="tab-layout-cell">1-3</div>   
+                                            <div class="tab-layout-cell">1-4</div>
+                                        </div>
                                     </div>
-                                    <!-- row -->
-                                    <div class="tab-layout-row">
-                                        <div class="tab-layout-cell">1-3</div>   
-                                        <div class="tab-layout-cell">1-4</div>
+                                </li>
+                                <li class="tab-content-inner">
+                                    <div class="tab-layout-wrap v">
+                                        <!-- row -->
+                                        <div class="tab-layout-row">
+                                            <div class="tab-layout-cell">3-1</div>   
+                                            <div class="tab-layout-cell">3-2</div>   
+                                        </div>
+                                        <!-- row -->
+                                        <div class="tab-layout-row">
+                                            <div class="tab-layout-cell">3-3</div>   
+                                            <div class="tab-layout-cell">3-4</div>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                            <li class="tab-content-inner">
-                                <div class="tab-layout-wrap h">
-                                    <!-- row -->
-                                    <div class="tab-layout-row">
-                                        <div class="tab-layout-cell">2-1</div>   
-                                        <div class="tab-layout-cell">2-2</div>   
+                                </li>
+                                <li class="tab-content-inner">
+                                    <div class="tab-layout-wrap v">
+                                        <!-- row -->
+                                        <div class="tab-layout-row">
+                                            <div class="tab-layout-cell">4-1</div>   
+                                            <div class="tab-layout-cell">4-2</div>   
+                                        </div>
+                                        <!-- row -->
+                                        <div class="tab-layout-row">
+                                            <div class="tab-layout-cell">4-3</div>   
+                                        </div>
                                     </div>
-                                    <!-- row -->
-                                    <div class="tab-layout-row">
-                                        <div class="tab-layout-cell">2-3</div>   
+                                </li>
+                                <li class="tab-content-inner">
+                                    <div class="tab-layout-wrap v">
+                                        <!-- row -->
+                                        <div class="tab-layout-row">
+                                            <div class="tab-layout-cell">3-1</div>   
+                                            <div class="tab-layout-cell">3-2</div>   
+                                        </div>
+                                        <!-- row -->
+                                        <div class="tab-layout-row">
+                                            <div class="tab-layout-cell">3-3</div>   
+                                            <div class="tab-layout-cell">3-4</div>
+                                        </div>
+                                        <!-- row -->
+                                        <div class="tab-layout-row">
+                                            <div class="tab-layout-cell">3-1</div>   
+                                            <div class="tab-layout-cell">3-2</div>   
+                                        </div>
+                                        <!-- row -->
+                                        <div class="tab-layout-row">
+                                            <div class="tab-layout-cell">3-3</div>   
+                                            <div class="tab-layout-cell">3-4</div>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                            <li class="tab-content-inner">
-                                <div class="tab-layout-wrap v">
-                                    <!-- row -->
-                                    <div class="tab-layout-row">
-                                        <div class="tab-layout-cell">3-1</div>   
-                                        <div class="tab-layout-cell">3-2</div>   
-                                    </div>
-                                    <!-- row -->
-                                    <div class="tab-layout-row">
-                                        <div class="tab-layout-cell">3-3</div>   
-                                        <div class="tab-layout-cell">3-4</div>
-                                    </div>
-                                    <!-- row -->
-                                    <div class="tab-layout-row">
-                                        <div class="tab-layout-cell">3-1</div>   
-                                        <div class="tab-layout-cell">3-2</div>   
-                                    </div>
-                                    <!-- row -->
-                                    <div class="tab-layout-row">
-                                        <div class="tab-layout-cell">3-3</div>   
-                                        <div class="tab-layout-cell">3-4</div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="tab-content-inner">
-                                <div class="tab-layout-wrap v">
-                                    <!-- row -->
-                                    <div class="tab-layout-row">
-                                        <div class="tab-layout-cell">4-1</div>   
-                                        <div class="tab-layout-cell">4-2</div>   
-                                    </div>
-                                    <!-- row -->
-                                    <div class="tab-layout-row">
-                                        <div class="tab-layout-cell">4-3</div>   
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="tab-content-inner">
-                                <div class="tab-layout-wrap v">
-                                    <!-- row -->
-                                    <div class="tab-layout-row">
-                                        <div class="tab-layout-cell">4-1</div>   
-                                        <div class="tab-layout-cell">4-2</div>   
-                                    </div>
-                                    <!-- row -->
-                                    <div class="tab-layout-row">
-                                        <div class="tab-layout-cell">4-3</div>   
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- checkbox -->
-                <!-- <label class="an_checkbox"><input type="checkbox" /><i></i><span>CheckBox</span></label>
-                <label class="an_checkbox"><input type="checkbox" line /><i></i><span>CheckBox</span></label>
-                <label class="an_checkbox"><input type="checkbox" disabled /><i></i><span>CheckBox</span></label>
-                <label class="an_checkbox"><input type="checkbox" checked disabled /><i></i><span>CheckBox</span></label>
-                <label class="an_checkbox"><input type="checkbox" line disabled /><i></i><span>CheckBox</span></label> -->
-                <!-- content both-->
-                <div class="content_both_box" style="height:150px;">
-                    <div class="splitter_handler vertical top" onmousedown="splitter_vertical_down()" ontouchstart="splitter_vertical_down()"></div>
-                    <div class="both_box_inner">
-                        <div class="both_box_tit"></div>
-                        <div class="both_box_textarea">
-                            <textarea cols="30" rows="10"></textarea>
+                                </li>
+                            </ul>
                         </div>
                     </div>
+                    <div class="content_both_box" style="height:150px;">
+                        <div class="splitter_handler vertical top" onmousedown="splitter_vertical_down()" ontouchstart="splitter_vertical_down()"></div>
+                        <button class="toggle_btn_bothTextarea" onclick="toggle_both_textarea()"><i class="fa-solid fa-caret-up"></i></button>
+                        <div class="both_box_inner">
+                            <div class="both_box_tit"></div>
+                            <div class="both_box_textarea">
+                                <textarea cols="30" rows="10"></textarea>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <!-- GDS -->
+                <div class="content_box">
+                    <!-- checkbox -->
+                    <label class="an_checkbox"><input type="checkbox" /><i></i><span>CheckBox</span></label>
+                    <label class="an_checkbox"><input type="checkbox" line /><i></i><span>CheckBox</span></label>
+                    <label class="an_checkbox"><input type="checkbox" disabled /><i></i><span>CheckBox</span></label>
+                    <label class="an_checkbox"><input type="checkbox" checked disabled /><i></i><span>CheckBox</span></label>
+                    <label class="an_checkbox"><input type="checkbox" line disabled /><i></i><span>CheckBox</span></label>
+                </div>
+                <!-- File -->
+                <div class="content_box">
+                    File
+                </div>
+
             </div>
         </div>
         <!-- lnb -->
         <div id="lnb">
             <div class="lnb_left">
-                <div class="lnb_left_top_button" onclick="folder_lnbWing()"></div>
+                <div class="lnb_left_top_button" onclick="folder_lnbWing()"><i class="fa-solid fa-bars"></i></div>
                 <ul class="lnb_left_menu">
-                    <li onclick="toggle_lnb()">
+                    <li onclick="toggle_lnb()" class="active">
                         <i class="fa-solid fa-chart-line"></i>
                         <div class="tit">Chart</div>
                     </li>
@@ -408,7 +436,6 @@
         <!-- rnb wing-->
         <div id="rnb">
             <div class="side_wing">
-
                 <ul>
                     <li style="height:385px">
                         <div class="side_wing_wrap">
