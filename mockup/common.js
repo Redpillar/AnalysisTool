@@ -58,7 +58,8 @@ HTMLElement.prototype.trigger = function(eventName){
     this.dispatchEvent(ev);
 }
 /* event bubble */
-const cancleBubbleEv = ()=>{
+const cancleBubbleEv = (s)=>{
+    if(s === undefined) cancle_toggle_open();
     if(event.stopPropagation){
         event.stopPropagation();
     }else{
@@ -75,7 +76,7 @@ const accordion_menu = ()=>{
     _li.classList.add("transition_h");
     if(_li.classList.contains("closed")){
         _li.setAttribute("h",_li.clientHeight);
-        _li.style.height = "28px";
+        _li.style.height = "29px";
     }else{
         _li.style.height = _li.getAttribute("h") + "px";
     }
@@ -204,7 +205,7 @@ const onClick_tabAdd = ()=>{
     check_tab_label_size();
 }
 const onClick_tab_move = ()=>{
-    cancleBubbleEv()
+    cancleBubbleEv();
     const _this = event.currentTarget;
     const _tabBox = _this.getParent(".tab-box");
     const _scrollBox = _tabBox.querySelector(".tab-labels");
@@ -430,7 +431,39 @@ const changed_tree_checkbox = ()=>{
     fn_parent(_this);
 }
 
+/* gnb sub menu */
+const gnb_sumMenu_toggle = ()=>{
+    cancleBubbleEv(false);
+    const _this = event.currentTarget;
+    const _idx = _this.getIndex();
+    const _menus = document.querySelectorAll(".gnb_left_subMenu_wrap .gnb_left_subMenu");
+    const top = _this.getBoundingClientRect().top + _this.getBoundingClientRect().height + 10;
+    const left = _this.getBoundingClientRect().left + (_this.getBoundingClientRect().width / 2) + 12;
 
+    _menus.forEach((m,i)=>{
+        if(i === _idx){
+            const check = m.classList.contains("toggle_open")
+            if(!check){
+                m.classList.add("toggle_open");
+            }else{
+                m.classList.remove("toggle_open");
+            }
+            m.style.top = top + "px";
+            m.style.left = left + "px";
+        }else{
+            m.classList.remove("toggle_open");
+        }
+    })
+}
+
+
+/* cancel toggle open */
+const cancle_toggle_open = ()=>{
+    const _toggles = document.querySelectorAll(".toggle_open");
+    _toggles.forEach( (e,i)=> {
+        e.classList.remove("toggle_open");
+    });
+}
 
 /* window load */
 window.onload = function(){

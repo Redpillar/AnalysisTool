@@ -14,14 +14,20 @@
         }   
     </script>
 </head>
-<body>
+<body onclick="cancle_toggle_open()">
     <div id="wrap">
         <!-- gnb -->
         <div id="gnb">
             <ul class="gnb_left">
-                <li><i class="fa-solid fa-folder-open"></i><i class="fa-solid fa-caret-down arr"></i></li>
-                <li><i class="fa-solid fa-file-code"></i><i class="fa-solid fa-caret-down arr"></i></li>
-                <li><i class="fa-solid fa-folder-gear"></i><i class="fa-solid fa-caret-down arr"></i></li>
+                <li onclick="gnb_sumMenu_toggle()">
+                    <i class="fa-solid fa-folder-open"></i><i class="fa-solid fa-caret-down arr"></i>
+                </li>
+                <li onclick="gnb_sumMenu_toggle()">
+                    <i class="fa-solid fa-file-code"></i><i class="fa-solid fa-caret-down arr"></i>
+                </li>
+                <li onclick="gnb_sumMenu_toggle()">
+                    <i class="fa-solid fa-folder-gear"></i><i class="fa-solid fa-caret-down arr"></i>
+                </li>
                 <li><i class="fa-solid fa-wrench"></i></li>
                 <li><i class="fa-solid fa-gears"></i></li>
                 <li><i class="fa-solid fa-filter"></i></li>
@@ -233,6 +239,23 @@
                                 </div>
                                 <!-- content -->
                                 <div class="side_wing_con">
+                                    <div class="list_box_basic">
+                                        <ul>
+                                            <li><a href="#">Program Factory</a></li>
+                                            <li><a href="#">Electron_concentration</a></li>
+                                            <li><a href="#">Hole_concentration</a></li>
+                                            <li><a href="#">Electric_Field</a></li>
+                                            <li><a href="#">Hole_Current_Density</a></li>
+                                            <li><a href="#">Displacement_Current_Density</a></li>
+                                            <li><a href="#">Total_Current_Density</a></li>
+                                            <li><a href="#">Singlet_density</a></li>
+                                            <li><a href="#">Electric_Field</a></li>
+                                            <li><a href="#">Hole_concentration</a></li>
+                                            <li><a href="#">Electric_Field</a></li>
+                                            <li><a href="#">Hole_Current_Density</a></li>
+                                            <li><a href="#">Displacement_Current_Density</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                             <div class="splitter_handler vertical" onmousedown="splitter_vertical_down()" ontouchstart="splitter_vertical_down()"></div>
@@ -245,6 +268,12 @@
                                 </div>
                                 <!-- content -->
                                 <div class="side_wing_con">
+                                    <input type="text">
+                                    <div class="an_select_menu">
+                                        <ul>
+                                            <li></li>
+                                        </ul>
+                                    </div>  
                                 </div>
                             </div>
                         </li>
@@ -384,8 +413,8 @@
                         </div>
                     </div>
                     <div class="content_both_box" style="height:150px;">
-                        <div class="splitter_handler vertical top" onmousedown="splitter_vertical_down()" ontouchstart="splitter_vertical_down()"></div>
                         <button class="toggle_btn_bothTextarea" onclick="toggle_both_textarea()"><i class="fa-solid fa-caret-up"></i></button>
+                        <div class="splitter_handler vertical top" onmousedown="splitter_vertical_down()" ontouchstart="splitter_vertical_down()"></div>
                         <div class="both_box_inner">
                             <div class="both_box_tit"></div>
                             <div class="both_box_textarea">
@@ -402,6 +431,10 @@
                     <label class="an_checkbox"><input type="checkbox" disabled /><i></i><span>CheckBox</span></label>
                     <label class="an_checkbox"><input type="checkbox" checked disabled /><i></i><span>CheckBox</span></label>
                     <label class="an_checkbox"><input type="checkbox" line disabled /><i></i><span>CheckBox</span></label>
+                    ------------------------------------------------------------------------------------------------------------------------------------------------------
+                    <label class="an_radio"><input type="radio" name="radio" /><i></i><span>RadioBox</span></label>
+                    <label class="an_radio"><input type="radio" name="radio" /><i></i><span>RadioBox</span></label>
+                    <label class="an_radio"><input type="radio" name="radio" disabled /><i></i><span>RadioBox</span></label>
                 </div>
                 <!-- File -->
                 <div class="content_box">
@@ -474,6 +507,84 @@
                     </li>
                 </ul>
                 <div class="splitter_handler horizontal" onmousedown="splitter_horizontal_down()" ontouchstart="splitter_horizontal_down()"></div>
+            </div>
+        </div>
+        <!-- gnb submenu-->
+        <div class="gnb_left_subMenu_wrap">
+            <!-- fold -->
+            <div class="gnb_left_subMenu">
+                <ul>
+                    <li>
+                        <div class="name">Menu Rectangle</div>
+                        <div class="shortcut_key">R</div>
+                    </li>
+                    <li>
+                        <div class="name">Menu rectangle line</div>
+                        <div class="shortcut_key">L</div>
+                    </li>
+                    <li>
+                        <div class="name">Menu rectangle arrow</div>
+                        <div class="shortcut_key">R</div>
+                    </li>
+                    <li>
+                        <div class="name">Menu rectangle ellipse</div>
+                        <div class="shortcut_key">R</div>
+                    </li>
+                    <li>
+                        <div class="name">Menu rectangle polygon newline text</div>
+                        <div class="shortcut_key">R</div>
+                    </li>
+                </ul>
+            </div>
+            <!-- fiel -->
+            <div class="gnb_left_subMenu">
+                <ul>
+                    <li>
+                        <div class="name">Menu Rectangle</div>
+                        <div class="shortcut_key">R</div>
+                    </li>
+                    <li>
+                        <div class="name">Menu rectangle line</div>
+                        <div class="shortcut_key">L</div>
+                    </li>
+                    <li>
+                        <div class="name">Menu rectangle arrow</div>
+                        <div class="shortcut_key">R</div>
+                    </li>
+                    <li>
+                        <div class="name">Menu rectangle ellipse</div>
+                        <div class="shortcut_key">R</div>
+                    </li>
+                    <li>
+                        <div class="name">Menu rectangle polygon newline text</div>
+                        <div class="shortcut_key">R</div>
+                    </li>
+                </ul>
+            </div>
+            <!-- setting -->
+            <div class="gnb_left_subMenu">
+                <ul>
+                    <li>
+                        <div class="name">Menu Rectangle</div>
+                        <div class="shortcut_key">R</div>
+                    </li>
+                    <li>
+                        <div class="name">Menu rectangle line</div>
+                        <div class="shortcut_key">L</div>
+                    </li>
+                    <li>
+                        <div class="name">Menu rectangle arrow</div>
+                        <div class="shortcut_key">R</div>
+                    </li>
+                    <li>
+                        <div class="name">Menu rectangle ellipse</div>
+                        <div class="shortcut_key">R</div>
+                    </li>
+                    <li>
+                        <div class="name">Menu rectangle polygon newline text</div>
+                        <div class="shortcut_key">R</div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

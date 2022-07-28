@@ -9,6 +9,27 @@ textarea{padding:15px; resize:none; outline:none; border:1px solid #ededed; bord
 #wrap{position:relative; height:100%;}
 
 
+/* checkbox */
+.an_checkbox{position:relative; font-size:12px; color:#475467; line-height:16px; vertical-align:top;}
+.an_checkbox > span{position:relative; display:inline-block; vertical-align:top;}
+.an_checkbox > i{display:inline-block; width:15.34px; height:15.34px; margin:0 6px 0 0; vertical-align:top; border-radius:3px; border:2px solid #98A2B3;}
+.an_checkbox > input{position:fixed; top:1000%; left:1000%;}
+.an_checkbox > input:checked + i{border-color:#0A7AFF; background:#0A7AFF url(./img/checkbox_checked.png) no-repeat 0 center; background-size:90%;}
+.an_checkbox > input:disabled + i{border-color:#d1d1d6; background-color:#d1d1d6;}
+.an_checkbox > input[line] + i{border-color:#0A7AFF; background:#0A7AFF url(./img/checkbox_line.png) no-repeat center; background-size:100%;}
+.an_checkbox > input:disabled:checked + i{border-color:#d1d1d6;  background-color:#d1d1d6;}
+.an_checkbox > input:disabled[line] + i{border-color:#d1d1d6; background-color:#d1d1d6; background-position:center;}
+
+.an_tree .an_checkbox > i{position:relative; top:-1px; width:12px; height:12px; }
+
+/* radio */
+.an_radio{position:relative; font-size:12px; color:#475467; line-height:16px; vertical-align:top;}
+.an_radio > span{position:relative; top:2px; display:inline-block; vertical-align:top;}
+.an_radio > i{display:inline-block; width: 18.11px; height: 18.11px; margin:0 6px 0 0; vertical-align:top; border-radius:100%; border:2px solid #98A2B3;}
+.an_radio > input{position:fixed; top:1000%; left:1000%;}
+.an_radio > input:checked + i{border-color:#0A7AFF; background:#0A7AFF url(./img/checkbox_checked.png) no-repeat 0 center; background-size:90%;}
+.an_radio > input:disabled + i{border-color:#d1d1d6; background-color:#d1d1d6;}
+.an_radio > input:disabled:checked + i{border-color:#d1d1d6; background-color:#d1d1d6;}
 
 /* gnb */
 #gnb{position:fixed; top:0; left:65px; right:0; display:flex; justify-content:space-between; height:48px; background:#000;}
@@ -17,7 +38,15 @@ textarea{padding:15px; resize:none; outline:none; border:1px solid #ededed; bord
 #gnb > ul > li > i{font-size:18px;}
 #gnb > ul > li > i.arr{margin-left:5px; font-size:5px;}
 #gnb > ul.gnb_left{padding:0 0 0 15px;}
-#gnb > ul > li{width:60px;}
+#gnb > ul > li{position:relative; width:60px;}
+
+.gnb_left_subMenu_wrap{}
+.gnb_left_subMenu{position:fixed; top:50%; left:50%; z-index:100; display:none; width:240px; transform:translate(-50%, 0); background:#000;}
+.gnb_left_subMenu.toggle_open{display:block;}
+.gnb_left_subMenu > ul{position:relative; z-index:5; padding:8px 0; background:#000;}
+.gnb_left_subMenu > ul > li{display:flex; justify-content:space-between; padding:4px 24px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 12px; line-height: 15px; /* identical to box height */ color: #FFFFFF;} .gnb_left_subMenu > ul > li:hover{color:#fff; background:#138BFB;}
+.gnb_left_subMenu > ul > li .shortcut_key{width:50px; text-align:right;}
+.gnb_left_subMenu:after{content:""; position:absolute; top:0; left:50%; z-index:1;  width:15px; height:15px; transform:translate(-50%, -50%) rotate(45deg); background:#000;}
 /* #gnb > ul > li{width:50px; background-repeat:no-repeat; background-position:center;} */
 /* #gnb > ul.gnb_left > li.i1{background-image:url(./img/gnbIcon_folder_open.png); background-size:22.5px auto;}
 #gnb > ul.gnb_left > li.i2{background-image:url(./img/gnbIcon_file_arr_horizontal.png); background-size:16px auto;}
@@ -58,6 +87,7 @@ textarea{padding:15px; resize:none; outline:none; border:1px solid #ededed; bord
 .lnb_left > .lnb_left_menu > li.active > i{opacity:1;}
 
 
+
 /* content */
 #content{position:fixed; top:48px; left:65px; right:0; bottom:0; font-size:0; white-space:nowrap; background:#E2E2E2;}
 #content > #content_wrap{display:inline-flex; width:100%; height:100%;}
@@ -77,6 +107,8 @@ textarea{padding:15px; resize:none; outline:none; border:1px solid #ededed; bord
 
 .ani_bothTextarea .content_both_box{transition:height ease 0.5s;}
 .toggle_btn_bothTextarea.closed{top:-30px; transform:rotate(180deg);}
+.toggle_btn_bothTextarea.closed + .splitter_handler{display:none;}
+
 
 
 /* side_wing */
@@ -116,20 +148,6 @@ li.closed .splitter_handler.vertical{display:none;}
 .splitter_handler.vertical.top{top:-5px; bottom:unset;}
 .splitter_handler.vertical:hover{cursor:row-resize;}
 #content > .content_both > .splitter_handler{bottom:unset; top: - 15px;}
-
-
-/* checkbox */
-.an_checkbox{position:relative; font-size:12px; color:#475467; line-height:16px; vertical-align:top;}
-.an_checkbox > span{position:relative; display:inline-block; vertical-align:top;}
-.an_checkbox > i{display:inline-block; width:15.34px; height:15.34px; margin:0 6px 0 0; vertical-align:top; border-radius:3px; border:2px solid #98A2B3;}
-.an_checkbox > input{position:fixed; top:1000%; left:1000%;}
-.an_checkbox > input:checked + i{border-color:#0A7AFF; background:#0A7AFF url(./img/checkbox_checked.png) no-repeat 0 center; background-size:90%;}
-.an_checkbox > input:disabled + i{border-color:rgba(0, 0, 0, 0.15);}
-.an_checkbox > input[line] + i{border-color:#0A7AFF; background:#0A7AFF url(./img/checkbox_line.png) no-repeat center; background-size:100%;}
-.an_checkbox > input:disabled:checked + i{border-color:rgba(0, 0, 0, 0.15); border-color:rgba(0, 0, 0, 0.15); background-color:rgba(0, 0, 0, 0.15);}
-.an_checkbox > input:disabled[line] + i{border-color:rgba(0, 0, 0, 0.15); border-color:rgba(0, 0, 0, 0.15); background-color:rgba(0, 0, 0, 0.15); background-position:center;}
-
-.an_tree .an_checkbox > i{position:relative; top:-1px; width:12px; height:12px; }
 
 /* tree */
 .an_tree .anTree_wrap .treeLine{display:inline-block;}
@@ -195,6 +213,12 @@ li.closed .splitter_handler.vertical{display:none;}
 .tab-layout-wrap.v .tab-layout-cell{width:100%;}
 .tab-layout-wrap.v .tab-layout-row{margin-left:18px;}
 .tab-layout-wrap.v .tab-layout-cell{margin-top:18px;}
+
+/* list box basic */
+.list_box_basic > ul{padding:10px 0;}
+.list_box_basic > ul > li{padding:5px 20px 0; min-height:24px; font-family: Inter Regular; font-size: 12px; line-height: 16px; text-align: left; vertical-align: Top; white-space:pre-wrap; word-break:break-word; }
+.list_box_basic > ul > li > a{text-decoration:none; color:inherit;}
+.list_box_basic > ul > li > a:active{color:inherit;}
 
 
 /* .tab-content-inner-box{display:inline-block; width:calc(50% - 9px); height:calc(50% - 9px); border-radius:10px; background:#fff;}
