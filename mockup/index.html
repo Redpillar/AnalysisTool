@@ -268,12 +268,27 @@
                                 </div>
                                 <!-- content -->
                                 <div class="side_wing_con">
-                                    <input type="text">
-                                    <div class="an_select_menu">
-                                        <ul>
-                                            <li></li>
-                                        </ul>
-                                    </div>  
+                                    <!-- wrap -->
+                                    <div class="wrap_wing_type3">
+                                        <!-- select -->
+                                        <div class="an_select" style="width:100%;" onclick="onclick_select()">
+                                            <div class="an_select_tit"></div>
+                                            <input type="text" placeholder="Data" readonly>
+                                            <div class="an_select_menu">
+                                                <ul>
+                                                    <li onclick="onClick_select_menu()">Displacement 1</li>
+                                                    <li onclick="onClick_select_menu()">Displacement 2</li>
+                                                    <li onclick="onClick_select_menu()">Displacement 3</li>
+                                                    <li onclick="onClick_select_menu()">Displacement 4</li>
+                                                    <li onclick="onClick_select_menu()">Displacement 5</li>
+                                                    <li onclick="onClick_select_menu()">Displacement 6</li>
+                                                    <li onclick="onClick_select_menu()">Displacement 8</li>
+                                                    <li onclick="onClick_select_menu()">Displacement 9</li>
+                                                    <li onclick="onClick_select_menu()">Displacement 10</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </li>
@@ -311,7 +326,40 @@
                                     <div class="tab-layout-wrap h">
                                         <!-- row -->
                                         <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">1-1</div>   
+                                            <div class="tab-layout-cell">
+                                                <!-- select -->
+                                                <div class="an_select" style="width:100%;" onclick="onclick_select()">
+                                                    <div class="an_select_tit"></div>
+                                                    <input type="text" placeholder="Data" readonly>
+                                                    <div class="an_select_menu">
+                                                        <ul>
+                                                            <li onclick="onClick_select_menu()">Displacement 1</li>
+                                                            <li onclick="onClick_select_menu()">Displacement 2</li>
+                                                            <li onclick="onClick_select_menu()">Displacement 3</li>
+                                                            <li onclick="onClick_select_menu()">Displacement 4</li>
+                                                            <li onclick="onClick_select_menu()">Displacement 5</li>
+                                                            <li onclick="onClick_select_menu()">Displacement 6</li>
+                                                            <li onclick="onClick_select_menu()">Displacement 8</li>
+                                                            <li onclick="onClick_select_menu()">Displacement 9</li>
+                                                            <li onclick="onClick_select_menu()">Displacement 10</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>  
+                                                <!-- select -->
+                                                <div class="an_select" style="width:100%;" onclick="onclick_select()">
+                                                    <div class="an_select_tit"></div>
+                                                    <input type="text" placeholder="Data" readonly>
+                                                    <div class="an_select_menu">
+                                                        <ul>
+                                                            <li onclick="onClick_select_menu()">Displacement 1</li>
+                                                            <li onclick="onClick_select_menu()">Displacement 2</li>
+                                                            <li onclick="onClick_select_menu()">Displacement 3</li>
+                                                            <li onclick="onClick_select_menu()">Displacement 4</li>
+                                                            <li onclick="onClick_select_menu()">Displacement 5</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>  
+                                            </div>   
                                             <div class="tab-layout-cell">1-2</div>   
                                         </div>
                                         <!-- row -->
@@ -425,20 +473,26 @@
                 </div>
                 <!-- GDS -->
                 <div class="content_box">
-                    <!-- checkbox -->
-                    <label class="an_checkbox"><input type="checkbox" /><i></i><span>CheckBox</span></label>
-                    <label class="an_checkbox"><input type="checkbox" line /><i></i><span>CheckBox</span></label>
-                    <label class="an_checkbox"><input type="checkbox" disabled /><i></i><span>CheckBox</span></label>
-                    <label class="an_checkbox"><input type="checkbox" checked disabled /><i></i><span>CheckBox</span></label>
-                    <label class="an_checkbox"><input type="checkbox" line disabled /><i></i><span>CheckBox</span></label>
-                    ------------------------------------------------------------------------------------------------------------------------------------------------------
-                    <label class="an_radio"><input type="radio" name="radio" /><i></i><span>RadioBox</span></label>
-                    <label class="an_radio"><input type="radio" name="radio" /><i></i><span>RadioBox</span></label>
-                    <label class="an_radio"><input type="radio" name="radio" disabled /><i></i><span>RadioBox</span></label>
+                    <div class="content_box_white">
+                        <!-- checkbox -->
+                        <label class="an_checkbox"><input type="checkbox" /><i></i><span>CheckBox</span></label>
+                        <label class="an_checkbox"><input type="checkbox" line /><i></i><span>CheckBox</span></label>
+                        <label class="an_checkbox"><input type="checkbox" disabled /><i></i><span>CheckBox</span></label>
+                        <label class="an_checkbox"><input type="checkbox" checked disabled /><i></i><span>CheckBox</span></label>
+                        <label class="an_checkbox"><input type="checkbox" line disabled /><i></i><span>CheckBox</span></label>
+                        <br />
+                        ------------------------------------------------------------------------------------------------------------------------------------------------------
+                        <br />
+                        <label class="an_radio"><input type="radio" name="radio" /><i></i><span>RadioBox</span></label>
+                        <label class="an_radio"><input type="radio" name="radio" /><i></i><span>RadioBox</span></label>
+                        <label class="an_radio"><input type="radio" name="radio" disabled /><i></i><span>RadioBox</span></label>
+                    </div>
                 </div>
                 <!-- File -->
                 <div class="content_box">
+                    <div class="content_box_white">
                     File
+                    </div>
                 </div>
 
             </div>

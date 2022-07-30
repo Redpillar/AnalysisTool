@@ -10,7 +10,7 @@ textarea{padding:15px; resize:none; outline:none; border:1px solid #ededed; bord
 
 
 /* checkbox */
-.an_checkbox{position:relative; font-size:12px; color:#475467; line-height:16px; vertical-align:top;}
+.an_checkbox{position:relative; display:inline-block; font-size:12px; color:#475467; line-height:16px; vertical-align:top;}
 .an_checkbox > span{position:relative; display:inline-block; vertical-align:top;}
 .an_checkbox > i{display:inline-block; width:15.34px; height:15.34px; margin:0 6px 0 0; vertical-align:top; border-radius:3px; border:2px solid #98A2B3;}
 .an_checkbox > input{position:fixed; top:1000%; left:1000%;}
@@ -23,13 +23,26 @@ textarea{padding:15px; resize:none; outline:none; border:1px solid #ededed; bord
 .an_tree .an_checkbox > i{position:relative; top:-1px; width:12px; height:12px; }
 
 /* radio */
-.an_radio{position:relative; font-size:12px; color:#475467; line-height:16px; vertical-align:top;}
+.an_radio{position:relative; display:inline-block; font-size:12px; color:#475467; line-height:16px; vertical-align:top;}
 .an_radio > span{position:relative; top:2px; display:inline-block; vertical-align:top;}
 .an_radio > i{display:inline-block; width: 18.11px; height: 18.11px; margin:0 6px 0 0; vertical-align:top; border-radius:100%; border:2px solid #98A2B3;}
 .an_radio > input{position:fixed; top:1000%; left:1000%;}
 .an_radio > input:checked + i{border-color:#0A7AFF; background:#0A7AFF url(./img/checkbox_checked.png) no-repeat 0 center; background-size:90%;}
 .an_radio > input:disabled + i{border-color:#d1d1d6; background-color:#d1d1d6;}
 .an_radio > input:disabled:checked + i{border-color:#d1d1d6; background-color:#d1d1d6;}
+
+/* select */
+.an_select{position:relative; display:inline-block; height:30px;}
+.an_select:after{content:""; display:block; clear:both;}
+.an_select > input, .an_select > .an_select_tit, .an_select > .an_select_menu, #an_select_menus_wrap > .an_select_menu{display:flex; align-items:center; justify-content:flex-start; padding:0 5px; border-radius:5px; height:100%; background:#edecec;}
+.an_select > .an_select_tit{float:left; width:calc(60% - 3px);}
+.an_select > input{float:right; width:calc(40% - 2px); border:none;}
+
+.an_select > .an_select_menu.toggle_open, #an_select_menus_wrap > .an_select_menu.toggle_open{display:block;}
+.an_select > .an_select_menu, #an_select_menus_wrap > .an_select_menu{position:fixed; display:none; height:auto; max-height:150px; overflow:auto; scroll-behavior:unset;}
+.an_select > .an_select_menu > ul, #an_select_menus_wrap > .an_select_menu > ul{display:flex; flex-direction:column;}
+.an_select > .an_select_menu.reverse > ul, #an_select_menus_wrap > .an_select_menu.reverse > ul{flex-direction:column-reverse}
+.an_select > .an_select_menu > ul > li, #an_select_menus_wrap > .an_select_menu > ul > li{display:flex; justify-content:flex-start; align-items:center; height:30px;}
 
 /* gnb */
 #gnb{position:fixed; top:0; left:65px; right:0; display:flex; justify-content:space-between; height:48px; background:#000;}
@@ -93,6 +106,7 @@ textarea{padding:15px; resize:none; outline:none; border:1px solid #ededed; bord
 #content > #content_wrap{display:inline-flex; width:100%; height:100%;}
 #content .content_box{display:none; flex-direction:column; width:100%; height:100%; vertical-align:top; background:#dedede;}
 #content .content_box[active]{display:inline-flex;}
+#content .content_box_white{height:100%; margin:9px 18px 16px; padding:20px; white-space:normal; border-radius:10px; background:#fff;}
 #content > .content_both{height:150px; background:gray;}
 .content_top_box{flex:1;}
 .content_both_box{position:relative;background:#fff;}
@@ -138,6 +152,8 @@ li.closed .splitter_handler.vertical{display:none;}
 #content.t .content_wing_left, #content.t #content_wrap{transition:width ease 0.5s;}
 
 .transition_h{transition:height ease .5s;}
+
+.wrap_wing_type3{padding:10px 7px;}
 
 /* splitter_handler */
 .splitter_handler{position:absolute; z-index:100;}
@@ -196,7 +212,7 @@ li.closed .splitter_handler.vertical{display:none;}
 /* tab horizontal */
 .tab-layout-wrap{display:flex; justify-content:flex-start; align-items:flex-start; flex-direction:column; overflow:hidden;}
 .tab-layout-row{flex:1; display:flex; justify-content:flex-start; align-items:flex-start;}
-.tab-layout-cell{flex:1; border-radius:10px; background:#fff;}
+.tab-layout-cell{flex:1; border-radius:10px; white-space:normal; background:#fff;}
 
 .tab-layout-wrap.h{position:relative; top:-18px; height:calc(100% + 18px);}
 .tab-layout-wrap.h .tab-layout-row{position:relative; left:-18px; width:calc(100% + 18px);}

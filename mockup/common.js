@@ -465,6 +465,87 @@ const cancle_toggle_open = ()=>{
     });
 }
 
+/* select */
+const menusSetting = ()=>{
+    const _menus = document.querySelectorAll(".an_select_menu");
+    const checked_menuWrap = document.querySelector("#an_select_menus_wrap");
+    if(!checked_menuWrap){
+        const wrap = document.createElement("div");
+        document.body.appendChild(wrap);
+        wrap.id = "an_select_menus_wrap";
+    }
+    const menu_wrap = document.querySelector("#an_select_menus_wrap");
+    console.log("_menus : ",_menus);
+    _menus.forEach((m,i)=>{
+        const _tit = m.getParent(".an_select").querySelector(".an_select_tit");
+        const txt = m.querySelector("ul > li").innerHTML;
+        m.parentNode.menu = m;
+        m.parent = m.parentNode;
+        _tit.innerText = txt;
+        menu_wrap.appendChild(m);
+        console.log("txt : ",txt);
+    })
+}
+
+const getChecked_selectMenu_line = (e)=>{
+    const _this = e;
+    const _p_style = _this.parent.getBoundingClientRect();
+    const _t = _p_style.top + _this.clientHeight;
+    const w_h = window.innerHeight;
+    if(_t > w_h){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+const select_menuStyle_setting = (e)=>{
+    const m = e;
+    const _p = m.parent;
+    const checked_line = getChecked_selectMenu_line(m);
+    const w = (_p.clientWidth * 0.6) - 3;
+    const t = (checked_line)?_p.getBoundingClientRect().top - m.clientHeight + _p.clientHeight:_p.getBoundingClientRect().top;
+    const l = _p.getBoundingClientRect().left;
+    m.style.width = w + "px";
+    m.style.top = t + "px";
+    m.style.left = l + "px";
+    if(checked_line){
+        m.classList.add("reverse");
+        setTimeout(()=>{
+            m.scrollTop = m.scrollHeight;
+        })
+    }else if(!checked_line){
+        m.classList.remove("reverse");
+    }
+}
+
+
+
+const onclick_select = ()=>{
+    cancleBubbleEv(false);
+    const _this = event.currentTarget;
+    const _menu = _this.menu;
+    const _menus = document.querySelectorAll(".an_select_menu");
+    _menus.forEach((m,i)=>{
+        if(m === _menu){
+            m.classList.toggle("toggle_open");
+            select_menuStyle_setting(m);
+        }else{
+            m.classList.remove("toggle_open");
+        }
+    })
+}
+
+const onClick_select_menu = ()=>{
+    const _this = event.currentTarget;
+    const _wrap = _this.getParent(".an_select_menu").parent;
+    const _input = _wrap.querySelector("input");
+    const _tit = _wrap.querySelector(".an_select_tit");
+    const txt = _this.innerText;
+    _input.value = txt;
+    // _tit.innerText = txt;
+}
+
 /* window load */
 window.onload = function(){
     document.querySelector("#gnb > ul").addEventListener("click",function(){
@@ -494,4 +575,6 @@ const onloadSetting = ()=>{
     check_tab_label_size();
     // 하단 textarea 높이 조절
     setBothTextAreaHeight();
+    // select menu 크기 조절
+    menusSetting();
 }
