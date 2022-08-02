@@ -46,7 +46,7 @@
         <div id="content" class="t">
             <!-- left wing -->
             <div class="content_wing_left t">
-                <div class="side_wing">
+                <div class="side_wing active">
                     <ul>
                         <li style="height:385px">
                             <div class="side_wing_wrap">
@@ -295,6 +295,49 @@
                     </ul>
                     <div class="splitter_handler horizontal parent" onmousedown="splitter_horizontal_down()" ontouchstart="splitter_horizontal_down()"></div>
                 </div>
+                <div class="side_wing">
+                    <ul>
+                        <li style="height:385px">
+                            <div class="side_wing_wrap">
+                                <!-- title -->
+                                <div class="side_wing_tit" onclick="accordion_menu()">
+                                    Title area
+                                </div>
+                                <!-- content -->
+                                <div class="side_wing_con">
+                                </div>
+                            </div>
+                            <div class="splitter_handler vertical" onmousedown="splitter_vertical_down()" ontouchstart="splitter_vertical_down()"></div>
+                        </li>
+                        <li style="height:385px">
+                            <div class="side_wing_wrap">
+                                <!-- title -->
+                                <div class="side_wing_tit" onclick="accordion_menu()">
+                                    Title area
+                                </div>
+                                <!-- content -->
+                                <div class="side_wing_con">
+                                </div>
+                            </div>
+                            <div class="splitter_handler vertical" onmousedown="splitter_vertical_down()" ontouchstart="splitter_vertical_down()"></div>
+                        </li>
+                        <li style="height:100px">
+                            <div class="side_wing_wrap">
+                                <!-- title -->
+                                <div class="side_wing_tit" onclick="accordion_menu()">
+                                    Title area
+                                </div>
+                                <!-- content -->
+                                <div class="side_wing_con">
+                                    <!-- wrap -->
+                                    <div class="wrap_wing_type3">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="splitter_handler horizontal parent" onmousedown="splitter_horizontal_down()" ontouchstart="splitter_horizontal_down()"></div>
+                </div>
             </div>
             <!-- content -->
             <div id="content_wrap">
@@ -306,19 +349,17 @@
                         <div class="tab-box">
                             <!-- head -->
                             <div class="tab-box-head">
-                                <button class="tab-label-arr l" onclick="onClick_tab_move()"><i class="fa-solid fa-circle-caret-left"></i></button>
                                 <div class="tab-labels">
                                     <ul>
-                                        <li onclick="onClick_tabLabel()"  class="active">Detth1<button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
-                                        <li onclick="onClick_tabLabel()" >Detth2<button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
-                                        <li onclick="onClick_tabLabel()" >Detth3<button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
-                                        <li onclick="onClick_tabLabel()" >Detth4<button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
-                                        <li onclick="onClick_tabLabel()" >Detth5<button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
-                                        <li onclick="onClick_tabLabel()" >Detth6<button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" class="active" title="Depth1" ><span>Depth1</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Depth2" ><span>Depth2</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Depth3" ><span>Depth3</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Depth4" ><span>Depth4</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Depth5" ><span>Depth5</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Depth6" ><span>Depth6</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
                                     </ul>
+                                    <button class="tab-add-btn" onclick="onClick_tabAdd()"></button>
                                 </div>
-                                <button class="tab-label-arr r" onclick="onClick_tab_move()"><i class="fa-solid fa-circle-caret-right"></i></button>
-                                <button class="tab-add-btn" onclick="onClick_tabAdd()"></button>
                             </div>
                             <!-- content -->
                             <ul class="tab-box-content">
@@ -460,16 +501,6 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="content_both_box" style="height:150px;">
-                        <button class="toggle_btn_bothTextarea" onclick="toggle_both_textarea()"><i class="fa-solid fa-caret-up"></i></button>
-                        <div class="splitter_handler vertical top" onmousedown="splitter_vertical_down()" ontouchstart="splitter_vertical_down()"></div>
-                        <div class="both_box_inner">
-                            <div class="both_box_tit"></div>
-                            <div class="both_box_textarea">
-                                <textarea cols="30" rows="10"></textarea>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!-- GDS -->
                 <div class="content_box">
@@ -494,7 +525,17 @@
                     File
                     </div>
                 </div>
-
+                <!-- both textarea -->
+                <div class="content_both_box" style="height:0;">
+                    <button class="toggle_btn_bothTextarea closed" onclick="toggle_both_textarea()"><i class="fa-solid fa-caret-up"></i></button>
+                    <div class="splitter_handler vertical top" onmousedown="splitter_vertical_down()" ontouchstart="splitter_vertical_down()"></div>
+                    <div class="both_box_inner" style="height:150px;">
+                        <div class="both_box_tit"></div>
+                        <div class="both_box_textarea">
+                            <textarea cols="30" rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- lnb -->

@@ -86,6 +86,7 @@ const accordion_menu = ()=>{
 /* hamburger menu */
 let timer_folder_labelCheck = null;
 const folder_lnbWing = ()=>{
+    if(event.currentTarget.getAttribute("disabled") !== null) return;
     cancleBubbleEv();
     const _lnbWing = document.querySelector(".content_wing_left");
     const _w = Number(window.getComputedStyle(_lnbWing).width.match(/\d+/g)[0]);
@@ -118,6 +119,8 @@ const toggle_lnb = ()=>{
     const _this = event.currentTarget;
     const idx = _this.getIndex();
     const _contents = document.querySelectorAll("#content_wrap .content_box");
+    const _leftWings = document.querySelectorAll(".content_wing_left > .side_wing");
+    const _hamburger_menu = document.querySelector(".lnb_left_top_button");
     for(let i=0; i<_this.parentNode.children.length; i++){
         if(i === idx){
             _this.parentNode.children[i].classList.add("active");
@@ -126,6 +129,21 @@ const toggle_lnb = ()=>{
             _this.parentNode.children[i].classList.remove("active");
             _contents[i].removeAttribute("active");
         }
+    }
+    if(idx === 2){
+        const _lnbWing = document.querySelector(".content_wing_left");
+        const _w = Number(window.getComputedStyle(_lnbWing).width.match(/\d+/g)[0]);
+        if(_w > 0) folder_lnbWing();
+        _hamburger_menu.setAttribute("disabled","");
+    }else{
+        _hamburger_menu.removeAttribute("disabled");
+        _leftWings.forEach((w,i)=>{
+            if(i === idx){
+                w.classList.add("active");
+            }else{
+                w.classList.remove("active");
+            }
+        })
     }
 }
 
@@ -139,6 +157,7 @@ const toggle_both_textarea = ()=>{
     const _h = (_both.clientHeight === 0)?_both.scrollHeight:0;
     _wrap.classList.add("ani_bothTextarea");
     _both.style.height = _h + "px";
+    console.log("height : ",_h)
     if(_h === 0){
         _this.classList.add("closed");
     }else{
@@ -163,6 +182,22 @@ const onClick_tabLabel = ()=>{
             _contents[j].classList.add("active");
         }
     })
+}
+const onMouseOver_tab = ()=>{
+    const _this = event.currentTarget;
+    const _idx = _this.getIndex();
+    const _labels = _this.getParent("ul").querySelectorAll("li");
+    if(_idx !== 0){
+        _labels[_idx - 1].classList.add("label-previous");
+    }
+}
+const onMouseOut_tab = ()=>{
+    const _this = event.currentTarget;
+    const _idx = _this.getIndex();
+    const _labels = _this.getParent("ul").querySelectorAll("li");
+    if(_idx !== 0){
+        _labels[_idx - 1].classList.remove("label-previous");
+    }
 }
 const onClick_tabRemove = ()=>{
     cancleBubbleEv();
@@ -192,11 +227,14 @@ const onClick_tabAdd = ()=>{
     const _label = _tabBox.querySelector(".tab-labels > ul");
     const _content = _tabBox.querySelector(".tab-box-content");
     const _idx = _label.children.length + 1;
-    const label_source = 'Detth'+_idx+'<button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button>';
+    const label_source = '<span>Detth'+_idx+'</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button>';
     const content_source = '<div class="tab-layout-wrap v"><!-- row --><div class="tab-layout-row"><div class="tab-layout-cell">'+_idx+'-1</div></div></div>';
     const el_lebel = document.createElement("li");
     const el_content = document.createElement("li");
     el_lebel.setAttribute("onclick","onClick_tabLabel()");
+    el_lebel.setAttribute("onmouseover","onMouseOver_tab()");
+    el_lebel.setAttribute("onmouseout","onMouseOut_tab()");
+    el_lebel.setAttribute("title","Depth"+_idx);
     el_lebel.innerHTML = label_source;
     el_content.classList.add("tab-content-inner")
     el_content.innerHTML = content_source;
@@ -267,8 +305,12 @@ const splitter_horizontal_down = ()=>{
             _content.style.width = _a + "px";
             if(check_parent){
                 const _wrap = _content.getParent("#content");
+                const _idx = (_content.getIndex() === 0)?1:0;
+                const _children = _content.parentNode.children[_idx];
+                console.log(_idx,":",_children);
                 _wrap.querySelector(".content_wing_left").style.width = _a + "px";
                 _wrap.querySelector("#content_wrap").style.width = "calc(100% - "+ _a + "px)";
+                _children.style.width = _a + "px";
             };
         }
     }
@@ -309,6 +351,7 @@ const splitter_vertical_down = ()=>{
     const _both_textarea = _content.querySelector(".both_box_textarea textarea");
     const min = (_both_textarea)?120:28;
     const max = 1000;
+    _content.classList.add("active-movement");
     if(_content.parentNode.parentNode.classList.contains("ani_bothTextarea")) (_content.parentNode.parentNode.classList.remove("ani_bothTextarea"))
     if(_closed_check) return;
     _this.parentNode.classList.remove("transition_h");
@@ -327,11 +370,12 @@ const splitter_vertical_down = ()=>{
             const _a = (_h < min)?min:(_h > max)?max:_h;
             _content.style.height = _a + "px";
             if(_both_box) _both_box.style.height = _a + "px";
-            if(_both_textarea) _both_textarea.style.height = (_a - 60) + "px";
+            if(_both_textarea) _both_textarea.style.height = (_a - 94) + "px";
         }
     }
     const _fn_window_up = ()=>{
         window_up_sw = true;
+        _content.classList.remove("active-movement");
         if(_type == 'm'){
             window.removeEventListener("mousemove", _fn_window_move);
             window.removeEventListener("mouseup",_fn_window_up);
@@ -353,8 +397,8 @@ const splitter_vertical_down = ()=>{
 const setBothTextAreaHeight = ()=>{
     const _both_box = document.querySelector(".both_box_inner");
     const _textarea = document.querySelector(".both_box_textarea textarea");
-    _both_box.style.height = (_both_box.parentNode.clientHeight) + "px";
-    _textarea.style.height = (_both_box.parentNode.clientHeight) - 60 + "px"
+    _both_box.style.height = "150px";
+    _textarea.style.height = "56px"
 }
 /* lnb active */
 const setLnbContent = ()=>{
@@ -475,7 +519,6 @@ const menusSetting = ()=>{
         wrap.id = "an_select_menus_wrap";
     }
     const menu_wrap = document.querySelector("#an_select_menus_wrap");
-    console.log("_menus : ",_menus);
     _menus.forEach((m,i)=>{
         const _tit = m.getParent(".an_select").querySelector(".an_select_tit");
         const txt = m.querySelector("ul > li").innerHTML;
@@ -483,7 +526,6 @@ const menusSetting = ()=>{
         m.parent = m.parentNode;
         _tit.innerText = txt;
         menu_wrap.appendChild(m);
-        console.log("txt : ",txt);
     })
 }
 
