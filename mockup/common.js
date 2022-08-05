@@ -88,6 +88,7 @@ let timer_folder_labelCheck = null;
 const folder_lnbWing = ()=>{
     if(event.currentTarget.getAttribute("disabled") !== null) return;
     cancleBubbleEv();
+    const _this = event.currentTarget;
     const _lnbWing = document.querySelector(".content_wing_left");
     const _w = Number(window.getComputedStyle(_lnbWing).width.match(/\d+/g)[0]);
     const _content = document.querySelector("#content #content_wrap");
@@ -95,9 +96,11 @@ const folder_lnbWing = ()=>{
         const width = Number(window.getComputedStyle(_lnbWing.querySelector(".side_wing")).width.match(/\d+/g)[0]);
         _lnbWing.style.width = width + "px";
         _content.style.width = "calc(100% - "+width+"px)";
+        _this.classList.add("analysis-menu-open");
     }else{
         _lnbWing.style.width = "0px";
         _content.style.width = "calc(100% - 0px)";
+        _this.classList.remove("analysis-menu-open");
     }
     if(timer_folder_labelCheck) clearTimeout(timer_folder_labelCheck);
     timer_folder_labelCheck = setTimeout(()=>{
@@ -135,6 +138,8 @@ const toggle_lnb = ()=>{
         const _w = Number(window.getComputedStyle(_lnbWing).width.match(/\d+/g)[0]);
         if(_w > 0) folder_lnbWing();
         _hamburger_menu.setAttribute("disabled","");
+        _hamburger_menu.classList.remove("analysis-menu-open")
+
     }else{
         _hamburger_menu.removeAttribute("disabled");
         _leftWings.forEach((w,i)=>{
@@ -226,11 +231,12 @@ const onClick_tabAdd = ()=>{
     const _tabBox = _this.getParent(".tab-box");
     const _label = _tabBox.querySelector(".tab-labels > ul");
     const _content = _tabBox.querySelector(".tab-box-content");
-    const _idx = _label.children.length + 1;
-    const label_source = '<span>Detth'+_idx+'</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button>';
+    const _idx = ((_label.children.length + 1) < 10)?"0"+(_label.children.length + 1):(_label.children.length + 1);
+    const label_source = '<span>New Tab'+_idx+'</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button>';
     const content_source = '<div class="tab-layout-wrap v"><!-- row --><div class="tab-layout-row"><div class="tab-layout-cell">'+_idx+'-1</div></div></div>';
     const el_lebel = document.createElement("li");
     const el_content = document.createElement("li");
+    // if(_label.children.length > 19) return;
     el_lebel.setAttribute("onclick","onClick_tabLabel()");
     el_lebel.setAttribute("onmouseover","onMouseOver_tab()");
     el_lebel.setAttribute("onmouseout","onMouseOut_tab()");
@@ -265,8 +271,15 @@ const onClick_tab_move = ()=>{
 const check_tab_label_size = ()=>{
     const _wrap = document.querySelector(".tab-box .tab-labels");
     const _tab = document.querySelector(".tab-box .tab-labels > ul");
+    _tab.parentNode.classList.remove("analysis-tab-label-none-padding");
     const width_wrap = _wrap.clientWidth;
     const width_tab = _tab.clientWidth;
+    const widthScroll_tab = _tab.scrollWidth;
+    if(widthScroll_tab > width_tab){
+        _tab.parentNode.classList.add("analysis-tab-label-none-padding");
+    }else{
+        _tab.parentNode.classList.remove("analysis-tab-label-none-padding");
+    }
     if(width_wrap < width_tab){
         _wrap.getParent(".tab-box-head").classList.add("arr_on");
     }else{
@@ -482,7 +495,9 @@ const gnb_sumMenu_toggle = ()=>{
     const _idx = _this.getIndex();
     const _menus = document.querySelectorAll(".gnb_left_subMenu_wrap .gnb_left_subMenu");
     const top = _this.getBoundingClientRect().top + _this.getBoundingClientRect().height + 10;
-    const left = _this.getBoundingClientRect().left + (_this.getBoundingClientRect().width / 2) + 12;
+    const check_icon = (_this.children.length > 1)?true:false;
+    const variable_num = (check_icon)?12:0;
+    const left = _this.getBoundingClientRect().left + (_this.getBoundingClientRect().width / 2) + variable_num;
 
     _menus.forEach((m,i)=>{
         if(i === _idx){
