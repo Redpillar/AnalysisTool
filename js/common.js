@@ -150,6 +150,7 @@ const toggle_lnb = ()=>{
             }
         })
     }
+    check_tab_label_size();
 }
 
 /* content both textarea */
@@ -159,10 +160,16 @@ const toggle_both_textarea = ()=>{
     const _this = event.currentTarget;
     const _wrap = document.querySelector("#content_wrap");
     const _both = _this.getParent(".content_both_box");
+    const _content = (_this.getParent(".content_box"))?_this.getParent(".content_box").querySelector(".content_top_box, .content_box_white"):null;
     const _h = (_both.clientHeight === 0)?_both.scrollHeight:0;
     _wrap.classList.add("ani_bothTextarea");
     _both.style.height = _h + "px";
-    console.log("height : ",_h)
+    if(_content){
+        const _style = window.getComputedStyle(_content);
+        const calc_h = _h + Number(_style.marginTop.match(/\d+/g)[0]) + Number(_style.marginBottom.match(/\d+/g)[0])
+        _content.style.flex = "unset";
+        _content.style.height = "calc(100% - "+calc_h+"px)";
+    }
     if(_h === 0){
         _this.classList.add("closed");
     }else{
@@ -364,9 +371,13 @@ const splitter_vertical_down = ()=>{
     const _both_textarea = _content.querySelector(".both_box_textarea textarea");
     const min = (_both_textarea)?120:28;
     const max = 1000;
+    const _check_content = (_this.getParent(".content_both_box").parentNode.classList.contains("content_box"))?_this.getParent(".content_box").querySelector(".content_top_box, .content_box_white"):null;
     _content.classList.add("active-movement");
     if(_content.parentNode.parentNode.classList.contains("ani_bothTextarea")) (_content.parentNode.parentNode.classList.remove("ani_bothTextarea"))
     if(_closed_check) return;
+    if(_check_content) _check_content.classList.add("active-movement");
+    console.log("check  : ",_this.getParent(".content_both_box").parentNode.classList.contains("content_box"))
+    console.log("_check_content : ",_check_content)
     _this.parentNode.classList.remove("transition_h");
     const _fn_window_move = ()=>{
         const _my = (_type == 'm')?event.pageY:event.touches[0].pageY;
@@ -383,12 +394,17 @@ const splitter_vertical_down = ()=>{
             const _a = (_h < min)?min:(_h > max)?max:_h;
             _content.style.height = _a + "px";
             if(_both_box) _both_box.style.height = _a + "px";
-            if(_both_textarea) _both_textarea.style.height = (_a - 94) + "px";
+            if(_both_textarea) _both_textarea.style.height = (_a - 56) + "px";
+            if(_check_content){
+                const _calc_h = _h + Number(window.getComputedStyle(_check_content).marginTop.match(/\d+/g)[0]) + Number(window.getComputedStyle(_check_content).marginBottom.match(/\d+/g)[0]);
+                _check_content.style.height = "calc(100% - "+_calc_h+"px)";
+            }
         }
     }
     const _fn_window_up = ()=>{
         window_up_sw = true;
         _content.classList.remove("active-movement");
+        if(_check_content) _check_content.classList.remove("active-movement");
         if(_type == 'm'){
             window.removeEventListener("mousemove", _fn_window_move);
             window.removeEventListener("mouseup",_fn_window_up);
@@ -411,7 +427,6 @@ const setBothTextAreaHeight = ()=>{
     const _both_box = document.querySelector(".both_box_inner");
     const _textarea = document.querySelector(".both_box_textarea textarea");
     _both_box.style.height = "150px";
-    _textarea.style.height = "56px"
 }
 /* lnb active */
 const setLnbContent = ()=>{

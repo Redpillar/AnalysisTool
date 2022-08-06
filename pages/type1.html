@@ -4,8 +4,8 @@
     <title>AnalysisTool Mock up</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <link rel="stylesheet" href="./common.css" />
-    <script type="text/javascript" src="./common.js"></script>
+    <link rel="stylesheet" href="../css/common.css" />
+    <script type="text/javascript" src="../js/common.js"></script>
     <!-- <script src="https://kit.fontawesome.com/154898a201.js" crossorigin="anonymous"></script> -->
     <script src="https://kit.fontawesome.com/c5cb99fddd.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
@@ -344,7 +344,7 @@
                 <!-- chart -->
                 <div class="content_box">
                     <!-- content top -->
-                    <div class="content_top_box">
+                    <div class="content_top_box ani-h">
                         <!-- tab -->
                         <div class="tab-box">
                             <!-- head -->
@@ -578,10 +578,21 @@
                             </ul>
                         </div>
                     </div>
+                    <!-- both textarea -->
+                    <div class="content_both_box" style="height:0;">
+                        <button class="toggle_btn_bothTextarea closed" onclick="toggle_both_textarea()"><i class="fa-solid fa-caret-up"></i></button>
+                        <div class="splitter_handler vertical top" onmousedown="splitter_vertical_down()" ontouchstart="splitter_vertical_down()"></div>
+                        <div class="both_box_inner" style="height:150px;">
+                            <div class="both_box_tit"></div>
+                            <div class="both_box_textarea">
+                                <textarea cols="30" rows="10"></textarea>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- GDS -->
                 <div class="content_box">
-                    <div class="content_box_white">
+                    <div class="content_box_white ani-h">
                         <!-- checkbox -->
                         <label class="an_checkbox"><input type="checkbox" /><i></i><span>CheckBox</span></label>
                         <label class="an_checkbox"><input type="checkbox" line /><i></i><span>CheckBox</span></label>
@@ -595,21 +606,32 @@
                         <label class="an_radio"><input type="radio" name="radio" /><i></i><span>RadioBox</span></label>
                         <label class="an_radio"><input type="radio" name="radio" disabled /><i></i><span>RadioBox</span></label>
                     </div>
+                    <!-- both textarea -->
+                    <div class="content_both_box" style="height:0;">
+                        <button class="toggle_btn_bothTextarea closed" onclick="toggle_both_textarea()"><i class="fa-solid fa-caret-up"></i></button>
+                        <div class="splitter_handler vertical top" onmousedown="splitter_vertical_down()" ontouchstart="splitter_vertical_down()"></div>
+                        <div class="both_box_inner" style="height:150px;">
+                            <div class="both_box_tit"></div>
+                            <div class="both_box_textarea">
+                                <textarea cols="30" rows="10"></textarea>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- File -->
                 <div class="content_box">
-                    <div class="content_box_white">
+                    <div class="content_box_white ani-h">
                     File
                     </div>
-                </div>
-                <!-- both textarea -->
-                <div class="content_both_box" style="height:0;">
-                    <button class="toggle_btn_bothTextarea closed" onclick="toggle_both_textarea()"><i class="fa-solid fa-caret-up"></i></button>
-                    <div class="splitter_handler vertical top" onmousedown="splitter_vertical_down()" ontouchstart="splitter_vertical_down()"></div>
-                    <div class="both_box_inner" style="height:150px;">
-                        <div class="both_box_tit"></div>
-                        <div class="both_box_textarea">
-                            <textarea cols="30" rows="10"></textarea>
+                    <!-- both textarea -->
+                    <div class="content_both_box" style="height:0;">
+                        <button class="toggle_btn_bothTextarea closed" onclick="toggle_both_textarea()"><i class="fa-solid fa-caret-up"></i></button>
+                        <div class="splitter_handler vertical top" onmousedown="splitter_vertical_down()" ontouchstart="splitter_vertical_down()"></div>
+                        <div class="both_box_inner" style="height:150px;">
+                            <div class="both_box_tit"></div>
+                            <div class="both_box_textarea">
+                                <textarea cols="30" rows="10"></textarea>
+                            </div>
                         </div>
                     </div>
                 </div>
