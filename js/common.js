@@ -327,7 +327,6 @@ const splitter_horizontal_down = ()=>{
                 const _wrap = _content.getParent("#content");
                 const _idx = (_content.getIndex() === 0)?1:0;
                 const _children = _content.parentNode.children[_idx];
-                console.log(_idx,":",_children);
                 _wrap.querySelector(".content_wing_left").style.width = _a + "px";
                 _wrap.querySelector("#content_wrap").style.width = "calc(100% - "+ _a + "px)";
                 _children.style.width = _a + "px";
@@ -371,13 +370,11 @@ const splitter_vertical_down = ()=>{
     const _both_textarea = _content.querySelector(".both_box_textarea textarea");
     const min = (_both_textarea)?120:28;
     const max = 1000;
-    const _check_content = (_this.getParent(".content_both_box").parentNode.classList.contains("content_box"))?_this.getParent(".content_box").querySelector(".content_top_box, .content_box_white"):null;
+    const _check_content = (!_this.getParent(".content_both_box"))?null:(_this.getParent(".content_both_box").parentNode.classList.contains("content_box"))?_this.getParent(".content_box").querySelector(".content_top_box, .content_box_white"):null;
     _content.classList.add("active-movement");
     if(_content.parentNode.parentNode.classList.contains("ani_bothTextarea")) (_content.parentNode.parentNode.classList.remove("ani_bothTextarea"))
     if(_closed_check) return;
     if(_check_content) _check_content.classList.add("active-movement");
-    console.log("check  : ",_this.getParent(".content_both_box").parentNode.classList.contains("content_box"))
-    console.log("_check_content : ",_check_content)
     _this.parentNode.classList.remove("transition_h");
     const _fn_window_move = ()=>{
         const _my = (_type == 'm')?event.pageY:event.touches[0].pageY;
