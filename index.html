@@ -4,27 +4,38 @@
         <title></title>
         <meta charset="UTF-8" />
         <style>
+            table{width:100%;border-collapse:collapse; table-layout:fixed;}
+            th{padding:10px; border:1px solid #dbdbdb; background:#c9c9c9;}
+            td{padding:20px; border:1px solid #dbdbdb;}
         </style>
     </head>
     <body>
         <table>
+            <colgroup>
+                <col style="width:50px;">
+                <col style="width:auto;">
+                <col style="width:400px;">
+            </colgroup>
             <thead>
                 <tr>
                     <th>No</th>
                     <th>제목</th>
                     <th>경로</th>
+                    <th>비고</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>1</td>
                     <td>AnalysisTool type1</td>
-                    <td><a href="./pages/type1.html" target="_blank">Link</a></td>
+                    <td><a href="./pages/type1.html" target="_blank">./pagestype1.html</a></td>
+                    <td>하단 Textarea 안 덮는 타입</td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>AnalysisTool type2</td>
-                    <td><a href="./pages/type2.html" target="_blank">Link</a></td>
+                    <td><a href="./pages/type2.html" target="_blank">./pagestype2.html</a></td>
+                    <td>하단 Textarea 덮는 타입</td>
                 </tr>
             </tbody>
         </table>
