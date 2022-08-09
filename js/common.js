@@ -572,7 +572,7 @@ const select_menuStyle_setting = (e)=>{
     const m = e;
     const _p = m.parent;
     const checked_line = getChecked_selectMenu_line(m);
-    const w = (_p.clientWidth * 0.6) - 3;
+    const w = _p.clientWidth;
     const t = (checked_line)?_p.getBoundingClientRect().top - m.clientHeight + _p.clientHeight:_p.getBoundingClientRect().top;
     const l = _p.getBoundingClientRect().left;
     m.style.width = w + "px";
@@ -611,8 +611,16 @@ const onClick_select_menu = ()=>{
     const _input = _wrap.querySelector("input");
     const _tit = _wrap.querySelector(".an_select_tit");
     const txt = _this.innerText;
+    const _children = _this.parentNode.querySelectorAll("li");
     _input.value = txt;
-    // _tit.innerText = txt;
+    _tit.innerText = txt;
+    _children.forEach((l,i)=>{
+        if(l !== _this){
+            l.classList.remove("active");
+        }else{
+            l.classList.add("active");
+        }
+    })
 }
 
 /* window load */
