@@ -447,6 +447,20 @@ const onClick_tree_arr = ()=>{
     const _this = event.currentTarget.parentNode.parentNode;
     _this.classList.toggle("open");
 }
+const onClick_tree_toggle = ()=>{
+    cancleBubbleEv();
+    const _this = event.currentTarget;
+    const _tree = _this.getParent(".an_tree");
+    const _line = _tree.querySelectorAll(".treeLine");
+    _line.forEach((l,i)=>{
+        if(l !== _this){
+            l.classList.remove("tree-line-active");
+        }else{
+            l.classList.add("tree-line-active");
+        }
+    })
+
+}
 
 /* checkbox tree */
 const changed_tree_checkbox = ()=>{
