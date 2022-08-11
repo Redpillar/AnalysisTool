@@ -153,6 +153,21 @@ const toggle_lnb = ()=>{
     check_tab_label_size();
 }
 
+/* list toggle */
+const onClick_toggleLise = ()=>{
+    cancleBubbleEv();
+    const _this = event.currentTarget;
+    const _box = _this.getParent(".list_box_basic");
+    const _lists = _box.querySelectorAll("li");
+    _lists.forEach((l,i)=>{
+        if(l !== _this){
+            l.classList.remove("active");
+        }else{
+            l.classList.add("active");
+        }
+    })
+}
+
 /* content both textarea */
 let itmer_both = null;
 const toggle_both_textarea = ()=>{
@@ -277,6 +292,7 @@ const onClick_tab_move = ()=>{
 }
 const check_tab_label_size = ()=>{
     const _wrap = document.querySelector(".tab-box .tab-labels");
+    if(!_wrap) return;
     const _tab = document.querySelector(".tab-box .tab-labels > ul");
     _tab.parentNode.classList.remove("analysis-tab-label-none-padding");
     const width_wrap = _wrap.clientWidth;
@@ -356,6 +372,7 @@ const splitter_horizontal_down = ()=>{
     }
 }
 const splitter_vertical_down = ()=>{
+    cancle_toggle_open();
     window_up_sw = false;
     document.body.classList.add("row-resize");
     const _type = (event.touches)?'t':'m';
@@ -587,8 +604,11 @@ const select_menuStyle_setting = (e)=>{
     const _p = m.parent;
     const checked_line = getChecked_selectMenu_line(m);
     const w = _p.clientWidth;
-    const t = (checked_line)?_p.getBoundingClientRect().top - m.clientHeight + _p.clientHeight:_p.getBoundingClientRect().top;
+    const scrolllTop = (_p.getParent(".tab-layout-wrap"))?_p.getParent(".tab-layout-wrap").scrollTop:0;
+    const t = (checked_line)?_p.getBoundingClientRect().top - m.clientHeight:_p.getBoundingClientRect().top + _p.clientHeight;
     const l = _p.getBoundingClientRect().left;
+    console.log("p :",_p)
+    console.log("p :",_p.clientHeight)
     m.style.width = w + "px";
     m.style.top = t + "px";
     m.style.left = l + "px";
@@ -652,6 +672,7 @@ window.addEventListener("resize",()=>{
 
 const setTabArrSetting = ()=> {
     const _box = document.querySelector(".tab-box-head");
+    if(!_box) return;
     const _tab = _box.querySelector(".tab-labels");
     if(_tab.scrollWidth > _tab.clientWidth) _box.classList.add("arr_on")
 }

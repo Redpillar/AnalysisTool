@@ -241,19 +241,19 @@
                                 <div class="side_wing_con">
                                     <div class="list_box_basic">
                                         <ul>
-                                            <li><a href="#">Program Factory</a></li>
-                                            <li><a href="#">Electron_concentration</a></li>
-                                            <li><a href="#">Hole_concentration</a></li>
-                                            <li><a href="#">Electric_Field</a></li>
-                                            <li><a href="#">Hole_Current_Density</a></li>
-                                            <li><a href="#">Displacement_Current_Density</a></li>
-                                            <li><a href="#">Total_Current_Density</a></li>
-                                            <li><a href="#">Singlet_density</a></li>
-                                            <li><a href="#">Electric_Field</a></li>
-                                            <li><a href="#">Hole_concentration</a></li>
-                                            <li><a href="#">Electric_Field</a></li>
-                                            <li><a href="#">Hole_Current_Density</a></li>
-                                            <li><a href="#">Displacement_Current_Density</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Program Factory</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Electron_concentration</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Hole_concentration</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Electric_Field</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Hole_Current_Density</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Displacement_Current_Density</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Total_Current_Density</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Singlet_density</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Electric_Field</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Hole_concentration</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Electric_Field</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Hole_Current_Density</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Displacement_Current_Density</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -273,7 +273,7 @@
                                         <!-- select -->
                                         <div class="an_select" style="width:100%;" onclick="onclick_select()">
                                             <div class="an_select_tit"></div>
-                                            <input type="text" placeholder="Data" readonly>
+                                            <input type="text" placeholder="Placeholder" readonly>
                                             <div class="an_select_menu">
                                                 <div class="inner_wrap">
                                                     <ul>
@@ -379,6 +379,11 @@
                                         <div class="tab-layout-row" style="height:auto;">
                                             <div class="tab-layout-cell" style="padding:50px;">
                                                 <h2 class="guide_table-tit">Checkbox</h2>
+                                                <label class="an_checkbox big"><input type="checkbox" /><i></i><span>CheckBox</span></label>
+                                                <label class="an_checkbox big"><input type="checkbox" line /><i></i><span>CheckBox</span></label>
+                                                <label class="an_checkbox big"><input type="checkbox" disabled /><i></i><span>CheckBox</span></label>
+                                                <label class="an_checkbox big"><input type="checkbox" checked disabled /><i></i><span>CheckBox</span></label>
+                                                <label class="an_checkbox big"><input type="checkbox" line disabled /><i></i><span>CheckBox</span></label>
                                                 <label class="an_checkbox"><input type="checkbox" /><i></i><span>CheckBox</span></label>
                                                 <label class="an_checkbox"><input type="checkbox" line /><i></i><span>CheckBox</span></label>
                                                 <label class="an_checkbox"><input type="checkbox" disabled /><i></i><span>CheckBox</span></label>
@@ -402,7 +407,7 @@
                                                 <h2 class="guide_table-tit">Select</h2>
                                                 <div class="an_select" style="width:100%;" onclick="onclick_select()">
                                                     <div class="an_select_tit"></div>
-                                                    <input type="text" placeholder="Data" readonly>
+                                                    <input type="text" placeholder="Placeholder" readonly>
                                                     <div class="an_select_menu">
                                                         <div class="inner_wrap">
                                                             <ul>
@@ -422,7 +427,7 @@
                                                 <div class="sleect_layout type01" style="margin-top:10px;">
                                                     <div class="an_select" onclick="onclick_select()">
                                                         <div class="an_select_tit"></div>
-                                                        <input type="text" placeholder="Data" readonly>
+                                                        <input type="text" placeholder="Placeholder" readonly>
                                                         <div class="an_select_menu">
                                                             <div class="inner_wrap">
                                                                 <ul>
@@ -441,7 +446,7 @@
                                                     </div>
                                                     <div class="an_select" onclick="onclick_select()">
                                                         <div class="an_select_tit"></div>
-                                                        <input type="text" placeholder="Data" readonly>
+                                                        <input type="text" placeholder="Placeholder" readonly>
                                                         <div class="an_select_menu">
                                                             <div class="inner_wrap">
                                                                 <ul>
@@ -1056,7 +1061,7 @@
                                                 <!-- select -->
                                                 <div class="an_select" style="width:100%;" onclick="onclick_select()">
                                                     <div class="an_select_tit"></div>
-                                                    <input type="text" placeholder="Data" readonly>
+                                                    <input type="text" placeholder="Placeholder" readonly>
                                                     <div class="an_select_menu">
                                                         <div class="inner_wrap">
                                                             <ul>
@@ -1076,7 +1081,7 @@
                                                 <!-- select -->
                                                 <div class="an_select" style="width:100%;" onclick="onclick_select()">
                                                     <div class="an_select_tit"></div>
-                                                    <input type="text" placeholder="Data" readonly>
+                                                    <input type="text" placeholder="Placeholder" readonly>
                                                     <div class="an_select_menu">
                                                         <div class="inner_wrap">
                                                             <ul>
@@ -1192,7 +1197,7 @@
                     </div>
                     <!-- both textarea -->
                     <div class="content_both_box" style="height:0;">
-                        <button class="toggle_btn_bothTextarea closed" onclick="toggle_both_textarea()"><i class="fa-solid fa-caret-up"></i></button>
+                        <button class="toggle_btn_bothTextarea closed" onclick="toggle_both_textarea()"></button>
                         <div class="splitter_handler vertical top" onmousedown="splitter_vertical_down()" ontouchstart="splitter_vertical_down()"></div>
                         <div class="both_box_inner" style="height:150px;">
                             <div class="both_box_tit"></div>
@@ -1255,7 +1260,7 @@
                 <div class="lnb_left_top_button" onclick="folder_lnbWing()"><i class="analysis-icon-menu"></i></div>
                 <ul class="lnb_left_menu">
                     <li onclick="toggle_lnb()" class="active">
-                        <i class="fa-solid fa-chart-line"></i>
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"><image href="../img/lnb_icon-chart.svg" /></svg>
                         <div class="tit">Chart</div>
                     </li>
                     <li onclick="toggle_lnb()">
