@@ -273,7 +273,8 @@ li.closed .splitter_handler.vertical{display:none;}
 #wrap:not(.open_rnb_wing) #rnb  .lnbWing-icon:after{width:12px; height:33px; transform:rotate(180deg); background:#E8E8E8 url(../img/lnbWing_icon-closed_arr.png) no-repeat center; background-size:5.5px 10px;}
 #rnb .lnbWing-icon{top:0; left:0; width:12px; height:100%;}
 #rnb .lnbWing-icon{left:0px; right:unset;}
-.open_rnb_wing #rnb .splitter_handler.horizontal{display:none;}
+#rnb .splitter_handler.horizontal{display:none;}
+.open_rnb_wing #rnb .splitter_handler.horizontal{display:block;}
 
 /* splitter_handler */
 .splitter_handler{position:absolute; z-index:100;}
