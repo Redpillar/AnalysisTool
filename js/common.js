@@ -136,7 +136,6 @@ const toggle_lnb = ()=>{
             _contents[i].removeAttribute("active");
         }
     }
-    console.log("idx : ",idx);
     if(idx === 2){
         const _lnbWing = document.querySelector(".content_wing_left");
         if(!document.querySelector(".content_wing_left.closed")) folder_lnbWing();
@@ -214,7 +213,6 @@ const onClick_tabLabel = ()=>{
             c.classList.add("active");
             _contents[j].classList.add("active");
             if(_contents[j].querySelector(".tab-layout-wrap").classList.contains("fixed")) check = true;
-            console.log("check if : ",_contents[j].querySelector(".tab-layout-wrap").classList.contains("fixed"))
         }
         switch (check) {
             case true :
@@ -314,7 +312,7 @@ const check_tab_label_size = ()=>{
     const width_wrap = _wrap.clientWidth;
     const width_tab = _tab.clientWidth;
     const widthScroll_tab = _tab.scrollWidth;
-    if(widthScroll_tab > width_tab){
+    if(widthScroll_tab > width_tab && widthScroll_tab > width_wrap){
         _tab.parentNode.classList.add("analysis-tab-label-none-padding");
     }else{
         _tab.parentNode.classList.remove("analysis-tab-label-none-padding");
@@ -424,10 +422,9 @@ const splitter_vertical_down = ()=>{
             const _a = (_h < min)?min:(_h > max)?max:_h;
             _content.style.height = _a + "px";
             if(_both_box) _both_box.style.height = _a + "px";
-            if(_both_textarea) _both_textarea.style.height = (_a - 56) + "px";
+            // if(_both_textarea) _both_textarea.style.height = (_a - 56) + "px";
             if(_check_content){
                 let _calc_h = _h + Number(window.getComputedStyle(_check_content).marginTop.match(/\d+/g)[0]) + Number(window.getComputedStyle(_check_content).marginBottom.match(/\d+/g)[0]);
-                console.log("min : ",min)
                 if(min >= _calc_h) _calc_h = min;
                 _check_content.style.height = "calc(100% - "+_calc_h+"px)";
             }
@@ -580,9 +577,12 @@ const gnb_sumMenu_toggle = ()=>{
 /* cancel toggle open */
 const cancle_toggle_open = ()=>{
     const _toggles = document.querySelectorAll(".toggle_open");
+    const _target = event.target;
+    const _type = event.type;
     _toggles.forEach( (e,i)=> {
         e.classList.remove("toggle_open");
     });
+    if(!_target.classList.contains("dateSelector") && _type !== "click") document.querySelector("body").trigger("mousedown");
 }
 
 /* select */
@@ -625,8 +625,6 @@ const select_menuStyle_setting = (e)=>{
     const scrolllTop = (_p.getParent(".tab-layout-wrap"))?_p.getParent(".tab-layout-wrap").scrollTop:0;
     const t = (checked_line)?_p.getBoundingClientRect().top - m.clientHeight:_p.getBoundingClientRect().top + _p.clientHeight;
     const l = _p.getBoundingClientRect().left;
-    console.log("p :",_p)
-    console.log("p :",_p.clientHeight)
     m.style.width = w + "px";
     m.style.top = t + "px";
     m.style.left = l + "px";
@@ -675,6 +673,13 @@ const onClick_select_menu = ()=>{
     })
 }
 
+const getCalendar = ()=>{
+    const _doms = document.querySelectorAll('.dateSelector');
+    _doms.forEach((c,i)=>{
+        c.flatpickr();
+    })
+}
+
 /* window load */
 window.onload = function(){
     document.querySelector("#gnb > ul").addEventListener("click",function(){
@@ -707,4 +712,6 @@ const onloadSetting = ()=>{
     setBothTextAreaHeight();
     // select menu 크기 조절
     menusSetting();
+    // calendar
+    getCalendar();
 }

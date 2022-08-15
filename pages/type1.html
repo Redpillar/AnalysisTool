@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script type="text/javascript" src="../js/common.js"></script>
-    <!-- <script src="https://kit.fontawesome.com/154898a201.js" crossorigin="anonymous"></script> -->
+    <script type="text/javascript" src="../js/flatpickr.js"></script>
     <script src="https://kit.fontawesome.com/c5cb99fddd.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
         window.onload = ()=>{
@@ -271,7 +273,7 @@
                                     <!-- wrap -->
                                     <div class="wrap_wing_type3">
                                         <!-- select -->
-                                        <div class="an_select" style="width:100%;" onclick="onclick_select()">
+                                        <div class="an_select" style="width:65%;" onclick="onclick_select()">
                                             <div class="an_select_tit"></div>
                                             <input type="text" placeholder="Placeholder" readonly>
                                             <div class="an_select_menu">
@@ -290,6 +292,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <input type="text" class="an_text" style="width:35%;" placeholder="Name Placeholder"/>
                                     </div>
                                 </div>
                             </div>
@@ -354,19 +357,17 @@
                             <div class="tab-box-head">
                                 <div class="tab-labels">
                                     <ul>
-                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Depth1" ><span>Figma Design UI Kit</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
-                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" class="active" title="Depth2" ><span>Chart Data</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
-                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Depth3" ><span>Chart Layout01</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
-                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Depth4" ><span>Chart Layout02</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
-                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Depth5" ><span>Chart Layout03</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
-                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Depth6" ><span>Chart Layout04</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" class="active" title="Base Layout" ><span>Base Layout</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Chart Layout" ><span>Chart Layout</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Layout type2" ><span>Layout type2</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Template" ><span>Template</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
                                     </ul>
                                     <button class="tab-add-btn" onclick="onClick_tabAdd()"></button>
                                 </div>
                             </div>
                             <!-- content -->
                             <ul class="tab-box-content">
-                                <li class="tab-content-inner">
+                                <li class="tab-content-inner active">
                                     <div class="tab-layout-wrap h" onscroll="cancle_toggle_open()">
                                         <!-- row -->
                                         <div class="tab-layout-row">
@@ -378,7 +379,7 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li class="tab-content-inner active">
+                                <li class="tab-content-inner">
                                     <div class="tab-layout-wrap h" onscroll="cancle_toggle_open()">
                                         <!-- row -->
                                         <div class="tab-layout-row">
@@ -546,30 +547,6 @@
                                 </li>
                                 <li class="tab-content-inner">
                                     <div class="tab-layout-wrap h" onscroll="cancle_toggle_open()">
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">1-1</div>   
-                                            <div class="tab-layout-cell">1-2</div>   
-                                        </div>
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">1-3</div>   
-                                            <div class="tab-layout-cell">1-4</div>
-                                        </div>
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">1-1</div>   
-                                            <div class="tab-layout-cell">1-2</div>   
-                                        </div>
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">1-3</div>   
-                                            <div class="tab-layout-cell">1-4</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="tab-content-inner">
-                                    <div class="tab-layout-wrap v" onscroll="cancle_toggle_open()">
                                         <!-- row -->
                                         <div class="tab-layout-row">
                                             <div class="tab-layout-cell">3-1</div>   
@@ -578,7 +555,6 @@
                                         <!-- row -->
                                         <div class="tab-layout-row">
                                             <div class="tab-layout-cell">3-3</div>   
-                                            <div class="tab-layout-cell">3-4</div>
                                         </div>
                                     </div>
                                 </li>
@@ -1048,6 +1024,57 @@
                                                 </ul>
                                             </div>
                                         </div>
+                                        <!-- Table -->
+                                        <div class="tab-layout-row" style="height:auto;">
+                                            <div class="tab-layout-cell" style="padding:50px;">
+                                                <h2 class="guide_table-tit">Table</h2>
+                                                <table class="analysis-table">
+                                                    <colgroup>
+                                                        <col style="width:20%;">
+                                                        <col style="width:auto">
+                                                    </colgroup>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Header</th>
+                                                            <th style="text-align:center;">Header</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="br">Body texttexttext...</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="br">Body text</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr class="selected">
+                                                            <td class="br">Body text</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="br">Body text</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="br">Body text</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="br">Body text</td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <!-- Calendar -->
+                                        <div class="tab-layout-row" style="height:auto;">
+                                            <div class="tab-layout-cell" style="padding:50px;">
+                                                <h2 class="guide_table-tit">Calendar</h2>
+                                                <input class="dateSelector" placeholder="ex) 2020-09-01" />
+                                            </div>
+                                        </div>
                                         <!-- Alert -->
                                         <div class="tab-layout-row" style="height:auto;">
                                             <div class="tab-layout-cell" style="padding:50px;">
@@ -1274,29 +1301,6 @@
                                     <div class="tab-layout-wrap v" onscroll="cancle_toggle_open()">
                                         <!-- row -->
                                         <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">4-1</div>   
-                                            <div class="tab-layout-cell">4-2</div>   
-                                        </div>
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">4-3</div>   
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="tab-content-inner">
-                                    <div class="tab-layout-wrap v" onscroll="cancle_toggle_open()">
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">3-1</div>   
-                                            <div class="tab-layout-cell">3-2</div>   
-                                        </div>
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">3-3</div>   
-                                            <div class="tab-layout-cell">3-4</div>
-                                        </div>
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
                                             <div class="tab-layout-cell">3-1</div>   
                                             <div class="tab-layout-cell">3-2</div>   
                                         </div>
@@ -1369,7 +1373,7 @@
         <!-- lnb -->
         <div id="lnb">
             <div class="lnb_left">
-                <div class="lnb_left_top_button analysis-menu-open"><i class="analysis-icon-menu"></i></div>
+                <div class="lnb_left_top_button analysis-menu-open"></div>
                 <ul class="lnb_left_menu">
                     <li onclick="toggle_lnb()" class="active">
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg"><image href="../img/lnb_icon-chart.svg" /></svg>
