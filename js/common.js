@@ -92,15 +92,19 @@ const folder_lnbWing = ()=>{
     const _lnbWing = document.querySelector(".content_wing_left");
     const _w = Number(window.getComputedStyle(_lnbWing).width.match(/\d+/g)[0]);
     const _content = document.querySelector("#content #content_wrap");
-    if(_w === 0){
+    if(_w === 12){
         const width = Number(window.getComputedStyle(_lnbWing.querySelector(".side_wing")).width.match(/\d+/g)[0]);
         _lnbWing.style.width = width + "px";
+        _lnbWing.classList.remove("closed");
         _content.style.width = "calc(100% - "+width+"px)";
-        _this.classList.add("analysis-menu-open");
+        // _this.classList.add("analysis-menu-open");
+        _this.classList.add("open");
     }else{
-        _lnbWing.style.width = "0px";
-        _content.style.width = "calc(100% - 0px)";
+        _lnbWing.style.width = "12px";
+        _lnbWing.classList.add("closed");
+        _content.style.width = "calc(100% - 12px)";
         _this.classList.remove("analysis-menu-open");
+        _this.classList.remove("open");
     }
     if(timer_folder_labelCheck) clearTimeout(timer_folder_labelCheck);
     timer_folder_labelCheck = setTimeout(()=>{
@@ -123,7 +127,6 @@ const toggle_lnb = ()=>{
     const idx = _this.getIndex();
     const _contents = document.querySelectorAll("#content_wrap .content_box");
     const _leftWings = document.querySelectorAll(".content_wing_left > .side_wing");
-    const _hamburger_menu = document.querySelector(".lnb_left_top_button");
     for(let i=0; i<_this.parentNode.children.length; i++){
         if(i === idx){
             _this.parentNode.children[i].classList.add("active");
@@ -133,15 +136,12 @@ const toggle_lnb = ()=>{
             _contents[i].removeAttribute("active");
         }
     }
+    console.log("idx : ",idx);
     if(idx === 2){
         const _lnbWing = document.querySelector(".content_wing_left");
-        const _w = Number(window.getComputedStyle(_lnbWing).width.match(/\d+/g)[0]);
-        if(_w > 0) folder_lnbWing();
-        _hamburger_menu.setAttribute("disabled","");
-        _hamburger_menu.classList.remove("analysis-menu-open")
+        if(!document.querySelector(".content_wing_left.closed")) folder_lnbWing();
 
     }else{
-        _hamburger_menu.removeAttribute("disabled");
         _leftWings.forEach((w,i)=>{
             if(i === idx){
                 w.classList.add("active");
@@ -172,11 +172,13 @@ const onClick_toggleLise = ()=>{
 let itmer_both = null;
 const toggle_both_textarea = ()=>{
     cancleBubbleEv();
+    const _min_size = 12;
     const _this = event.currentTarget;
-    const _wrap = document.querySelector("#content_wrap");
     const _both = _this.getParent(".content_both_box");
+    const _arr = _both.querySelector(".toggle_btn_bothTextarea");
+    const _wrap = document.querySelector("#content_wrap");
     const _content = (_this.getParent(".content_box"))?_this.getParent(".content_box").querySelector(".content_top_box, .content_box_white"):null;
-    const _h = (_both.clientHeight === 0)?_both.scrollHeight:0;
+    const _h = (_both.clientHeight === _min_size)?_both.scrollHeight:_min_size;
     _wrap.classList.add("ani_bothTextarea");
     _both.style.height = _h + "px";
     if(_content){
@@ -185,10 +187,12 @@ const toggle_both_textarea = ()=>{
         _content.style.flex = "unset";
         _content.style.height = "calc(100% - "+calc_h+"px)";
     }
-    if(_h === 0){
-        _this.classList.add("closed");
+    if(_h === _min_size){
+        _arr.classList.add("closed");
+        _both.classList.add("closed");
     }else{
-        _this.classList.remove("closed");
+        _arr.classList.remove("closed");
+        _both.classList.remove("closed");
     }
 }
 
@@ -197,7 +201,9 @@ const onClick_tabLabel = ()=>{
     cancleBubbleEv();
     const _this = event.currentTarget;
     const _children = _this.parentNode.querySelectorAll("li");
-    const _contents = _this.getParent(".tab-box").querySelectorAll(".tab-box-content > .tab-content-inner")
+    const _contents = _this.getParent(".tab-box").querySelectorAll(".tab-box-content > .tab-content-inner");
+    const _contentWrap = _this.getParent(".tab-box").querySelector(".tab-box-content");
+    let check = false
     _children.forEach((c,j)=>{
         if(c !== _this){
             c.classList.remove("active");
@@ -207,6 +213,16 @@ const onClick_tabLabel = ()=>{
             if(j > 0)c.parentNode.children[j-1].classList.add("none-line")
             c.classList.add("active");
             _contents[j].classList.add("active");
+            if(_contents[j].querySelector(".tab-layout-wrap").classList.contains("fixed")) check = true;
+            console.log("check if : ",_contents[j].querySelector(".tab-layout-wrap").classList.contains("fixed"))
+        }
+        switch (check) {
+            case true :
+                _contentWrap.classList.add("horizontal-scroll");
+                break;
+            default :
+                _contentWrap.classList.remove("horizontal-scroll");
+                break;
         }
     })
 }
@@ -385,7 +401,7 @@ const splitter_vertical_down = ()=>{
     const _closed_check = _this.parentNode.classList.contains("closed");
     const _both_box = _content.querySelector(".both_box_inner");
     const _both_textarea = _content.querySelector(".both_box_textarea textarea");
-    const min = (_both_textarea)?120:28;
+    const min = (_both_textarea)?62:28;
     const max = 1000;
     const _check_content = (!_this.getParent(".content_both_box"))?null:(_this.getParent(".content_both_box").parentNode.classList.contains("content_box"))?_this.getParent(".content_box").querySelector(".content_top_box, .content_box_white"):null;
     _content.classList.add("active-movement");
@@ -410,7 +426,9 @@ const splitter_vertical_down = ()=>{
             if(_both_box) _both_box.style.height = _a + "px";
             if(_both_textarea) _both_textarea.style.height = (_a - 56) + "px";
             if(_check_content){
-                const _calc_h = _h + Number(window.getComputedStyle(_check_content).marginTop.match(/\d+/g)[0]) + Number(window.getComputedStyle(_check_content).marginBottom.match(/\d+/g)[0]);
+                let _calc_h = _h + Number(window.getComputedStyle(_check_content).marginTop.match(/\d+/g)[0]) + Number(window.getComputedStyle(_check_content).marginBottom.match(/\d+/g)[0]);
+                console.log("min : ",min)
+                if(min >= _calc_h) _calc_h = min;
                 _check_content.style.height = "calc(100% - "+_calc_h+"px)";
             }
         }

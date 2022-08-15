@@ -36,16 +36,16 @@
                 <li><i class="fa-solid fa-trash-can"></i></li>
             </ul>
             <!-- <h1 class="gnb_tit">Analysis Tool</h1> -->
-            <ul class="gnb_right">
-                <!-- <li><i class="fa-solid fa-magnifying-glass-minus"></i></li>
-                <li><i class="fa-solid fa-magnifying-glass-plus"></i></li> -->
+            <!-- <ul class="gnb_right">
+                <li><i class="fa-solid fa-magnifying-glass-minus"></i></li>
+                <li><i class="fa-solid fa-magnifying-glass-plus"></i></li>
                 <li onclick="folder_rnbWing()"><i class="fa-solid fa-layer-group"></i></li>
-            </ul>
+            </ul> -->
         </div>
         <!-- #content -->
         <div id="content" class="t">
             <!-- left wing -->
-            <div class="content_wing_left t">
+            <div class="content_wing_left t" style="width:238px">
                 <div class="side_wing active">
                     <ul>
                         <li style="height:250px">
@@ -340,21 +340,22 @@
                     </ul>
                     <div class="splitter_handler horizontal parent" onmousedown="splitter_horizontal_down()" ontouchstart="splitter_horizontal_down()"></div>
                 </div>
+                <button class="lnbWing-icon open" onclick="folder_lnbWing()"></button>
             </div>
             <!-- content -->
-            <div id="content_wrap">
+            <div id="content_wrap" style="width: calc(100% - 238px);">
                 <!-- chart -->
                 <div class="content_box">
                     <!-- content top -->
-                    <div class="content_top_box ani-h">
+                    <div class="content_top_box ani-h" style="flex: unset; height: calc(100% - 150px);">
                         <!-- tab -->
                         <div class="tab-box">
                             <!-- head -->
                             <div class="tab-box-head">
                                 <div class="tab-labels">
                                     <ul>
-                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" class="active" title="Depth1" ><span>Figma Design UI Kit</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
-                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Depth2" ><span>Chart Data</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Depth1" ><span>Figma Design UI Kit</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" class="active" title="Depth2" ><span>Chart Data</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
                                         <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Depth3" ><span>Chart Layout01</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
                                         <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Depth4" ><span>Chart Layout02</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
                                         <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Depth5" ><span>Chart Layout03</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
@@ -365,7 +366,223 @@
                             </div>
                             <!-- content -->
                             <ul class="tab-box-content">
+                                <li class="tab-content-inner">
+                                    <div class="tab-layout-wrap h" onscroll="cancle_toggle_open()">
+                                        <!-- row -->
+                                        <div class="tab-layout-row">
+                                            <div class="tab-layout-cell">
+                                                <div class="guide-box">
+                                                    여백 20px
+                                                </div>
+                                            </div>   
+                                        </div>
+                                    </div>
+                                </li>
                                 <li class="tab-content-inner active">
+                                    <div class="tab-layout-wrap h" onscroll="cancle_toggle_open()">
+                                        <!-- row -->
+                                        <div class="tab-layout-row">
+                                            <div class="tab-layout-cell cell-p0">
+                                                <div class="analysis-chartBox">
+                                                    <div class="chartBox-tit">Chart Title Area</div>
+                                                    <div class="chartBox-con"><img src="../img/dummy_img-chart.png" class="dummy-chartImg" alt="dummy img" /></div>
+                                                    <div class="chartBox-select">
+                                                        <div class="charBox_both-label_box">
+                                                            <label class="charBox_both-label">Label</label>
+                                                            <div class="an_select" style="width:123px; margin-right:5px;" onclick="onclick_select()">
+                                                                <div class="an_select_tit"></div>
+                                                                <input type="text" placeholder="Placeholder" readonly>
+                                                                <div class="an_select_menu">
+                                                                    <div class="inner_wrap">
+                                                                        <ul>
+                                                                            <li onclick="onClick_select_menu()">Displacement 1</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 2</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 3</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 4</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 5</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 6</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 8</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 9</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 10</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <input type="text" class="an_text" style="width:88px;" placeholder="Name Placeholder"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="chartBox-legend">
+                                                        <div class="chartBox-legend-all"><label class="an_checkbox big"><input type="checkbox" checked /><i></i><span>Select all</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect o"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect g"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect p"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect b"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                    </div>
+                                                    <button class="chartBox-colsed"></button>
+                                                </div>
+                                            </div>
+                                            <div class="tab-layout-cell cell-p0">
+                                                <div class="analysis-chartBox">
+                                                    <div class="chartBox-tit">Chart Title Area</div>
+                                                    <div class="chartBox-con"><img src="../img/dummy_img-chart.png" class="dummy-chartImg" alt="dummy img" /></div>
+                                                    <div class="chartBox-select">
+                                                        <div class="charBox_both-label_box">
+                                                            <label class="charBox_both-label">Label</label>
+                                                            <div class="an_select" style="width:123px; margin-right:5px;" onclick="onclick_select()">
+                                                                <div class="an_select_tit"></div>
+                                                                <input type="text" placeholder="Placeholder" readonly>
+                                                                <div class="an_select_menu">
+                                                                    <div class="inner_wrap">
+                                                                        <ul>
+                                                                            <li onclick="onClick_select_menu()">Displacement 1</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 2</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 3</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 4</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 5</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 6</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 8</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 9</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 10</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <input type="text" class="an_text" style="width:88px;" placeholder="Name Placeholder"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="chartBox-legend">
+                                                        <div class="chartBox-legend-all"><label class="an_checkbox big"><input type="checkbox" checked /><i></i><span>Select all</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect o"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect g"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect p"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect b"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                    </div>
+                                                    <button class="chartBox-colsed"></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- row -->
+                                        <div class="tab-layout-row">
+                                            <div class="tab-layout-cell cell-p0">
+                                                <div class="analysis-chartBox">
+                                                    <div class="chartBox-tit">Chart Title Area</div>
+                                                    <div class="chartBox-con"><img src="../img/dummy_img-chart.png" class="dummy-chartImg" alt="dummy img" /></div>
+                                                    <div class="chartBox-select">
+                                                        <div class="charBox_both-label_box">
+                                                            <label class="charBox_both-label">Label</label>
+                                                            <div class="an_select" style="width:123px; margin-right:5px;" onclick="onclick_select()">
+                                                                <div class="an_select_tit"></div>
+                                                                <input type="text" placeholder="Placeholder" readonly>
+                                                                <div class="an_select_menu">
+                                                                    <div class="inner_wrap">
+                                                                        <ul>
+                                                                            <li onclick="onClick_select_menu()">Displacement 1</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 2</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 3</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 4</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 5</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 6</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 8</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 9</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 10</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <input type="text" class="an_text" style="width:88px;" placeholder="Name Placeholder"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="chartBox-legend">
+                                                        <div class="chartBox-legend-all"><label class="an_checkbox big"><input type="checkbox" checked /><i></i><span>Select all</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect o"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect g"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect p"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect b"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                    </div>
+                                                    <button class="chartBox-colsed"></button>
+                                                </div>
+                                            </div>
+                                            <div class="tab-layout-cell cell-p0">
+                                                <div class="analysis-chartBox">
+                                                    <div class="chartBox-tit">Chart Title Area</div>
+                                                    <div class="chartBox-con"><img src="../img/dummy_img-chart.png" class="dummy-chartImg" alt="dummy img" /></div>
+                                                    <div class="chartBox-select">
+                                                        <div class="charBox_both-label_box">
+                                                            <label class="charBox_both-label">Label</label>
+                                                            <div class="an_select" style="width:123px; margin-right:5px;" onclick="onclick_select()">
+                                                                <div class="an_select_tit"></div>
+                                                                <input type="text" placeholder="Placeholder" readonly>
+                                                                <div class="an_select_menu">
+                                                                    <div class="inner_wrap">
+                                                                        <ul>
+                                                                            <li onclick="onClick_select_menu()">Displacement 1</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 2</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 3</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 4</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 5</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 6</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 8</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 9</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 10</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <input type="text" class="an_text" style="width:88px;" placeholder="Name Placeholder"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="chartBox-legend">
+                                                        <div class="chartBox-legend-all"><label class="an_checkbox big"><input type="checkbox" checked /><i></i><span>Select all</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect o"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect g"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect p"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect b"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                    </div>
+                                                    <button class="chartBox-colsed"></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="tab-content-inner">
+                                    <div class="tab-layout-wrap h" onscroll="cancle_toggle_open()">
+                                        <!-- row -->
+                                        <div class="tab-layout-row">
+                                            <div class="tab-layout-cell">1-1</div>   
+                                            <div class="tab-layout-cell">1-2</div>   
+                                        </div>
+                                        <!-- row -->
+                                        <div class="tab-layout-row">
+                                            <div class="tab-layout-cell">1-3</div>   
+                                            <div class="tab-layout-cell">1-4</div>
+                                        </div>
+                                        <!-- row -->
+                                        <div class="tab-layout-row">
+                                            <div class="tab-layout-cell">1-1</div>   
+                                            <div class="tab-layout-cell">1-2</div>   
+                                        </div>
+                                        <!-- row -->
+                                        <div class="tab-layout-row">
+                                            <div class="tab-layout-cell">1-3</div>   
+                                            <div class="tab-layout-cell">1-4</div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="tab-content-inner">
+                                    <div class="tab-layout-wrap v" onscroll="cancle_toggle_open()">
+                                        <!-- row -->
+                                        <div class="tab-layout-row">
+                                            <div class="tab-layout-cell">3-1</div>   
+                                            <div class="tab-layout-cell">3-2</div>   
+                                        </div>
+                                        <!-- row -->
+                                        <div class="tab-layout-row">
+                                            <div class="tab-layout-cell">3-3</div>   
+                                            <div class="tab-layout-cell">3-4</div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="tab-content-inner">
                                     <div class="tab-layout-wrap h fixed" onscroll="cancle_toggle_open()">
                                         <!-- Toggle -->
                                         <div class="tab-layout-row" style="height:auto;">
@@ -1054,108 +1271,6 @@
                                     </div>
                                 </li>
                                 <li class="tab-content-inner">
-                                    <div class="tab-layout-wrap h" onscroll="cancle_toggle_open()">
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">
-                                                <!-- select -->
-                                                <div class="an_select" style="width:100%;" onclick="onclick_select()">
-                                                    <div class="an_select_tit"></div>
-                                                    <input type="text" placeholder="Placeholder" readonly>
-                                                    <div class="an_select_menu">
-                                                        <div class="inner_wrap">
-                                                            <ul>
-                                                                <li onclick="onClick_select_menu()">Displacement 1</li>
-                                                                <li onclick="onClick_select_menu()">Displacement 2</li>
-                                                                <li onclick="onClick_select_menu()">Displacement 3</li>
-                                                                <li onclick="onClick_select_menu()">Displacement 4</li>
-                                                                <li onclick="onClick_select_menu()">Displacement 5</li>
-                                                                <li onclick="onClick_select_menu()">Displacement 6</li>
-                                                                <li onclick="onClick_select_menu()">Displacement 8</li>
-                                                                <li onclick="onClick_select_menu()">Displacement 9</li>
-                                                                <li onclick="onClick_select_menu()">Displacement 10</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>  
-                                                <!-- select -->
-                                                <div class="an_select" style="width:100%;" onclick="onclick_select()">
-                                                    <div class="an_select_tit"></div>
-                                                    <input type="text" placeholder="Placeholder" readonly>
-                                                    <div class="an_select_menu">
-                                                        <div class="inner_wrap">
-                                                            <ul>
-                                                                <li onclick="onClick_select_menu()">Displacement 1</li>
-                                                                <li onclick="onClick_select_menu()">Displacement 2</li>
-                                                                <li onclick="onClick_select_menu()">Displacement 3</li>
-                                                                <li onclick="onClick_select_menu()">Displacement 4</li>
-                                                                <li onclick="onClick_select_menu()">Displacement 5</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>  
-                                            </div>   
-                                            <div class="tab-layout-cell">1-2</div>   
-                                        </div>
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">1-3</div>   
-                                            <div class="tab-layout-cell">1-4</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="tab-content-inner">
-                                    <div class="tab-layout-wrap h" onscroll="cancle_toggle_open()">
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">2-1</div>   
-                                            <div class="tab-layout-cell">2-2</div>   
-                                        </div>
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">2-3</div>   
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="tab-content-inner">
-                                    <div class="tab-layout-wrap h" onscroll="cancle_toggle_open()">
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">1-1</div>   
-                                            <div class="tab-layout-cell">1-2</div>   
-                                        </div>
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">1-3</div>   
-                                            <div class="tab-layout-cell">1-4</div>
-                                        </div>
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">1-1</div>   
-                                            <div class="tab-layout-cell">1-2</div>   
-                                        </div>
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">1-3</div>   
-                                            <div class="tab-layout-cell">1-4</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="tab-content-inner">
-                                    <div class="tab-layout-wrap v" onscroll="cancle_toggle_open()">
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">3-1</div>   
-                                            <div class="tab-layout-cell">3-2</div>   
-                                        </div>
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">3-3</div>   
-                                            <div class="tab-layout-cell">3-4</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="tab-content-inner">
                                     <div class="tab-layout-wrap v" onscroll="cancle_toggle_open()">
                                         <!-- row -->
                                         <div class="tab-layout-row">
@@ -1196,11 +1311,10 @@
                         </div>
                     </div>
                     <!-- both textarea -->
-                    <div class="content_both_box" style="height:0;">
-                        <button class="toggle_btn_bothTextarea closed" onclick="toggle_both_textarea()"></button>
+                    <div class="content_both_box" style="height:150px;">
                         <div class="splitter_handler vertical top" onmousedown="splitter_vertical_down()" ontouchstart="splitter_vertical_down()"></div>
                         <div class="both_box_inner" style="height:150px;">
-                            <div class="both_box_tit"></div>
+                            <div class="both_box_tit" onclick="toggle_both_textarea()"><button class="toggle_btn_bothTextarea"><i></i></button></div>
                             <div class="both_box_textarea">
                                 <textarea cols="30" rows="10"></textarea>
                             </div>
@@ -1224,11 +1338,10 @@
                         <label class="an_radio"><input type="radio" name="radio" disabled /><i></i><span>RadioBox</span></label>
                     </div>
                     <!-- both textarea -->
-                    <div class="content_both_box" style="height:0;">
-                        <button class="toggle_btn_bothTextarea closed" onclick="toggle_both_textarea()"><i class="fa-solid fa-caret-up"></i></button>
+                    <div class="content_both_box" style="height:12px;">
                         <div class="splitter_handler vertical top" onmousedown="splitter_vertical_down()" ontouchstart="splitter_vertical_down()"></div>
                         <div class="both_box_inner" style="height:150px;">
-                            <div class="both_box_tit"></div>
+                            <div class="both_box_tit" onclick="toggle_both_textarea()"><button class="toggle_btn_bothTextarea closed"></button></div>
                             <div class="both_box_textarea">
                                 <textarea cols="30" rows="10"></textarea>
                             </div>
@@ -1241,11 +1354,10 @@
                     File
                     </div>
                     <!-- both textarea -->
-                    <div class="content_both_box" style="height:0;">
-                        <button class="toggle_btn_bothTextarea closed" onclick="toggle_both_textarea()"><i class="fa-solid fa-caret-up"></i></button>
+                    <div class="content_both_box" style="height:12px;"\>
                         <div class="splitter_handler vertical top" onmousedown="splitter_vertical_down()" ontouchstart="splitter_vertical_down()"></div>
                         <div class="both_box_inner" style="height:150px;">
-                            <div class="both_box_tit"></div>
+                            <div class="both_box_tit" onclick="toggle_both_textarea()"><button class="toggle_btn_bothTextarea closed"></button></div>
                             <div class="both_box_textarea">
                                 <textarea cols="30" rows="10"></textarea>
                             </div>
@@ -1257,7 +1369,7 @@
         <!-- lnb -->
         <div id="lnb">
             <div class="lnb_left">
-                <div class="lnb_left_top_button" onclick="folder_lnbWing()"><i class="analysis-icon-menu"></i></div>
+                <div class="lnb_left_top_button analysis-menu-open"><i class="analysis-icon-menu"></i></div>
                 <ul class="lnb_left_menu">
                     <li onclick="toggle_lnb()" class="active">
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg"><image href="../img/lnb_icon-chart.svg" /></svg>
@@ -1318,6 +1430,7 @@
                     </li>
                 </ul>
                 <div class="splitter_handler horizontal" onmousedown="splitter_horizontal_down()" ontouchstart="splitter_horizontal_down()"></div>
+                <button class="lnbWing-icon open" onclick="folder_rnbWing()"></button>
             </div>
         </div>
         <!-- gnb submenu-->
