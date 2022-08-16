@@ -282,7 +282,7 @@ li.closed .splitter_handler.vertical{display:none;}
 .wrap_wing_type3{padding:10px 7px;}
 
 .lnbWing-icon{position:absolute; top:6px; right:6px; z-index:100; width:16px; height:16px; cursor:pointer; outline:none; border:1px solid #ededed;}
-.lnbWing-icon:after{content:""; position:absolute; top:0; right:0; width:16px; height:16px; background:#EFEFEF url(../img/icon_rec_arr-2.png) no-repeat center; background-size:16px 16px;}
+.lnbWing-icon:after{content:""; position:absolute; top:0; left:0; width:16px; height:16px; background:#EFEFEF url(../img/icon_rec_arr-2.png) no-repeat center; background-size:16px 16px;}
 .content_wing_left.closed .lnbWing-icon{top:0; right:0; width:12px; height:100%;}
 .content_wing_left.closed .lnbWing-icon:after{width:12px; height:33px; background:#E8E8E8 url(../img/lnbWing_icon-closed_arr.png) no-repeat center; background-size:5.5px 10px;}
 
@@ -438,6 +438,18 @@ li.closed .splitter_handler.vertical{display:none;}
 .an_alert > .inner_wrap > .ac{padding:25px 0 0; font-size:13px; font-weight:normal; text-align:center;}
 .an_alert > .inner_wrap > button{margin-top:20px;}
 .alert_icon-t_alert{display:inline-block; width:34px; height:30px; background:url(../img/alert_icon-triangle_alert.png) no-repeat center; background-size:100% auto;}
+
+/* confirm */
+.an_alert{position:relative;}
+.an_confirm > .inner_wrap{position:relative; padding:0px 20px 20px 20px; border-radius:10px; box-shadow:0 0 15px 10px rgba(0,0,0,0.15); background:#fff;}
+.an_confirm-tit{position:relative;}
+.an_confirm-tit .tit{display:flex; justify-content:flex-start; align-items:center; height:53px;}
+.confirm_button-closed{position:absolute; top:0; right:-20px; width:35px; height:35px; border:none; background:url(../img/icon_modal-closed.png) no-repeat center; background-size:15px 15px;}
+.confirm_con{display:flex; justify-content:center; align-items:center;}
+.confirm_con > p{text-align:center;}
+.an_confirm-btn{font-size:0; text-align:center;}
+.an_confirm-btn > .basic{width:70px;}
+.an_confirm-btn > button + button{margin-left:10px;}
 
 /* layout */
 .dummy-half-box{display:flex;}

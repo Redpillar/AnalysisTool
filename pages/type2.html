@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script type="text/javascript" src="../js/flatpickr.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
-    <!-- <script src="https://kit.fontawesome.com/154898a201.js" crossorigin="anonymous"></script> -->
     <script src="https://kit.fontawesome.com/c5cb99fddd.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
         window.onload = ()=>{
@@ -45,7 +46,7 @@
         <!-- #content -->
         <div id="content" class="t">
             <!-- left wing -->
-            <div class="content_wing_left t">
+            <div class="content_wing_left t" style="width:238px">
                 <div class="side_wing active">
                     <ul>
                         <li style="height:250px">
@@ -56,7 +57,7 @@
                                 </div>
                                 <!-- content -->
                                 <div class="side_wing_con">
-                                    <!-- tree -->
+                                    <!-- tree checkbox -->
                                     <div class="an_tree">
                                         <div class="anTree_wrap">
                                             <ul>
@@ -241,19 +242,19 @@
                                 <div class="side_wing_con">
                                     <div class="list_box_basic">
                                         <ul>
-                                            <li><a href="#">Program Factory</a></li>
-                                            <li><a href="#">Electron_concentration</a></li>
-                                            <li><a href="#">Hole_concentration</a></li>
-                                            <li><a href="#">Electric_Field</a></li>
-                                            <li><a href="#">Hole_Current_Density</a></li>
-                                            <li><a href="#">Displacement_Current_Density</a></li>
-                                            <li><a href="#">Total_Current_Density</a></li>
-                                            <li><a href="#">Singlet_density</a></li>
-                                            <li><a href="#">Electric_Field</a></li>
-                                            <li><a href="#">Hole_concentration</a></li>
-                                            <li><a href="#">Electric_Field</a></li>
-                                            <li><a href="#">Hole_Current_Density</a></li>
-                                            <li><a href="#">Displacement_Current_Density</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Program Factory</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Electron_concentration</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Hole_concentration</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Electric_Field</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Hole_Current_Density</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Displacement_Current_Density</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Total_Current_Density</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Singlet_density</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Electric_Field</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Hole_concentration</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Electric_Field</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Hole_Current_Density</a></li>
+                                            <li onclick="onClick_toggleLise()"><a href="#">Displacement_Current_Density</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -271,23 +272,26 @@
                                     <!-- wrap -->
                                     <div class="wrap_wing_type3">
                                         <!-- select -->
-                                        <div class="an_select" style="width:100%;" onclick="onclick_select()">
+                                        <div class="an_select" style="width:65%;" onclick="onclick_select()">
                                             <div class="an_select_tit"></div>
-                                            <input type="text" placeholder="Data" readonly>
+                                            <input type="text" placeholder="Placeholder" readonly>
                                             <div class="an_select_menu">
-                                                <ul>
-                                                    <li onclick="onClick_select_menu()">Displacement 1</li>
-                                                    <li onclick="onClick_select_menu()">Displacement 2</li>
-                                                    <li onclick="onClick_select_menu()">Displacement 3</li>
-                                                    <li onclick="onClick_select_menu()">Displacement 4</li>
-                                                    <li onclick="onClick_select_menu()">Displacement 5</li>
-                                                    <li onclick="onClick_select_menu()">Displacement 6</li>
-                                                    <li onclick="onClick_select_menu()">Displacement 8</li>
-                                                    <li onclick="onClick_select_menu()">Displacement 9</li>
-                                                    <li onclick="onClick_select_menu()">Displacement 10</li>
-                                                </ul>
+                                                <div class="inner_wrap">
+                                                    <ul>
+                                                        <li onclick="onClick_select_menu()">Displacement 1</li>
+                                                        <li onclick="onClick_select_menu()">Displacement 2</li>
+                                                        <li onclick="onClick_select_menu()">Displacement 3</li>
+                                                        <li onclick="onClick_select_menu()">Displacement 4</li>
+                                                        <li onclick="onClick_select_menu()">Displacement 5</li>
+                                                        <li onclick="onClick_select_menu()">Displacement 6</li>
+                                                        <li onclick="onClick_select_menu()">Displacement 8</li>
+                                                        <li onclick="onClick_select_menu()">Displacement 9</li>
+                                                        <li onclick="onClick_select_menu()">Displacement 10</li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
+                                        <input type="text" class="an_text" style="width:35%;" placeholder="Name Placeholder"/>
                                     </div>
                                 </div>
                             </div>
@@ -338,11 +342,12 @@
                     </ul>
                     <div class="splitter_handler horizontal parent" onmousedown="splitter_horizontal_down()" ontouchstart="splitter_horizontal_down()"></div>
                 </div>
+                <button class="lnbWing-icon open" onclick="folder_lnbWing()"></button>
             </div>
             <!-- content -->
-            <div id="content_wrap">
+            <div id="content_wrap" style="width: calc(100% - 238px);">
                 <!-- chart -->
-                <div class="content_box">
+                <div class="content_box active">
                     <!-- content top -->
                     <div class="content_top_box">
                         <!-- tab -->
@@ -351,12 +356,10 @@
                             <div class="tab-box-head">
                                 <div class="tab-labels">
                                     <ul>
-                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" class="active" title="Depth1" ><span>Figma Design UI Kit</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
-                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Depth2" ><span>Chart Data</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
-                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Depth3" ><span>Chart Layout01</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
-                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Depth4" ><span>Chart Layout02</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
-                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Depth5" ><span>Chart Layout03</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
-                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Depth6" ><span>Chart Layout04</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" class="active" title="Base Layout" ><span>Base Layout</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Chart Layout" ><span>Chart Layout</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Layout type2" ><span>Layout type2</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
+                                        <li onclick="onClick_tabLabel()" onmouseover="onMouseOver_tab()" onmouseout="onMouseOut_tab()" title="Template" ><span>Template</span><button class="tab-label-close-btn" onclick="onClick_tabRemove()"></button></li>
                                     </ul>
                                     <button class="tab-add-btn" onclick="onClick_tabAdd()"></button>
                                 </div>
@@ -364,168 +367,185 @@
                             <!-- content -->
                             <ul class="tab-box-content">
                                 <li class="tab-content-inner active">
-                                    <div class="tab-layout-wrap h fixed">
+                                    <div class="tab-layout-wrap h" onscroll="cancle_toggle_open()">
                                         <!-- row -->
                                         <div class="tab-layout-row">
                                             <div class="tab-layout-cell">
-                                                <!-- select -->
-                                                <div class="an_select" style="width:100%;" onclick="onclick_select()">
-                                                    <div class="an_select_tit"></div>
-                                                    <input type="text" placeholder="Data" readonly>
-                                                    <div class="an_select_menu">
-                                                        <ul>
-                                                            <li onclick="onClick_select_menu()">Displacement 1</li>
-                                                            <li onclick="onClick_select_menu()">Displacement 2</li>
-                                                            <li onclick="onClick_select_menu()">Displacement 3</li>
-                                                            <li onclick="onClick_select_menu()">Displacement 4</li>
-                                                            <li onclick="onClick_select_menu()">Displacement 5</li>
-                                                            <li onclick="onClick_select_menu()">Displacement 6</li>
-                                                            <li onclick="onClick_select_menu()">Displacement 8</li>
-                                                            <li onclick="onClick_select_menu()">Displacement 9</li>
-                                                            <li onclick="onClick_select_menu()">Displacement 10</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>  
-                                                <!-- select -->
-                                                <div class="an_select" style="width:100%;" onclick="onclick_select()">
-                                                    <div class="an_select_tit"></div>
-                                                    <input type="text" placeholder="Data" readonly>
-                                                    <div class="an_select_menu">
-                                                        <ul>
-                                                            <li onclick="onClick_select_menu()">Displacement 1</li>
-                                                            <li onclick="onClick_select_menu()">Displacement 2</li>
-                                                            <li onclick="onClick_select_menu()">Displacement 3</li>
-                                                            <li onclick="onClick_select_menu()">Displacement 4</li>
-                                                            <li onclick="onClick_select_menu()">Displacement 5</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>  
+                                                <div class="guide-box">
+                                                    여백 20px
+                                                </div>
                                             </div>   
-                                            <div class="tab-layout-cell">1-2</div>   
-                                        </div>
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">1-3</div>   
-                                            <div class="tab-layout-cell">1-4</div>
-                                        </div>
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">1-5</div>   
-                                            <div class="tab-layout-cell">1-5</div>
-                                        </div>
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">1-7</div>   
-                                            <div class="tab-layout-cell">1-8</div>
-                                        </div>
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">1-9</div>   
-                                            <div class="tab-layout-cell">1-10</div>
-                                        </div>
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">1-11</div>   
-                                            <div class="tab-layout-cell">1-12</div>
-                                        </div>
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">1-13</div>   
-                                            <div class="tab-layout-cell">1-14</div>
-                                        </div>
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">1-15</div>   
-                                            <div class="tab-layout-cell">1-16</div>
                                         </div>
                                     </div>
                                 </li>
                                 <li class="tab-content-inner">
-                                    <div class="tab-layout-wrap h">
+                                    <div class="tab-layout-wrap h" onscroll="cancle_toggle_open()">
                                         <!-- row -->
                                         <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">
-                                                <!-- select -->
-                                                <div class="an_select" style="width:100%;" onclick="onclick_select()">
-                                                    <div class="an_select_tit"></div>
-                                                    <input type="text" placeholder="Data" readonly>
-                                                    <div class="an_select_menu">
-                                                        <ul>
-                                                            <li onclick="onClick_select_menu()">Displacement 1</li>
-                                                            <li onclick="onClick_select_menu()">Displacement 2</li>
-                                                            <li onclick="onClick_select_menu()">Displacement 3</li>
-                                                            <li onclick="onClick_select_menu()">Displacement 4</li>
-                                                            <li onclick="onClick_select_menu()">Displacement 5</li>
-                                                            <li onclick="onClick_select_menu()">Displacement 6</li>
-                                                            <li onclick="onClick_select_menu()">Displacement 8</li>
-                                                            <li onclick="onClick_select_menu()">Displacement 9</li>
-                                                            <li onclick="onClick_select_menu()">Displacement 10</li>
-                                                        </ul>
+                                            <div class="tab-layout-cell cell-p0">
+                                                <div class="analysis-chartBox">
+                                                    <div class="chartBox-tit">Chart Title Area</div>
+                                                    <div class="chartBox-con"><img src="../img/dummy_img-chart.png" class="dummy-chartImg" alt="dummy img" /></div>
+                                                    <div class="chartBox-select">
+                                                        <div class="charBox_both-label_box">
+                                                            <label class="charBox_both-label">Label</label>
+                                                            <div class="an_select" style="width:123px; margin-right:5px;" onclick="onclick_select()">
+                                                                <div class="an_select_tit"></div>
+                                                                <input type="text" placeholder="Placeholder" readonly>
+                                                                <div class="an_select_menu">
+                                                                    <div class="inner_wrap">
+                                                                        <ul>
+                                                                            <li onclick="onClick_select_menu()">Displacement 1</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 2</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 3</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 4</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 5</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 6</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 8</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 9</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 10</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <input type="text" class="an_text" style="width:88px;" placeholder="Name Placeholder"/>
+                                                        </div>
                                                     </div>
-                                                </div>  
-                                                <!-- select -->
-                                                <div class="an_select" style="width:100%;" onclick="onclick_select()">
-                                                    <div class="an_select_tit"></div>
-                                                    <input type="text" placeholder="Data" readonly>
-                                                    <div class="an_select_menu">
-                                                        <ul>
-                                                            <li onclick="onClick_select_menu()">Displacement 1</li>
-                                                            <li onclick="onClick_select_menu()">Displacement 2</li>
-                                                            <li onclick="onClick_select_menu()">Displacement 3</li>
-                                                            <li onclick="onClick_select_menu()">Displacement 4</li>
-                                                            <li onclick="onClick_select_menu()">Displacement 5</li>
-                                                        </ul>
+                                                    <div class="chartBox-legend">
+                                                        <div class="chartBox-legend-all"><label class="an_checkbox big"><input type="checkbox" checked /><i></i><span>Select all</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect o"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect g"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect p"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect b"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
                                                     </div>
-                                                </div>  
-                                            </div>   
-                                            <div class="tab-layout-cell">1-2</div>   
+                                                    <button class="chartBox-colsed"></button>
+                                                </div>
+                                            </div>
+                                            <div class="tab-layout-cell cell-p0">
+                                                <div class="analysis-chartBox">
+                                                    <div class="chartBox-tit">Chart Title Area</div>
+                                                    <div class="chartBox-con"><img src="../img/dummy_img-chart.png" class="dummy-chartImg" alt="dummy img" /></div>
+                                                    <div class="chartBox-select">
+                                                        <div class="charBox_both-label_box">
+                                                            <label class="charBox_both-label">Label</label>
+                                                            <div class="an_select" style="width:123px; margin-right:5px;" onclick="onclick_select()">
+                                                                <div class="an_select_tit"></div>
+                                                                <input type="text" placeholder="Placeholder" readonly>
+                                                                <div class="an_select_menu">
+                                                                    <div class="inner_wrap">
+                                                                        <ul>
+                                                                            <li onclick="onClick_select_menu()">Displacement 1</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 2</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 3</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 4</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 5</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 6</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 8</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 9</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 10</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <input type="text" class="an_text" style="width:88px;" placeholder="Name Placeholder"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="chartBox-legend">
+                                                        <div class="chartBox-legend-all"><label class="an_checkbox big"><input type="checkbox" checked /><i></i><span>Select all</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect o"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect g"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect p"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect b"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                    </div>
+                                                    <button class="chartBox-colsed"></button>
+                                                </div>
+                                            </div>
                                         </div>
                                         <!-- row -->
                                         <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">1-3</div>   
-                                            <div class="tab-layout-cell">1-4</div>
+                                            <div class="tab-layout-cell cell-p0">
+                                                <div class="analysis-chartBox">
+                                                    <div class="chartBox-tit">Chart Title Area</div>
+                                                    <div class="chartBox-con"><img src="../img/dummy_img-chart.png" class="dummy-chartImg" alt="dummy img" /></div>
+                                                    <div class="chartBox-select">
+                                                        <div class="charBox_both-label_box">
+                                                            <label class="charBox_both-label">Label</label>
+                                                            <div class="an_select" style="width:123px; margin-right:5px;" onclick="onclick_select()">
+                                                                <div class="an_select_tit"></div>
+                                                                <input type="text" placeholder="Placeholder" readonly>
+                                                                <div class="an_select_menu">
+                                                                    <div class="inner_wrap">
+                                                                        <ul>
+                                                                            <li onclick="onClick_select_menu()">Displacement 1</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 2</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 3</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 4</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 5</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 6</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 8</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 9</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 10</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <input type="text" class="an_text" style="width:88px;" placeholder="Name Placeholder"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="chartBox-legend">
+                                                        <div class="chartBox-legend-all"><label class="an_checkbox big"><input type="checkbox" checked /><i></i><span>Select all</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect o"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect g"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect p"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect b"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                    </div>
+                                                    <button class="chartBox-colsed"></button>
+                                                </div>
+                                            </div>
+                                            <div class="tab-layout-cell cell-p0">
+                                                <div class="analysis-chartBox">
+                                                    <div class="chartBox-tit">Chart Title Area</div>
+                                                    <div class="chartBox-con"><img src="../img/dummy_img-chart.png" class="dummy-chartImg" alt="dummy img" /></div>
+                                                    <div class="chartBox-select">
+                                                        <div class="charBox_both-label_box">
+                                                            <label class="charBox_both-label">Label</label>
+                                                            <div class="an_select" style="width:123px; margin-right:5px;" onclick="onclick_select()">
+                                                                <div class="an_select_tit"></div>
+                                                                <input type="text" placeholder="Placeholder" readonly>
+                                                                <div class="an_select_menu">
+                                                                    <div class="inner_wrap">
+                                                                        <ul>
+                                                                            <li onclick="onClick_select_menu()">Displacement 1</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 2</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 3</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 4</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 5</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 6</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 8</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 9</li>
+                                                                            <li onclick="onClick_select_menu()">Displacement 10</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <input type="text" class="an_text" style="width:88px;" placeholder="Name Placeholder"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="chartBox-legend">
+                                                        <div class="chartBox-legend-all"><label class="an_checkbox big"><input type="checkbox" checked /><i></i><span>Select all</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect o"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect g"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect p"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                        <div class="chartBox-legend-line"><i class="icon-rect b"></i><label class="an_checkbox sub"><input type="checkbox" checked /><i></i><span>Item item item001</span></label></div>
+                                                    </div>
+                                                    <button class="chartBox-colsed"></button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
                                 <li class="tab-content-inner">
-                                    <div class="tab-layout-wrap h">
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">2-1</div>   
-                                            <div class="tab-layout-cell">2-2</div>   
-                                        </div>
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">2-3</div>   
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="tab-content-inner">
-                                    <div class="tab-layout-wrap h">
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">1-1</div>   
-                                            <div class="tab-layout-cell">1-2</div>   
-                                        </div>
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">1-3</div>   
-                                            <div class="tab-layout-cell">1-4</div>
-                                        </div>
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">1-1</div>   
-                                            <div class="tab-layout-cell">1-2</div>   
-                                        </div>
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">1-3</div>   
-                                            <div class="tab-layout-cell">1-4</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="tab-content-inner">
-                                    <div class="tab-layout-wrap v">
+                                    <div class="tab-layout-wrap h" onscroll="cancle_toggle_open()">
                                         <!-- row -->
                                         <div class="tab-layout-row">
                                             <div class="tab-layout-cell">3-1</div>   
@@ -534,35 +554,750 @@
                                         <!-- row -->
                                         <div class="tab-layout-row">
                                             <div class="tab-layout-cell">3-3</div>   
-                                            <div class="tab-layout-cell">3-4</div>
                                         </div>
                                     </div>
                                 </li>
                                 <li class="tab-content-inner">
-                                    <div class="tab-layout-wrap v">
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">4-1</div>   
-                                            <div class="tab-layout-cell">4-2</div>   
+                                    <div class="tab-layout-wrap h fixed" onscroll="cancle_toggle_open()">
+                                        <!-- Toggle -->
+                                        <div class="tab-layout-row" style="height:auto;">
+                                            <div class="tab-layout-cell" style="padding:50px;">
+                                                <h2 class="guide_table-tit">Toggle</h2>
+                                                <label class="an_toggle"><input type="checkbox" /><div class="an_toggle-box"></div></label>
+                                                <label class="an_toggle"><input type="checkbox" checked /><div class="an_toggle-box"></div></label>
+                                            </div>
                                         </div>
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">4-3</div>   
+                                        <!-- Checkbox -->
+                                        <div class="tab-layout-row" style="height:auto;">
+                                            <div class="tab-layout-cell" style="padding:50px;">
+                                                <h2 class="guide_table-tit">Checkbox</h2>
+                                                <label class="an_checkbox big"><input type="checkbox" /><i></i><span>CheckBox</span></label>
+                                                <label class="an_checkbox big"><input type="checkbox" line /><i></i><span>CheckBox</span></label>
+                                                <label class="an_checkbox big"><input type="checkbox" disabled /><i></i><span>CheckBox</span></label>
+                                                <label class="an_checkbox big"><input type="checkbox" checked disabled /><i></i><span>CheckBox</span></label>
+                                                <label class="an_checkbox big"><input type="checkbox" line disabled /><i></i><span>CheckBox</span></label>
+                                                <label class="an_checkbox"><input type="checkbox" /><i></i><span>CheckBox</span></label>
+                                                <label class="an_checkbox"><input type="checkbox" line /><i></i><span>CheckBox</span></label>
+                                                <label class="an_checkbox"><input type="checkbox" disabled /><i></i><span>CheckBox</span></label>
+                                                <label class="an_checkbox"><input type="checkbox" checked disabled /><i></i><span>CheckBox</span></label>
+                                                <label class="an_checkbox"><input type="checkbox" line disabled /><i></i><span>CheckBox</span></label>
+                                            </div>
+                                        </div>
+                                        <!-- Radio -->
+                                        <div class="tab-layout-row" style="height:auto;">
+                                            <div class="tab-layout-cell" style="padding:50px;">
+                                                <h2 class="guide_table-tit">Radio</h2>
+                                                <label class="an_radio"><input type="radio" name="radio" /><i></i><span>Normal</span></label>
+                                                <label class="an_radio"><input type="radio" name="radio" /><i></i><span>Normal</span></label>
+                                                <label class="an_radio"><input type="radio" disabled /><i></i><span>Disabled</span></label>
+                                                <label class="an_radio"><input type="radio" checked disabled /><i></i><span>Read only</span></label>
+                                            </div>
+                                        </div>
+                                        <!-- Select -->
+                                        <div class="tab-layout-row" style="height:auto;">
+                                            <div class="tab-layout-cell" style="padding:50px;">
+                                                <h2 class="guide_table-tit">Select</h2>
+                                                <div class="an_select" style="width:100%;" onclick="onclick_select()">
+                                                    <div class="an_select_tit"></div>
+                                                    <input type="text" placeholder="Placeholder" readonly>
+                                                    <div class="an_select_menu">
+                                                        <div class="inner_wrap">
+                                                            <ul>
+                                                                <li onclick="onClick_select_menu()">Displacement 1</li>
+                                                                <li onclick="onClick_select_menu()">Displacement 2</li>
+                                                                <li onclick="onClick_select_menu()">Displacement 3</li>
+                                                                <li onclick="onClick_select_menu()">Displacement 4</li>
+                                                                <li onclick="onClick_select_menu()">Displacement 5</li>
+                                                                <li onclick="onClick_select_menu()">Displacement 6</li>
+                                                                <li onclick="onClick_select_menu()">Displacement 8</li>
+                                                                <li onclick="onClick_select_menu()">Displacement 9</li>
+                                                                <li onclick="onClick_select_menu()">Displacement 10</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="sleect_layout type01" style="margin-top:10px;">
+                                                    <div class="an_select" onclick="onclick_select()">
+                                                        <div class="an_select_tit"></div>
+                                                        <input type="text" placeholder="Placeholder" readonly>
+                                                        <div class="an_select_menu">
+                                                            <div class="inner_wrap">
+                                                                <ul>
+                                                                    <li onclick="onClick_select_menu()">Displacement 1</li>
+                                                                    <li onclick="onClick_select_menu()">Displacement 2</li>
+                                                                    <li onclick="onClick_select_menu()">Displacement 3</li>
+                                                                    <li onclick="onClick_select_menu()">Displacement 4</li>
+                                                                    <li onclick="onClick_select_menu()">Displacement 5</li>
+                                                                    <li onclick="onClick_select_menu()">Displacement 6</li>
+                                                                    <li onclick="onClick_select_menu()">Displacement 8</li>
+                                                                    <li onclick="onClick_select_menu()">Displacement 9</li>
+                                                                    <li onclick="onClick_select_menu()">Displacement 10</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="an_select" onclick="onclick_select()">
+                                                        <div class="an_select_tit"></div>
+                                                        <input type="text" placeholder="Placeholder" readonly>
+                                                        <div class="an_select_menu">
+                                                            <div class="inner_wrap">
+                                                                <ul>
+                                                                    <li onclick="onClick_select_menu()">Displacement 1</li>
+                                                                    <li onclick="onClick_select_menu()">Displacement 2</li>
+                                                                    <li onclick="onClick_select_menu()">Displacement 3</li>
+                                                                    <li onclick="onClick_select_menu()">Displacement 4</li>
+                                                                    <li onclick="onClick_select_menu()">Displacement 5</li>
+                                                                    <li onclick="onClick_select_menu()">Displacement 6</li>
+                                                                    <li onclick="onClick_select_menu()">Displacement 8</li>
+                                                                    <li onclick="onClick_select_menu()">Displacement 9</li>
+                                                                    <li onclick="onClick_select_menu()">Displacement 10</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Input Field -->
+                                        <div class="tab-layout-row" style="height:auto;">
+                                            <div class="tab-layout-cell" style="padding:50px;">
+                                                <h2 class="guide_table-tit">Input Field</h2>
+                                                <label class="an_label">Library Name</label>
+                                                <div>
+                                                    <input type="text" class="an_text" style="width:100%;" placeholder="Name Placeholder"/>
+                                                </div>
+                                                <label class="an_label" style="margin-top:10px;">Library Name</label>
+                                                <div>
+                                                    <textarea class="an_text" style="width:100%; height:150px;" placeholder="Text Area Placeholder 텍스트를 입력해주세요"></textarea>
+                                                    <div class="an_validationText">Validation Text 300자 이내로 입력해주세요</div>
+                                                </div>
+                                                <label class="an_label" style="margin-top:10px;">Library Name</label>
+                                                <div>
+                                                    <input type="text" class="an_text" style="width:100%;" placeholder="Name Placeholder"/>
+                                                    <div class="an_validationText">특수문자 대문자는 반드시 포함되어야합니다</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Button -->
+                                        <div class="tab-layout-row" style="height:auto;">
+                                            <div class="tab-layout-cell" style="padding:50px;">
+                                                <h2 class="guide_table-tit">Contained Primary Button</h2>
+                                                <div class="button_wrap">
+                                                    <button class="an_button blue">Create</button>
+                                                    <button class="an_button blue" disabled>Create</button>
+                                                    <button class="an_button blue" style="width:146px;">Create</button>
+                                                    <button class="an_button blue" style="width:146px;" disabled>Create</button>
+                                                </div>
+                                                <h2 class="guide_table-tit" style="margin-top:70px;">Icon Button</h2>
+                                                <div class="button_wrap">
+                                                    <button class="an_button blue icon-i">Create</button>
+                                                    <button class="an_button blue icon-i" disabled>Create</button>
+                                                    <button class="an_button blue icon-i" style="width:146px;">Create</button>
+                                                    <button class="an_button blue icon-i" style="width:146px;" disabled>Create</button>
+                                                </div>
+                                                <h2 class="guide_table-tit" style="margin-top:70px;">Contained Secondary Button</h2>
+                                                <div class="button_wrap">
+                                                    <button class="an_button gray">Create</button>
+                                                    <button class="an_button gray" disabled>Create</button>
+                                                    <button class="an_button gray" style="width:146px;">Create</button>
+                                                    <button class="an_button gray" style="width:146px;" disabled>Create</button>
+                                                </div>
+                                                <h2 class="guide_table-tit" style="margin-top:70px;">Outlined Button</h2>
+                                                <div class="button_wrap">
+                                                    <button class="an_button">Create</button>
+                                                    <button class="an_button" disabled>Create</button>
+                                                    <button class="an_button" style="width:146px;">Create</button>
+                                                    <button class="an_button" style="width:146px;" disabled>Create</button>
+                                                </div>
+                                                <h2 class="guide_table-tit" style="margin-top:70px;">Text Button</h2>
+                                                <div class="button_wrap">
+                                                    <a href="javascript:;">Close</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Tree -->
+                                        <div class="tab-layout-row" style="height:auto;">
+                                            <div class="tab-layout-cell" style="padding:50px;">
+                                                <h2 class="guide_table-tit">Tree</h2>
+                                                <ul class="dummy-half-box">
+                                                    <li>
+                                                        <!-- tree checkbox -->
+                                                        <div class="an_tree">
+                                                            <div class="anTree_wrap">
+                                                                <ul>
+                                                                    <li>
+                                                                        <div class="treeLine">
+                                                                            <span class="arr" onclick="onClick_tree_arr()"></span>
+                                                                            <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth1</span></label>
+                                                                            <!-- <span class="tit">Depth1</span> -->
+                                                                        </div>
+                                                                        <ul>
+                                                                            <li>
+                                                                                <div class="treeLine">
+                                                                                    <span class="arr" onclick="onClick_tree_arr()"></span>
+                                                                                    <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth1-1</span></label>
+                                                                                    <!-- <span class="tit">Depth1-1</span> -->
+                                                                                </div>
+                                                                                <ul>
+                                                                                    <li>
+                                                                                        <div class="treeLine">
+                                                                                            <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth1-1-1</span></label>
+                                                                                        </div>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <div class="treeLine">
+                                                                                            <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth1-1-2</span></label>
+                                                                                        </div>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <div class="treeLine">
+                                                                                            <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth1-1-3</span></label>
+                                                                                        </div>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </li>
+                                                                            <li>
+                                                                                <div class="treeLine">
+                                                                                    <span class="arr" onclick="onClick_tree_arr()"></span>
+                                                                                    <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth1-2</span></label>
+                                                                                    <!-- <span class="tit">Depth1-2</span> -->
+                                                                                </div>
+                                                                                <ul>
+                                                                                    <li>
+                                                                                        <div class="treeLine">
+                                                                                            <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth1-2-1</span></label>
+                                                                                        </div>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <div class="treeLine">
+                                                                                            <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth1-2-2</span></label>
+                                                                                        </div>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </li>
+                                                                            <li>
+                                                                                <div class="treeLine">
+                                                                                    <span class="arr" onclick="onClick_tree_arr()"></span>
+                                                                                    <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth1-3</span></label>
+                                                                                    <!-- <span class="tit">Depth1-3</span> -->
+                                                                                </div>
+                                                                                <ul>
+                                                                                    <li>
+                                                                                        <div class="treeLine">
+                                                                                            <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth1-3-1</span></label>
+                                                                                        </div>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <div class="treeLine">
+                                                                                            <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth1-3-2</span></label>
+                                                                                        </div>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                    <li>
+                                                                        <div class="treeLine">
+                                                                            <span class="arr" onclick="onClick_tree_arr()"></span>
+                                                                            <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth2</span></label>
+                                                                            <!-- <span class="tit">Depth2</span> -->
+                                                                        </div>
+                                                                        <ul>
+                                                                            <li>
+                                                                                <div class="treeLine">
+                                                                                    <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth2-1</span></label>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li>
+                                                                                <div class="treeLine">
+                                                                                    <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth2-2</span></label>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li>
+                                                                                <div class="treeLine">
+                                                                                    <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth2-3</span></label>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li>
+                                                                                <div class="treeLine">
+                                                                                    <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth2-4</span></label>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li>
+                                                                                <div class="treeLine">
+                                                                                    <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth2-5</span></label>
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                    <li>
+                                                                        <div class="treeLine">
+                                                                            <span class="arr" onclick="onClick_tree_arr()"></span>
+                                                                            <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth3</span></label>
+                                                                            <!-- <span class="tit">Depth3</span> -->
+                                                                        </div>
+                                                                        <ul>
+                                                                            <li>
+                                                                                <div class="treeLine">
+                                                                                    <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth3-1</span></label>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li>
+                                                                                <div class="treeLine">
+                                                                                    <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth3-2</span></label>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li>
+                                                                                <div class="treeLine">
+                                                                                    <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth3-3</span></label>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li>
+                                                                                <div class="treeLine">
+                                                                                    <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth3-4</span></label>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li>
+                                                                                <div class="treeLine">
+                                                                                    <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth3-5</span></label>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li>
+                                                                                <div class="treeLine">
+                                                                                    <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth3-6</span></label>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li>
+                                                                                <div class="treeLine">
+                                                                                    <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth3-7</span></label>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li>
+                                                                                <div class="treeLine">
+                                                                                    <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth3-8</span></label>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li>
+                                                                                <div class="treeLine">
+                                                                                    <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth3-9</span></label>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li>
+                                                                                <div class="treeLine">
+                                                                                    <label class="an_checkbox"><input type="checkbox" onchange="changed_tree_checkbox()" /><i></i><span>Depth3-10</span></label>
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <!-- tree folder-->
+                                                        <div class="an_tree folder">
+                                                            <div class="anTree_wrap">
+                                                                <ul>
+                                                                    <li>
+                                                                        <div class="treeLine" onclick="onClick_tree_toggle()">
+                                                                            <span class="arr" onclick="onClick_tree_arr()"></span>
+                                                                            <span class="tit">Depth1</span>
+                                                                        </div>
+                                                                        <ul>
+                                                                            <li>
+                                                                                <div class="treeLine" onclick="onClick_tree_toggle()">
+                                                                                    <span class="arr" onclick="onClick_tree_arr()"></span>
+                                                                                    <span class="tit">Depth1-1</span>
+                                                                                </div>
+                                                                                <ul>
+                                                                                    <li>
+                                                                                        <div class="treeLine" onclick="onClick_tree_toggle()">
+                                                                                            <a href="javascript:;" class="tit">Depth1-1-1</a>
+                                                                                        </div>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <div class="treeLine" onclick="onClick_tree_toggle()">
+                                                                                            <a href="javascript:;" class="tit">Depth1-1-2</a>
+                                                                                        </div>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <div class="treeLine" onclick="onClick_tree_toggle()">
+                                                                                            <a href="javascript:;" class="tit">Depth1-1-3</a>
+                                                                                        </div>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </li>
+                                                                            <li>
+                                                                                <div class="treeLine" onclick="onClick_tree_toggle()">
+                                                                                    <span class="arr" onclick="onClick_tree_arr()"></span>
+                                                                                    <span class="tit">Depth1-2</span>
+                                                                                </div>
+                                                                                <ul>
+                                                                                    <li>
+                                                                                        <div class="treeLine" onclick="onClick_tree_toggle()">
+                                                                                            <a href="javascrip:;" class="tit">Depth1-2-1</a>
+                                                                                        </div>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <div class="treeLine" onclick="onClick_tree_toggle()">
+                                                                                            <a href="javascrip:;" class="tit">Depth1-2-1</a>
+                                                                                        </div>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </li>
+                                                                            <li>
+                                                                                <div class="treeLine" onclick="onClick_tree_toggle()">
+                                                                                    <span class="arr" onclick="onClick_tree_arr()"></span>
+                                                                                    <span class="tit">Depth1-3</span>
+                                                                                </div>
+                                                                                <ul>
+                                                                                    <li>
+                                                                                        <div class="treeLine" onclick="onClick_tree_toggle()">
+                                                                                            <a href="javascrip:;" class="tit">Depth1-3-1</a>
+                                                                                        </div>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <div class="treeLine" onclick="onClick_tree_toggle()">
+                                                                                            <a href="javascrip:;" class="tit">Depth1-3-2</a>
+                                                                                        </div>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                    <li>
+                                                                        <div class="treeLine" onclick="onClick_tree_toggle()">
+                                                                            <span class="arr" onclick="onClick_tree_arr()"></span>
+                                                                            <span class="tit">Depth2</span>
+                                                                        </div>
+                                                                        <ul>
+                                                                            <li>
+                                                                                <div class="treeLine" onclick="onClick_tree_toggle()">
+                                                                                    <a href="javascript:;" class="tit">Depth2-1</a>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li>
+                                                                                <div class="treeLine" onclick="onClick_tree_toggle()">
+                                                                                    <a href="javascript:;" class="tit">Depth2-2</a>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li>
+                                                                                <div class="treeLine" onclick="onClick_tree_toggle()">
+                                                                                    <a href="javascript:;" class="tit">Depth2-3</a>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li>
+                                                                                <div class="treeLine" onclick="onClick_tree_toggle()">
+                                                                                    <a href="javascript:;" class="tit">Depth2-4</a>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li>
+                                                                                <div class="treeLine" onclick="onClick_tree_toggle()">
+                                                                                    <a href="javascript:;" class="tit">Depth2-5</a>
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                    <li>
+                                                                        <div class="treeLine" onclick="onClick_tree_toggle()">
+                                                                            <span class="arr" onclick="onClick_tree_arr()"></span>
+                                                                            <span class="tit">Depth3</span>
+                                                                        </div>
+                                                                        <ul>
+                                                                            <li>
+                                                                                <div class="treeLine" onclick="onClick_tree_toggle()">
+                                                                                    <a href="javascript:;" class="tit">Depth3-1</a>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li>
+                                                                                <div class="treeLine" onclick="onClick_tree_toggle()">
+                                                                                    <a href="javascript:;" class="tit">Depth3-2</a>
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!-- Table -->
+                                        <div class="tab-layout-row" style="height:auto;">
+                                            <div class="tab-layout-cell" style="padding:50px;">
+                                                <h2 class="guide_table-tit">Table</h2>
+                                                <table class="analysis-table">
+                                                    <colgroup>
+                                                        <col style="width:20%;">
+                                                        <col style="width:auto">
+                                                    </colgroup>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Header</th>
+                                                            <th style="text-align:center;">Header</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="br">Body texttexttext...</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="br">Body text</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr class="selected">
+                                                            <td class="br">Body text</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="br">Body text</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="br">Body text</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="br">Body text</td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <!-- Calendar -->
+                                        <div class="tab-layout-row" style="height:auto;">
+                                            <div class="tab-layout-cell" style="padding:50px;">
+                                                <h2 class="guide_table-tit">Calendar</h2>
+                                                <input class="dateSelector" placeholder="ex) 2020-09-01" />
+                                            </div>
+                                        </div>
+                                        <!-- Alert -->
+                                        <div class="tab-layout-row" style="height:auto;">
+                                            <div class="tab-layout-cell" style="padding:50px;">
+                                                <h2 class="guide_table-tit">Alert</h2>
+                                                <div class="an_alert" style="width:311px;">
+                                                    <div class="inner_wrap">
+                                                        <div class="icon_box">
+                                                            <i class="alert_icon-t_alert"></i>
+                                                        </div>
+                                                        <p class="in">
+                                                            Analysis Tool recovered from<br />unexpected termination
+                                                        </p>
+                                                        <p class="ac">
+                                                            Verify contents and save it first.
+                                                        </p>
+                                                        <button class="an_button blue" style="width:100%;">OK</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Icon -->
+                                        <div class="tab-layout-row" style="height:auto;">
+                                            <div class="tab-layout-cell" style="padding:50px;">
+                                                <!-- Davinci OLED Icon Set -->
+                                                <h2 class="guide_table-tit">Davinci OLED Icon Set</h2>
+                                                <table class="analysis-table">
+                                                    <colgroup>
+                                                        <col>
+                                                    </colgroup>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><i class="fa-solid fa-folder-user"></i></td>
+                                                            <td><i class="fa-solid fa-file-import"></i></td>
+                                                            <td><i class="fa-solid fa-table-tree"></i></td>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg size1"><image href="../img/icon_exportFx01.svg" /></svg></td>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg size1"><image href="../img/icon_exportFx02.svg" /></svg></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th colspan="2">
+                                                                Report<br />
+                                                                개인용
+                                                            </th>
+                                                            <th>
+                                                                Report<br />
+                                                                공용
+                                                            </th>
+                                                            <th colspan="2">
+                                                                Simulation<br />
+                                                                Report
+                                                            </th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg size1"><image href="../img/icon_lineList.svg" /></svg></td>
+                                                            <td><i class="fa-solid fa-flashlight"></i></td>
+                                                            <td><i class="fa-solid fa-circle-bolt"></i></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Line List</th>
+                                                            <th colspan="2">Optimise</th>
+                                                            <th></th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <!-- Davinci OLED Icon Set -->
+                                                <h2 class="guide_table-tit">3D Rendering Icon Set</h2>
+                                                <table class="analysis-table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><i class="fa-solid fa-folder-open"></i></td>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg"><image href="../img/icon_rectangle2d.svg" /></svg></td>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg"><image href="../img/icon_Coordinate.svg" /></svg></td>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg"><image href="../img/icon_ColorMap_on.svg" /></svg></td>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg"><image href="../img/icon_ColorMap_off.svg" /></svg></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Open</th>
+                                                            <th>Export</th>
+                                                            <th>Report<br />공용</th>
+                                                            <th colspan="2">ColorMap<br />On/Off</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><i class="fa-solid fa-send-back"></i></td>
+                                                            <td><i class="fa-solid fa-bring-front"></i></td>
+                                                            <td><i class="fa-solid fa-palette"></i></td>
+                                                            <td><i class="fa-solid fa-eye-dropper"></i></td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th colspan="4">Layer<br />Hide/Show/Color1/Color2</th>
+                                                            <th></th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><i class="fa-solid fa-maximize"></i></td>
+                                                            <td><i class="fa-solid fa-camera-viewfinder"></i></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th colspan="2">Layer<br />Hide/Show/Color1/Color2</th>
+                                                            <th></th>
+                                                            <th></th>
+                                                            <th></th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg"><image href="../img/icon_viewX01.svg" /></svg></td>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg"><image href="../img/icon_viewX02.svg" /></svg></td>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg"><image href="../img/icon_viewY01.svg" /></svg></td>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg"><image href="../img/icon_viewY02.svg" /></svg></td>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg"><image href="../img/icon_viewZ01.svg" /></svg></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th colspan="2">View (XY)</th>
+                                                            <th colspan="2">View (YZ)</th>
+                                                            <th>View (ZX)</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg"><image href="../img/icon_viewFixed.svg" /></svg></td>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg"><image href="../img/icon_WireFrame.svg" /></svg></td>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg"><image href="../img/icon_Surface.svg" /></svg></td>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg"><image href="../img/icon_Solid.svg" /></svg></td>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg"><image href="../img/icon_CellSelect.svg" /></svg></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>View (Fixed)</th>
+                                                            <th>WireFrame</th>
+                                                            <th>Surface</th>
+                                                            <th>Solid</th>
+                                                            <th>Cell Select</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg"><image href="../img/icon_LayerSelect01.svg" /></svg></td>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg"><image href="../img/icon_LayerSelect02.svg" /></svg></td>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg"><image href="../img/icon_CrossSectionXY.svg" /></svg></td>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg"><image href="../img/icon_CrossSectionYZ.svg" /></svg></td>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg"><image href="../img/icon_CrossSectionZX.svg" /></svg></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th colspan="2">Layer Select</th>
+                                                            <th>Cross Section (XY)</th>
+                                                            <th>Cross Section (YZ)</th>
+                                                            <th>Cross Section (ZX)</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><i class="fa-solid fa-ruler"></i></td>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg"><image href="../img/icon_Distance.svg" /></svg></td>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg"><image href="../img/icon_Length.svg" /></svg></td>
+                                                            <td><i class="fa-solid fa-angle"></i></td>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg"><image href="../img/icon_Diameter.svg" /></svg></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Summary</th>
+                                                            <th>Distance</th>
+                                                            <th>Length</th>
+                                                            <th>Angle</th>
+                                                            <th>Diameter</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg"><image href="../img/icon_Distance.svg" /></svg></td>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg"><image href="../img/icon_Distance.svg" /></svg></td>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg"><image href="../img/icon_Distance.svg" /></svg></td>
+                                                            <td><i class="fa-solid fa-pen-line"></i></td>
+                                                            <td><i class="fa-solid fa-message-pen"></i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Area</th>
+                                                            <th colspan="2">Memo</th>
+                                                            <th></th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <!-- Size -->
+                                                <h2 class="guide_table-tit">Icon Size Guide(SVG)</h2>
+                                                <table class="analysis-table">
+                                                    <colgroup>
+                                                        <col style="width:600px;">
+                                                        <col style="width:auto;">
+                                                        <col style="width:auto;">
+                                                    </colgroup>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Icon</th>
+                                                            <th>Css</th>
+                                                            <th>Size</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg size1"><image href="../img/icon_Coordinate.svg" /></svg></td>
+                                                            <td>analysis_svg size1</td>
+                                                            <td>Default 24 x24</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg size2"><image href="../img/icon_Coordinate.svg" /></svg></td>
+                                                            <td>analysis_svg size2</td>
+                                                            <td>64 x 64</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg size3"><image href="../img/icon_Coordinate.svg" /></svg></td>
+                                                            <td>analysis_svg size3</td>
+                                                            <td>128 x 128</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg size4"><image href="../img/icon_Coordinate.svg" /></svg></td>
+                                                            <td>analysis_svg size4</td>
+                                                            <td>256 x 256</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="analysis_svg size5"><image href="../img/icon_Coordinate.svg" /></svg></td>
+                                                            <td>analysis_svg size5</td>
+                                                            <td>512 x 512</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
                                 <li class="tab-content-inner">
-                                    <div class="tab-layout-wrap v">
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">3-1</div>   
-                                            <div class="tab-layout-cell">3-2</div>   
-                                        </div>
-                                        <!-- row -->
-                                        <div class="tab-layout-row">
-                                            <div class="tab-layout-cell">3-3</div>   
-                                            <div class="tab-layout-cell">3-4</div>
-                                        </div>
+                                    <div class="tab-layout-wrap v" onscroll="cancle_toggle_open()">
                                         <!-- row -->
                                         <div class="tab-layout-row">
                                             <div class="tab-layout-cell">3-1</div>   
@@ -603,11 +1338,10 @@
                     </div>
                 </div>
                 <!-- both textarea -->
-                <div class="content_both_box" style="height:0;">
-                    <button class="toggle_btn_bothTextarea closed" onclick="toggle_both_textarea()"><i class="fa-solid fa-caret-up"></i></button>
+                <div class="content_both_box" style="height:150px;">
                     <div class="splitter_handler vertical top" onmousedown="splitter_vertical_down()" ontouchstart="splitter_vertical_down()"></div>
                     <div class="both_box_inner" style="height:150px;">
-                        <div class="both_box_tit"></div>
+                        <div class="both_box_tit" onclick="toggle_both_textarea()"><button class="toggle_btn_bothTextarea"><i></i></button></div>
                         <div class="both_box_textarea">
                             <textarea cols="30" rows="10"></textarea>
                         </div>
@@ -618,10 +1352,10 @@
         <!-- lnb -->
         <div id="lnb">
             <div class="lnb_left">
-                <div class="lnb_left_top_button" onclick="folder_lnbWing()"><i class="analysis-icon-menu"></i></div>
+                <div class="lnb_left_top_button analysis-menu-open"></div>
                 <ul class="lnb_left_menu">
                     <li onclick="toggle_lnb()" class="active">
-                        <i class="fa-solid fa-chart-line"></i>
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"><image href="../img/lnb_icon-chart.svg" /></svg>
                         <div class="tit">Chart</div>
                     </li>
                     <li onclick="toggle_lnb()">
@@ -679,6 +1413,7 @@
                     </li>
                 </ul>
                 <div class="splitter_handler horizontal" onmousedown="splitter_horizontal_down()" ontouchstart="splitter_horizontal_down()"></div>
+                <button class="lnbWing-icon open" onclick="folder_rnbWing()"></button>
             </div>
         </div>
         <!-- gnb submenu-->
