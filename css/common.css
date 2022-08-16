@@ -142,7 +142,7 @@ tr.selected{background:#E2F1FF;}
 
 .analysis-table i{font-size:24px;}
 
-
+.analysis-table.type-guide th, .analysis-table.type-guide td{padding:10px 0; text-align:center; border:1px solid #ededed;}
 
 
 /* table */
@@ -281,11 +281,12 @@ li.closed .splitter_handler.vertical{display:none;}
 
 .wrap_wing_type3{padding:10px 7px;}
 
-.lnbWing-icon{position:absolute; top:6px; right:6px; z-index:100; width:16px; height:16px; cursor:pointer; outline:none; border:1px solid #ededed;}
-.lnbWing-icon:after{content:""; position:absolute; top:0; left:0; width:16px; height:16px; background:#EFEFEF url(../img/icon_rec_arr-2.png) no-repeat center; background-size:16px 16px;}
+.lnbWing-icon{position:absolute; top:6px; right:6px; z-index:100; width:16px; height:16px; border-width:0; cursor:pointer; outline:none; border:1px solid #ededed;}
+.lnbWing-icon:after{content:""; position:absolute; top:0; right:0; width:16px; height:16px; background:#EFEFEF url(../img/icon_rec_arr-2.png) no-repeat center; background-size:16px 16px;}
 .content_wing_left.closed .lnbWing-icon{top:0; right:0; width:12px; height:100%;}
 .content_wing_left.closed .lnbWing-icon:after{width:12px; height:33px; background:#E8E8E8 url(../img/lnbWing_icon-closed_arr.png) no-repeat center; background-size:5.5px 10px;}
 
+#rnb .lnbWing-icon:after{right:auto; left:-1px;}
 
 .open_rnb_wing #rnb .lnbWing-icon{top:7px; right:6px; left:unset; width:16px; height:16px; border-width:0; background:transparent;}
 #wrap:not(.open_rnb_wing) #rnb  .lnbWing-icon:after{width:12px; height:33px; transform:rotate(180deg); background:#E8E8E8 url(../img/lnbWing_icon-closed_arr.png) no-repeat center; background-size:5.5px 10px;}
