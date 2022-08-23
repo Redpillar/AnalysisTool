@@ -64,7 +64,8 @@ textarea:-ms-input-placeholder{color:#878787;}
 
 .an_checkbox.sub > input:checked + i{border-color:#878787; background-color:#878787;}
 
-
+/* text link */
+.text-link{color:#0A7AFF;}
 /* radio */
 .an_radio{position:relative; display:inline-block; font-size:12px; color:#475467; line-height:16px; vertical-align:top;}
 .an_radio > span{position:relative; top:2px; display:inline-block; vertical-align:top;}
@@ -450,7 +451,7 @@ li.closed .splitter_handler.vertical{display:none;}
 .an_confirm > .inner_wrap{position:relative; padding:0px 20px 20px 20px; border-radius:10px; box-shadow:0 0 15px 10px rgba(0,0,0,0.15); background:#fff;}
 .an_confirm-tit{position:relative;}
 .an_confirm-tit .tit{display:flex; justify-content:flex-start; align-items:center; height:53px;}
-.confirm_button-closed{position:absolute; top:0; right:-20px; width:35px; height:35px; border:none; background:url(../img/icon_modal-closed.png) no-repeat center; background-size:15px 15px;}
+.confirm_button-closed{position:absolute; top:0; right:-20px; width:35px; height:35px; border:none; cursor:pointer; background:url(../img/icon_modal-closed.png) no-repeat center; background-size:15px 15px;}
 .confirm_con{display:flex; justify-content:center; align-items:center;}
 .confirm_con > p{text-align:center;}
 .an_confirm-btn{font-size:0; text-align:center;}
